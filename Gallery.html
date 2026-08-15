@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Canvas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand logo-font" href="index.html">CANVAS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+                    <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html">Project</a></li>
+                    <li class="nav-item"><a class="nav-link" href="join.html">Join</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header text-center">
+        <div class="container">
+            <h1 class="logo-font">Gallery</h1>
+            <p class="text-muted">A showcase of student animation, motion and digital art</p>
+        </div>
+    </header>
+
+    <!-- Filters -->
+    <div class="container">
+        <div class="d-flex justify-content-center flex-wrap gap-2 mb-4" id="filterBar">
+            <button class="btn filter-chip active" data-filter="all">All</button>
+            <button class="btn filter-chip" data-filter="2d">2D</button>
+            <button class="btn filter-chip" data-filter="3d">3D</button>
+            <button class="btn filter-chip" data-filter="motion">Motion graphics</button>
+        </div>
+
+        <div class="text-center mb-4">
+            <button class="btn btn-outline-accent" id="favToggle">
+                <i class="bi bi-heart-fill me-1"></i> View favorites
+            </button>
+        </div>
+
+        <!-- Gallery grid -->
+        <div class="row g-3 mb-5" id="galleryGrid">
+            <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g1">
+                <div class="gallery-card">
+                    <img src="https://picsum.photos/seed/canvas1/500/375" alt="2D animation still frame">
+                    <button class="fav-btn" data-id="g1" aria-label="Save to favorites"><i
+                            class="bi bi-heart"></i></button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g2">
+                <div class="gallery-card">
+                    <img src="https://picsum.photos/seed/canvas2/500/375" alt="3D render still frame">
+                    <button class="fav-btn" data-id="g2" aria-label="Save to favorites"><i
+                            class="bi bi-heart"></i></button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g3">
+                <div class="gallery-card">
+                    <img src="https://picsum.photos/seed/canvas3/500/375" alt="Motion graphics still frame">
+                    <button class="fav-btn" data-id="g3" aria-label="Save to favorites"><i
+                            class="bi bi-heart"></i></button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g4">
+                <div class="gallery-card">
+                    <img src="https://picsum.photos/seed/canvas4/500/375" alt="2D animation still frame">
+                    <button class="fav-btn" data-id="g4" aria-label="Save to favorites"><i
+                            class="bi bi-heart"></i></button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g5">
+                <div class="gallery-card">
+                    <img src="https://picsum.photos/seed/canvas5/500/375" alt="3D render still frame">
+                    <button class="fav-btn" data-id="g5" aria-label="Save to favorites"><i
+                            class="bi bi-heart"></i></button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g6">
+                <div class="gallery-card">
+                    <img src="https://picsum.photos/seed/canvas6/500/375" alt="Motion graphics still frame">
+                    <button class="fav-btn" data-id="g6" aria-label="Save to favorites"><i
+                            class="bi bi-heart"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center text-muted small" id="emptyState" style="display:none;">No favorites saved yet — tap the
+            heart on any image to add it here.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <span class="small text-muted">&copy; Canvas Club</span>
+            <div class="social-icons mt-2 mt-md-0">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-discord"></i></a>
+                <a href="#"><i class="bi bi-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="gallery.js"></script>
+</body>
+
+</html>
