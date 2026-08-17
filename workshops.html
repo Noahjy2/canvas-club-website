@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workshops | Animation & Multimedia Club</title>
+    <style type="text/css">
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #111111;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 2px solid #555555;
+}
+
+h1, h2 { color: #9b7cff; }
+p { line-height: 1.6; }
+
+.navigation {
+    background-color: #181818;
+    text-align: center;
+    padding: 15px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+.navigation a:hover { color: #9b7cff; }
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.event-container, .workshop-container, .steps {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.event, .workshop, .step {
+    background-color: #151515;
+    border: 1px solid #444444;
+    padding: 20px;
+    flex: 1 1 300px;
+}
+
+.event:hover, .workshop:hover, .step:hover {
+    border-color: #9b7cff;
+}
+
+.date, .level, .step-number {
+    color: #00d9ff;
+    font-weight: bold;
+}
+
+.event a, .workshop a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: 1px solid #9b7cff;
+    color: white;
+    text-decoration: none;
+}
+
+.event a:hover, .workshop a:hover {
+    background-color: #9b7cff;
+    color: black;
+}
+
+form {
+    background-color: #151515;
+    border: 1px solid #444444;
+    padding: 25px;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #222222;
+    color: white;
+    border: 1px solid #555555;
+}
+
+input[type="submit"], input[type="reset"] {
+    width: auto;
+    margin-top: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid #9b7cff;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #9b7cff;
+    color: black;
+}
+
+footer {
+    text-align: center;
+    background-color: #111111;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #444444;
+}
+
+@media screen and (max-width: 700px) {
+    .navigation a {
+        display: block;
+        margin: 10px;
+    }
+
+    .event-container, .workshop-container, .steps {
+        display: block;
+    }
+
+    .event, .workshop, .step {
+        margin-bottom: 20px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Animation & Multimedia Club</h1>
+        <p>Learn practical skills through animation and multimedia workshops.</p>
+    </header>
+
+    <div class="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="events.html">Events</a>
+        <a href="workshops.html">Workshops</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="project.html">Projects</a>
+        <a href="join.html">Join</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+
+        <h2>Upcoming Workshops</h2>
+        <p>Choose a workshop and develop practical animation and multimedia skills.</p>
+
+        <div class="workshop-container">
+            <article class="workshop">
+                <p class="level">BEGINNER</p>
+                <h3>Video Editing Fundamentals</h3>
+                <img src="/images/video-edit.jpeg" width="280px" heigh="200px">
+                <p>Learn the basic workflow of importing footage, cutting clips, adding transitions and exporting a finished video.</p>
+                <p><strong>Date:</strong> 30 August 2026</p>
+                <p><strong>Duration:</strong> 2 Hours</p>
+                <p><strong>Seats:</strong> 20</p>
+                <a href="#registration">Join Workshop</a>
+            </article>
+
+            <article class="workshop">
+                <p class="level">INTERMEDIATE</p>
+                <h3>Motion Graphics</h3>
+                <img src="/images/motion-graphics.jpeg" width="280px" heigh="200px">
+                <p>Explore keyframes, easing, animated typography and simple motion graphics techniques for multimedia projects.</p>
+                <p><strong>Date:</strong> 6 September 2026</p>
+                <p><strong>Duration:</strong> 3 Hours</p>
+                <p><strong>Seats:</strong> 15</p>
+                <a href="#registration">Join Workshop</a>
+            </article>
+
+            <article class="workshop">
+                <p class="level">BEGINNER</p>
+                <h3>Storyboarding for Animation</h3>
+                <img src="/images/storyboard.webp" width="280px" heigh="200px">
+                <p>Turn a creative idea into a visual sequence by learning shot planning, camera direction and storytelling structure.</p>
+                <p><strong>Date:</strong> 13 September 2026</p>
+                <p><strong>Duration:</strong> 2 Hours</p>
+                <p><strong>Seats:</strong> 25</p>
+                <a href="#registration">Join Workshop</a>
+            </article>
+        </div>
+
+        <h2>How It Works</h2>
+
+        <div class="steps">
+            <article class="step">
+                <p class="step-number">01</p>
+                <h3>Learn</h3>
+                <p>Understand the tools and techniques through demonstrations from the workshop facilitator.</p>
+            </article>
+
+            <article class="step">
+                <p class="step-number">02</p>
+                <h3>Practice</h3>
+                <p>Follow a guided activity and experiment with the techniques during the workshop.</p>
+            </article>
+
+            <article class="step">
+                <p class="step-number">03</p>
+                <h3>Create</h3>
+                <p>Apply the new skill to a small multimedia project that can become part of your portfolio.</p>
+            </article>
+        </div>
+
+        <h2 id="registration">Workshop Registration</h2>
+
+        <form method="post" action="#">
+            <label for="name">Name:</label>
+            <input id="name" name="name" type="text" required>
+
+            <label for="email">E-mail Address:</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="workshop">Choose a Workshop:</label>
+            <select id="workshop" name="workshop">
+                <option>Video Editing Fundamentals</option>
+                <option>Motion Graphics</option>
+                <option>Storyboarding for Animation</option>
+            </select>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="5" placeholder="Enter comments here."></textarea>
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear">
+        </form>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Animation & Multimedia Club</p>
+    </footer>
+</body>
+</html>
