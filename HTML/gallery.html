@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | Canvas</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navigation">
+    <a href="/HTML/index.html">Home</a>
+    <a href="/HTML/about.html">About</a>
+    <a href="/HTML/events.html">Events</a>
+    <a href="/HTML/workshops.html">Workshops</a>
+    <a href="/HTML/gallery.html" class="active">Gallery</a>
+    <a href="/HTML/project.html">Projects</a>
+    <a href="/HTML/join.html">Join</a>
+    <a href="/HTML/contact.html">Contact</a>
+</div>
+
+<!-- Page header -->
+<header class="page-header text-center">
+  <div class="container">
+    <h1 class="logo-font">Gallery</h1>
+    <p class="text-muted">A showcase of student animation, motion and digital art</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Search bar -->
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-6">
+      <input type="text" id="searchInput" class="form-control search-input"
+             placeholder="Search by title, student or category...">
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="d-flex justify-content-center flex-wrap gap-2 mb-3" id="filterBar">
+    <button class="btn filter-chip active" data-filter="all">All</button>
+    <button class="btn filter-chip" data-filter="2d">2D</button>
+    <button class="btn filter-chip" data-filter="3d">3D</button>
+    <button class="btn filter-chip" data-filter="motion">Motion graphics</button>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center flex-wrap gap-2 mb-4">
+    <button class="btn btn-outline-accent" id="favToggle">
+      <i class="bi bi-heart-fill me-1"></i> View favorites
+      <span class="badge fav-badge" id="favCount">0</span>
+    </button>
+    <button class="btn btn-outline-accent" id="clearFavBtn">
+      <i class="bi bi-trash me-1"></i> Clear favorites
+    </button>
+  </div>
+
+  <!-- Gallery grid -->
+  <div class="row g-3 mb-3" id="galleryGrid">
+
+    <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g1"
+         data-title="Neon Drift" data-student="Tan Wei" data-cat-label="2D animation"
+         data-desc="A short 2D chase sequence exploring dynamic camera framing and squash-and-stretch timing."
+         data-software="Adobe Animate" data-year="2025"
+         data-img="https://picsum.photos/seed/canvas1/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas1/500/375" alt="Neon Drift, 2D animation still frame">
+        <button class="fav-btn" data-id="g1" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Neon Drift</div>
+        <div class="gallery-meta">Tan Wei &middot; 2D animation</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g1">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g2"
+         data-title="Glass Bloom" data-student="Lim Jia" data-cat-label="3D render"
+         data-desc="A stylised 3D floral render focused on reflective materials and volumetric lighting."
+         data-software="Blender" data-year="2025"
+         data-img="https://picsum.photos/seed/canvas2/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas2/500/375" alt="Glass Bloom, 3D render still frame">
+        <button class="fav-btn" data-id="g2" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Glass Bloom</div>
+        <div class="gallery-meta">Lim Jia &middot; 3D render</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g2">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g3"
+         data-title="Paper Folds" data-student="Aisha N." data-cat-label="Motion graphics"
+         data-desc="A kinetic type piece built entirely from paper-fold transitions and flat colour."
+         data-software="After Effects" data-year="2024"
+         data-img="https://picsum.photos/seed/canvas3/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas3/500/375" alt="Paper Folds, motion graphics still frame">
+        <button class="fav-btn" data-id="g3" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Paper Folds</div>
+        <div class="gallery-meta">Aisha N. &middot; Motion graphics</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g3">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g4"
+         data-title="Lantern Walk" data-student="Marcus Ooi" data-cat-label="2D animation"
+         data-desc="A hand-drawn walk cycle set in a night market, focused on secondary motion in fabric and light."
+         data-software="Toon Boom Harmony" data-year="2024"
+         data-img="https://picsum.photos/seed/canvas4/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas4/500/375" alt="Lantern Walk, 2D animation still frame">
+        <button class="fav-btn" data-id="g4" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Lantern Walk</div>
+        <div class="gallery-meta">Marcus Ooi &middot; 2D animation</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g4">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g5"
+         data-title="Iron Bloom" data-student="Chen Yi Xuan" data-cat-label="3D render"
+         data-desc="A hard-surface mechanical flower model rendered with procedural rust and wear textures."
+         data-software="Cinema 4D" data-year="2025"
+         data-img="https://picsum.photos/seed/canvas5/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas5/500/375" alt="Iron Bloom, 3D render still frame">
+        <button class="fav-btn" data-id="g5" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Iron Bloom</div>
+        <div class="gallery-meta">Chen Yi Xuan &middot; 3D render</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g5">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g6"
+         data-title="Pulse Grid" data-student="Nur Ain" data-cat-label="Motion graphics"
+         data-desc="An audio-reactive grid animation exploring rhythm-driven scale and colour shifts."
+         data-software="After Effects" data-year="2025"
+         data-img="https://picsum.photos/seed/canvas6/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas6/500/375" alt="Pulse Grid, motion graphics still frame">
+        <button class="fav-btn" data-id="g6" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Pulse Grid</div>
+        <div class="gallery-meta">Nur Ain &middot; Motion graphics</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g6">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g7"
+         data-title="Rain Study" data-student="Wong Kar Ling" data-cat-label="2D animation"
+         data-desc="A short mood piece studying rain and reflections on glass using hand-painted frames."
+         data-software="Adobe Animate" data-year="2024"
+         data-img="https://picsum.photos/seed/canvas7/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas7/500/375" alt="Rain Study, 2D animation still frame">
+        <button class="fav-btn" data-id="g7" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Rain Study</div>
+        <div class="gallery-meta">Wong Kar Ling &middot; 2D animation</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g7">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g8"
+         data-title="Coral Drift" data-student="Farah Iman" data-cat-label="3D render"
+         data-desc="An underwater scene study focused on subsurface scattering and caustic lighting."
+         data-software="Blender" data-year="2024"
+         data-img="https://picsum.photos/seed/canvas8/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas8/500/375" alt="Coral Drift, 3D render still frame">
+        <button class="fav-btn" data-id="g8" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Coral Drift</div>
+        <div class="gallery-meta">Farah Iman &middot; 3D render</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g8">View details</button>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g9"
+         data-title="Signal Loop" data-student="David Heng" data-cat-label="Motion graphics"
+         data-desc="A looping broadcast-style ident built around geometric shape transitions."
+         data-software="After Effects" data-year="2025"
+         data-img="https://picsum.photos/seed/canvas9/500/375">
+      <div class="gallery-card">
+        <img src="https://picsum.photos/seed/canvas9/500/375" alt="Signal Loop, motion graphics still frame">
+        <button class="fav-btn" data-id="g9" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Signal Loop</div>
+        <div class="gallery-meta">David Heng &middot; Motion graphics</div>
+        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g9">View details</button>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="text-center text-muted small" id="emptyState" style="display:none;">No artwork matches your search or filter.</p>
+</div>
+
+<!-- Artwork detail modal -->
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title logo-font" id="galleryModalLabel">Artwork title</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <img id="galleryModalImg" src="" alt="" class="modal-img">
+      <div class="modal-body">
+        <p class="small text-muted mb-1" id="galleryModalMeta">by &mdash; &middot; &mdash;</p>
+        <p id="galleryModalDesc"></p>
+        <p class="small text-muted mb-0" id="galleryModalTech"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <span class="small text-muted">&copy; Canvas Club</span>
+    <div class="social-icons mt-2 mt-md-0">
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-discord"></i></a>
+      <a href="#"><i class="bi bi-tiktok"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="gallery.js"></script>
+</body>
+</html>
