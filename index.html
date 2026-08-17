@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation &amp; Multimedia Club — Home</title>
+<meta name="description" content="Animation & Multimedia Club: animated shorts, motion graphics, video editing and multimedia workshops.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Site styles -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg player-nav sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-mark"></span> Animation &amp; Multimedia Club
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" style="border-color:var(--border)">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#craft">Craft</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#workshops">Workshops</a></li>
+        <li class="nav-item"><a class="nav-link" href="#join">Join</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle ms-lg-3 mt-3 mt-lg-0" title="Toggle light / dark" aria-label="Toggle theme">☀</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Returning visitor banner (cookie-driven) -->
+<div class="container">
+  <div id="visitorBanner" class="mt-3"></div>
+</div>
+
+<!-- ============ HERO (full-bleed) ============ -->
+<header class="hero-full">
+  <div class="container">
+    <span class="eyebrow on-dark">Since 2021</span>
+    <h1 class="mt-3 mb-3">Playing With Motion to Unlock Every Frame</h1>
+    <p class="lead">We storyboard, animate, shoot and edit — turning ideas into motion. Join a crew of animators, editors and sound designers making short films, motion graphics and campus media.</p>
+    <div class="d-flex flex-wrap gap-3 mt-4">
+      <a href="#join" class="btn btn-rec">Join the Crew</a>
+      <a href="#showreel" class="btn btn-outline-frame">▶ Watch Showreel</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="num">40+</div><div class="timecode" style="color:rgba(255,255,255,.7)">members</div></div>
+      <div><div class="num">18</div><div class="timecode" style="color:rgba(255,255,255,.7)">shorts produced</div></div>
+      <div><div class="num">6</div><div class="timecode" style="color:rgba(255,255,255,.7)">workshops / year</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FIND YOUR CRAFT (image tiles) ============ -->
+<section id="craft" class="py-5">
+  <div class="container py-4">
+    <span class="eyebrow">Explore</span>
+    <h2 class="mt-2 mb-2">Find Your Craft</h2>
+    <p class="text-muted-custom mb-5" style="max-width:38rem">Six disciplines, one crew. Pick a path and start making things with us this semester.</p>
+    <div class="row g-3">
+      <div class="col-6 col-md-4 col-lg-2">
+        <a class="craft-tile" href="#projects">
+          <img src="https://picsum.photos/seed/craft-2d-animation/500/620" alt="2D animation workspace">
+          <div class="tile-overlay"></div>
+          <div class="tile-label">2D Animation</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a class="craft-tile" href="#projects">
+          <img src="https://picsum.photos/seed/craft-motion-graphics/500/620" alt="Motion graphics on a monitor">
+          <div class="tile-overlay"></div>
+          <div class="tile-label">Motion Graphics</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a class="craft-tile" href="#workshops">
+          <img src="https://picsum.photos/seed/craft-video-editing/500/620" alt="Video editing timeline">
+          <div class="tile-overlay"></div>
+          <div class="tile-label">Video Editing</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a class="craft-tile" href="#workshops">
+          <img src="https://picsum.photos/seed/craft-sound-design/500/620" alt="Sound design mixing desk">
+          <div class="tile-overlay"></div>
+          <div class="tile-label">Sound Design</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a class="craft-tile" href="#projects">
+          <img src="https://picsum.photos/seed/craft-photography/500/620" alt="Photography and videography gear">
+          <div class="tile-overlay"></div>
+          <div class="tile-label">Photography</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a class="craft-tile" href="#projects">
+          <img src="https://picsum.photos/seed/craft-documentary/500/620" alt="Documentary film crew on location">
+          <div class="tile-overlay"></div>
+          <div class="tile-label">Documentary</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS STRIP ============ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="8" r="2.5"/><path d="M16 14.2c2.9.4 5 2.6 5 5.8"/></svg>
+          <div class="num">40+</div>
+          <div class="label">Active members</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 5v14M16 5v14M3 9h5M16 9h5M3 15h5M16 15h5"/></svg>
+          <div class="num">18</div>
+          <div class="label">Shorts produced</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+          <div class="num">6</div>
+          <div class="label">Workshops / year</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.6 5.9L21 8.6l-4.6 4.1 1.3 6.3L12 15.9 6.3 19l1.3-6.3L3 8.6l6.4-.7z"/></svg>
+          <div class="num">9</div>
+          <div class="label">Awards &amp; selections</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SHOWREEL ============ -->
+<section id="showreel" class="py-5">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="eyebrow">Watch</span>
+        <h2 class="mt-2 mb-3">This Year's Showreel</h2>
+        <p class="text-muted-custom">A cut of what the crew shipped this year — 2D shorts, motion graphics and campus documentation, made frame by frame in the club lab.</p>
+        <a href="#projects" class="btn btn-outline-dark mt-2">See the Projects</a>
+      </div>
+      <div class="col-lg-6">
+        <div class="screen-frame">
+          <video id="showreelVideo" controls preload="metadata">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+          <div class="controls-row">
+            <span class="timecode" id="videoTimecode">00:00 / 00:00</span>
+            <span class="timecode">SHOWREEL_2026.MP4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="py-5" style="background:var(--surface-2)">
+  <div class="container py-4">
+    <span class="eyebrow">Selects</span>
+    <h2 class="mt-2 mb-2">Featured Projects</h2>
+    <p class="text-muted-custom mb-5" style="max-width:38rem">A cut of what the crew shipped this year — 2D shorts, motion graphics and campus documentation.</p>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="photo-card">
+          <img src="https://picsum.photos/seed/nightfall-runners/600/400" alt="Still from Nightfall Runners animated short">
+          <div class="card-body">
+            <span class="tag-pill">2D Short</span>
+            <h3 class="card-title-custom">Nightfall Runners</h3>
+            <p class="card-desc mb-0">A hand-drawn short about a courier racing dusk through a neon city.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="photo-card">
+          <img src="https://picsum.photos/seed/loopwave/600/400" alt="Still from Loopwave motion graphics reel">
+          <div class="card-body">
+            <span class="tag-pill">Motion Graphics</span>
+            <h3 class="card-title-custom">Loopwave</h3>
+            <p class="card-desc mb-0">An audio-reactive title sequence built for the annual club showcase.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="photo-card">
+          <img src="https://picsum.photos/seed/frame-and-focus/600/400" alt="Still from Frame and Focus campus documentary">
+          <div class="card-body">
+            <span class="tag-pill">Documentary</span>
+            <h3 class="card-title-custom">Frame &amp; Focus</h3>
+            <p class="card-desc mb-0">Behind-the-scenes coverage of campus events, cut for social media.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ WORKSHOPS ============ -->
+<section id="workshops" class="py-5">
+  <div class="container py-4">
+    <span class="eyebrow">Choose a workshop</span>
+    <h2 class="mt-2 mb-2">Upcoming Workshops</h2>
+    <p class="text-muted-custom mb-5" style="max-width:38rem">Choose a workshop and develop practical animation and multimedia skills.</p>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="photo-card">
+          <span class="tag-pill" style="margin:1.25rem 1.4rem 0">Beginner</span>
+          <h3 class="card-title-custom" style="margin:.4rem 1.4rem 0;font-size:1.05rem">Video Editing Fundamentals</h3>
+          <img class="mt-3" src="https://picsum.photos/seed/video-editing-ws/600/400" alt="Student editing video footage on a workstation">
+          <div class="card-body">
+            <p class="card-desc">Learn the basic workflow of importing footage, cutting clips, adding transitions and exporting a finished video.</p>
+            <div class="meta-list">
+              <div><b>Date:</b> <span>30 August 2026</span></div>
+              <div><b>Duration:</b> <span>2 Hours</span></div>
+              <div><b>Seats:</b> <span>20</span></div>
+            </div>
+            <a href="#join" class="btn btn-outline-dark mt-auto align-self-start">Join Workshop</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="photo-card">
+          <span class="tag-pill" style="margin:1.25rem 1.4rem 0">Intermediate</span>
+          <h3 class="card-title-custom" style="margin:.4rem 1.4rem 0;font-size:1.05rem">Motion Graphics</h3>
+          <img class="mt-3" src="https://picsum.photos/seed/motion-graphics-ws/600/400" alt="Motion graphics animated on a screen">
+          <div class="card-body">
+            <p class="card-desc">Explore keyframes, easing, animated typography and simple motion graphics techniques for multimedia projects.</p>
+            <div class="meta-list">
+              <div><b>Date:</b> <span>6 September 2026</span></div>
+              <div><b>Duration:</b> <span>3 Hours</span></div>
+              <div><b>Seats:</b> <span>15</span></div>
+            </div>
+            <a href="#join" class="btn btn-outline-dark mt-auto align-self-start">Join Workshop</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="photo-card">
+          <span class="tag-pill" style="margin:1.25rem 1.4rem 0">Beginner</span>
+          <h3 class="card-title-custom" style="margin:.4rem 1.4rem 0;font-size:1.05rem">Storyboarding for Animation</h3>
+          <img class="mt-3" src="https://picsum.photos/seed/storyboarding-ws/600/400" alt="Hand-drawn storyboard sketches on paper">
+          <div class="card-body">
+            <p class="card-desc">Turn a creative idea into a visual sequence by learning shot planning, camera direction and storytelling structure.</p>
+            <div class="meta-list">
+              <div><b>Date:</b> <span>13 September 2026</span></div>
+              <div><b>Duration:</b> <span>2 Hours</span></div>
+              <div><b>Seats:</b> <span>25</span></div>
+            </div>
+            <a href="#join" class="btn btn-outline-dark mt-auto align-self-start">Join Workshop</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="py-5" style="background:var(--surface-2)">
+  <div class="container py-4">
+    <span class="eyebrow">Workshop flow</span>
+    <h2 class="mt-2 mb-5">How It Works</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card-custom step-box">
+          <div class="step-number">01</div>
+          <h3>Learn</h3>
+          <p class="text-muted-custom mb-0">Understand the tools and techniques through demonstrations from the workshop facilitator.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-custom step-box">
+          <div class="step-number">02</div>
+          <h3>Practice</h3>
+          <p class="text-muted-custom mb-0">Follow a guided activity and experiment with the techniques during the workshop.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-custom step-box">
+          <div class="step-number">03</div>
+          <h3>Create</h3>
+          <p class="text-muted-custom mb-0">Apply the new skill to a small multimedia project that can become part of your portfolio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="py-5">
+  <div class="container py-4">
+    <span class="eyebrow">What members say</span>
+    <h2 class="mt-2 mb-5">Voices From the Crew</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="quote-card">
+          <p>I walked in not knowing what a keyframe was. By the end of the semester I'd cut my first short film.</p>
+          <div class="who">Aisyah R.</div>
+          <div class="role">2nd-year member, Video Editing</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="quote-card">
+          <p>The weekly labs are where I actually learned to animate — not just watch tutorials alone at home.</p>
+          <div class="who">Marcus T.</div>
+          <div class="role">Lead Animator, Class of 2026</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="quote-card">
+          <p>Being paired with a senior editor on my first project made all the difference in my portfolio.</p>
+          <div class="who">Priya K.</div>
+          <div class="role">Sound Design member</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFE AT AMC (gallery) ============ -->
+<section class="py-5" style="background:var(--surface-2)">
+  <div class="container py-4">
+    <span class="eyebrow">Behind the scenes</span>
+    <h2 class="mt-2 mb-5">Life at AMC</h2>
+    <div class="gallery-grid">
+      <a class="tall" href="#"><img src="https://picsum.photos/seed/life-amc-1/500/700" alt="Club members animating in the studio"></a>
+      <a href="#"><img src="https://picsum.photos/seed/life-amc-2/500/350" alt="Sound design session"></a>
+      <a href="#"><img src="https://picsum.photos/seed/life-amc-3/500/350" alt="Workshop in progress"></a>
+      <a class="tall" href="#"><img src="https://picsum.photos/seed/life-amc-4/500/700" alt="Filming a short on campus"></a>
+      <a href="#"><img src="https://picsum.photos/seed/life-amc-5/500/350" alt="Storyboard sketches on a desk"></a>
+      <a href="#"><img src="https://picsum.photos/seed/life-amc-6/500/350" alt="Club showcase screening night"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOIN / NEWSLETTER (cookie demo) ============ -->
+<section id="join" class="py-5">
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 text-center">
+        <span class="eyebrow">Sign on</span>
+        <h2 class="mt-2 mb-3">Join the Crew</h2>
+        <p class="text-muted-custom mb-4">Leave your name and we'll remember you next time you drop by the club room.</p>
+        <form id="joinForm" class="row g-3 justify-content-center">
+          <div class="col-sm-5">
+            <input type="text" id="joinName" class="form-control" placeholder="Your name" required
+              style="background:var(--surface);border:1px solid var(--border);color:var(--text)">
+          </div>
+          <div class="col-sm-5">
+            <input type="email" id="joinEmail" class="form-control" placeholder="Email" required
+              style="background:var(--surface);border:1px solid var(--border);color:var(--text)">
+          </div>
+          <div class="col-sm-auto">
+            <button type="submit" class="btn btn-rec w-100">Sign On</button>
+          </div>
+        </form>
+        <div id="joinMessage" class="timecode mt-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-md-4">
+        <div class="navbar-brand mb-3"><span class="brand-mark"></span> AMC</div>
+        <p class="mb-0">Animation &amp; Multimedia Club — where every idea gets a frame.</p>
+      </div>
+      <div class="col-md-4">
+        <h6>Visit Us</h6>
+        <p class="mb-1">Club Room, Media Block, Level 2</p>
+        <p class="mb-1">Meetings: Wed &amp; Fri, 7–9 PM</p>
+        <p class="mb-0">amc.club@example.edu.my</p>
+      </div>
+      <div class="col-md-2">
+        <h6>Site Map</h6>
+        <div><a href="index.html">Home</a></div>
+        <div><a href="about.html">About</a></div>
+        <div><a href="#projects">Projects</a></div>
+      </div>
+      <div class="col-md-2">
+        <h6>Session Log</h6>
+        <div id="pageViewCount">Pages viewed: —</div>
+        <div id="lastVisit" class="mt-1"></div>
+      </div>
+    </div>
+    <hr style="border-color:var(--border)" class="my-4">
+    <div class="d-flex flex-wrap justify-content-between gap-2">
+      <span>© 2026 Animation &amp; Multimedia Club. All rights reserved.</span>
+      <span class="timecode" style="color:#8f8878">BUILT WITH HTML5 · CSS3 · JS · BOOTSTRAP</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
