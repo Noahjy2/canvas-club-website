@@ -23,7 +23,21 @@ html {
 body {
     min-height: 100vh;
 
-    background: #08080d;
+    /*
+     * Full-page background image.
+     * The dark overlay keeps the white CANVAS typography readable.
+     */
+    background:
+        linear-gradient(
+            rgba(8, 8, 13, 0.98),
+            rgba(8, 8, 13, 0.84)
+        ),
+        url("/images/canvas-studio-background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 
     color: #ffffff;
 
@@ -104,16 +118,13 @@ body {
 
     pointer-events: none;
 
-    z-index: -1;
-
-    background:
-        radial-gradient(circle at 20% 20%,
-            rgba(255, 255, 255, 0.05),
-            transparent 30%),
-
-        radial-gradient(circle at 80% 70%,
-            rgba(255, 255, 255, 0.04),
-            transparent 30%);
+    /*
+     * The photograph is now the body background.
+     * Keep this layer transparent so the existing floating
+     * shapes can remain as subtle foreground decoration.
+     */
+    z-index: 0;
+    background: transparent;
 }
 
 
@@ -231,6 +242,56 @@ body {
 
 }
 
+
+
+/*
+ * Keep the page content above the background image and
+ * floating decorative shapes.
+ */
+.navigation,
+.join-hero,
+.join-section,
+.why-join,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =====================================================
+   PURPLE FOCUS EFFECT
+===================================================== */
+
+/* Form input boxes glow purple when clicked/focused */
+.creative-input input:focus,
+.creative-input select:focus,
+.creative-textarea textarea:focus {
+    outline: none;
+    border-color: #9b59ff;
+    box-shadow:
+        0 0 0 1px #9b59ff,
+        0 0 12px rgba(155, 89, 255, 0.45),
+        0 0 25px rgba(155, 89, 255, 0.20);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Purple glow for the interest selection boxes */
+.interest-card:has(input:checked) {
+    border-color: #9b59ff;
+    box-shadow:
+        0 0 10px rgba(155, 89, 255, 0.45),
+        0 0 25px rgba(155, 89, 255, 0.18);
+}
+
+/* Keep the effect when the user moves the mouse over the boxes */
+.creative-input input:hover,
+.creative-input select:hover,
+.creative-textarea textarea:hover {
+    border-color: rgba(155, 89, 255, 0.75);
+}
 
 /* =====================================================
    NAVIGATION
@@ -376,6 +437,25 @@ body {
     cursor: pointer;
 }
 
+
+
+/*
+ * Subtle local overlay over the hero area.
+ * This improves text contrast without hiding the people/artwork.
+ */
+.join-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(8, 8, 13, 0.08),
+            rgba(8, 8, 13, 0.28)
+        );
+    pointer-events: none;
+    z-index: -1;
+}
 
 /* =====================================================
    HERO
@@ -619,9 +699,11 @@ body {
 
     border-bottom: 1px solid var(--line);
 
-    color: #777783;
+    color: #b8b8c5;
 
-    font-size: 9px;
+    font-size: 10px;
+
+    font-weight: 500;
 
     letter-spacing: 2px;
 }
@@ -665,9 +747,11 @@ body {
 
     margin-top: 12px;
 
-    color: #555560;
+    color: #9999a8;
 
-    font-size: 9px;
+    font-size: 10px;
+
+    font-weight: 500;
 
     letter-spacing: 2px;
 }
@@ -728,9 +812,11 @@ body {
 
 
 .part-number {
-    color: #555560;
+    color: #a8a8b3;
 
     font-size: 14px;
+
+    font-weight: 500;
 
     letter-spacing: 2px;
 }
@@ -774,11 +860,14 @@ body {
 
     margin-bottom: 10px;
 
-    color: #777783;
+    color: #c2c2cf;
 
-    font-size: 9px;
-
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
     letter-spacing: 2px;
+
+    text-shadow: 0 0 8px rgba(194, 194, 207, 0.12);
 }
 
 
@@ -793,35 +882,49 @@ body {
 
     background: transparent;
 
-    color: white;
+    color: #ffffff;
 
-    font-size: 16px;
+    /*
+     * Use a clean, highly readable font for user input.
+     * Orbitron is kept for headings/labels, but not for typing.
+     */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5;
 
     padding: 12px 0;
 
-    border-bottom: 1px solid #393943;
+    border-bottom: 1px solid #555562;
 
-    transition: 0.3s;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
 .creative-input input::placeholder,
 .creative-textarea textarea::placeholder {
-    color: #555560;
+    color: #a8a8b3;
+    opacity: 1;
 }
 
 
 .creative-input input:focus,
 .creative-input select:focus,
 .creative-textarea textarea:focus {
-    border-bottom-color: white;
+    color: #ffffff;
+    border-bottom-color: #9b59ff;
 }
 
 
 .creative-input select {
     cursor: pointer;
 
-    color: #aaaaaf;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 
@@ -1123,7 +1226,7 @@ body {
 .why-join {
     padding: clamp(70px, 10vw, 130px) 0;
 
-    background: #0d0d13;
+    background: rgba(13, 13, 19, 0.62);
 
     border-top: 1px solid var(--line);
 }
@@ -1390,7 +1493,7 @@ footer {
 
     text-align: center;
 
-    background: #08080d;
+    background: rgba(8, 8, 13, 0.82);
 
     border-top: 1px solid var(--line);
 
@@ -1634,7 +1737,8 @@ footer p {
     .creative-input input,
     .creative-input select,
     .creative-textarea textarea {
-        font-size: 14px;
+        font-size: 15px;
+        line-height: 1.5;
     }
 
 
