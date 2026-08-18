@@ -1,724 +1,734 @@
+/* =========================================================
+   CANVAS ANIMATION & MULTIMEDIA CLUB
+   PROJECT PAGE
+   ========================================================= */
 
-/* =====================================================
-   CANVAS — GALLERY / PROJECTS VISUAL STYLE
-   Dark creative-studio aesthetic matching Join / Contact
-===================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+:root {
+    --bg-main: #08080d;
+    --bg-card: rgba(12, 12, 20, 0.94);
+
+    --text-main: #ffffff;
+    --text-muted: #8d8d9c;
+
+    --line: rgba(255, 255, 255, 0.16);
+    --line-light: rgba(255, 255, 255, 0.35);
+
+    --purple: #9b59ff;
+    --purple-soft: rgba(155, 89, 255, 0.25);
+
+    --transition: 0.3s ease;
 }
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 html {
     scroll-behavior: smooth;
 }
 
-:root {
-    --bg: #08080d;
-    --bg-light: #111118;
-    --card: rgba(20, 20, 29, 0.84);
-    --card-light: rgba(27, 27, 37, 0.92);
-    --line: rgba(255, 255, 255, 0.14);
-    --line-strong: rgba(255, 255, 255, 0.24);
-    --text: #ffffff;
-    --text-muted: #a8a8b3;
-    --metadata: #c2c2cf;
-    --purple: #9b59ff;
-    --purple-soft: rgba(155, 89, 255, 0.18);
-    --purple-glow: rgba(155, 89, 255, 0.35);
-}
 
-body {
+body.project-page {
+    margin: 0;
+
     min-height: 100vh;
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
 
-    background:
-        linear-gradient(
-            rgba(8, 8, 13, 0.72),
-            rgba(8, 8, 13, 0.88)
-        ),
-        url("/images/canvas-studio-background2.png");
+    color: white;
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-color: var(--bg-main);
+
+    font-family: "Inter", Arial, sans-serif;
 }
 
-/* =====================================================
+
+/* =========================================================
    NAVIGATION
-===================================================== */
+   Basic compatibility only.
+   ========================================================= */
 
 .navigation {
-    position: relative;
-    z-index: 10;
+    width: 100%;
 
-    min-height: 64px;
-    padding: 20px 36px;
+    min-height: 75px;
 
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    gap: 28px;
+    justify-content: space-between;
 
-    background: rgba(8, 8, 13, 0.72);
-    border-bottom: 1px solid var(--line);
+    padding: 0 6%;
 
-    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 100;
+
+    background: rgba(8, 8, 13, 0.88);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.navigation a {
-    position: relative;
 
-    color: #b8b8c5;
+.logo {
+    color: white;
+
     text-decoration: none;
 
     font-family: "Orbitron", sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.8px;
-
-    transition: color 0.25s ease;
-}
-
-.navigation a::after {
-    content: "";
-    position: absolute;
-
-    left: 0;
-    bottom: -8px;
-
-    width: 0;
-    height: 1px;
-
-    background: var(--purple);
-
-    box-shadow: 0 0 8px var(--purple-glow);
-
-    transition: width 0.25s ease;
-}
-
-.navigation a:hover,
-.navigation a.active {
-    color: #ffffff;
-}
-
-.navigation a:hover::after,
-.navigation a.active::after {
-    width: 100%;
-}
-
-/* =====================================================
-   PAGE HEADER
-===================================================== */
-
-.page-header {
-    position: relative;
-    z-index: 1;
-
-    padding: 90px 20px 55px;
-
-    background:
-        linear-gradient(
-            rgba(8, 8, 13, 0.20),
-            rgba(8, 8, 13, 0.42)
-        );
-
-    border-bottom: 1px solid var(--line);
-}
-
-.logo-font {
-    font-family: "Orbitron", sans-serif;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    text-shadow:
-        0 0 18px rgba(255, 255, 255, 0.10);
-}
-
-.page-header h1 {
-    font-size: clamp(34px, 5vw, 64px);
-    font-weight: 700;
-}
-
-.page-header p {
-    color: var(--text-muted) !important;
-    font-size: 16px;
-    margin-top: 12px;
-}
-
-/* =====================================================
-   MAIN CONTENT
-===================================================== */
-
-.container {
-    position: relative;
-    z-index: 1;
-}
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-.search-input {
-    min-height: 48px;
-
-    background: rgba(8, 8, 13, 0.72) !important;
-    color: #ffffff !important;
-
-    border: 1px solid var(--line-strong) !important;
-    border-radius: 0 !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    padding: 12px 16px;
-
-    box-shadow: none !important;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.search-input::placeholder {
-    color: #a8a8b3 !important;
-    opacity: 1;
-}
-
-.search-input:focus {
-    outline: none !important;
-
-    border-color: var(--purple) !important;
-
-    box-shadow:
-        0 0 0 1px var(--purple),
-        0 0 12px rgba(155, 89, 255, 0.40),
-        0 0 25px rgba(155, 89, 255, 0.16) !important;
-}
-
-/* =====================================================
-   FILTER BUTTONS
-===================================================== */
-
-.filter-chip,
-.btn-outline-accent {
-    color: #c2c2cf !important;
-
-    border: 1px solid var(--line-strong) !important;
-    border-radius: 0 !important;
-
-    background: rgba(8, 8, 13, 0.62) !important;
-
-    font-family: "Orbitron", sans-serif;
-    font-size: 10px;
-    letter-spacing: 1px;
-
-    transition:
-        color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-}
-
-.filter-chip:hover,
-.filter-chip.active,
-.btn-outline-accent:hover {
-    color: #ffffff !important;
-
-    border-color: var(--purple) !important;
-
-    background: rgba(155, 89, 255, 0.10) !important;
-
-    box-shadow:
-        0 0 10px rgba(155, 89, 255, 0.28),
-        inset 0 0 12px rgba(155, 89, 255, 0.06);
-}
-
-.fav-badge {
-    background: var(--purple) !important;
-    color: #ffffff !important;
-}
-
-/* =====================================================
-   CARDS
-===================================================== */
-
-.gallery-card,
-.project-card {
-    position: relative;
-
-    overflow: hidden;
-
-    background: var(--card) !important;
-
-    border: 1px solid var(--line) !important;
-
-    border-radius: 0 !important;
-
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.28);
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.gallery-card:hover,
-.project-card:hover {
-    transform: translateY(-6px);
-
-    border-color: rgba(155, 89, 255, 0.65) !important;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.38),
-        0 0 24px rgba(155, 89, 255, 0.13);
-}
-
-/* =====================================================
-   GALLERY
-===================================================== */
-
-.gallery-card {
-    aspect-ratio: 4 / 3;
-}
-
-.gallery-card img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    filter: saturate(0.88) brightness(0.78);
-
-    transition:
-        transform 0.45s ease,
-        filter 0.45s ease;
-}
-
-.gallery-item:hover .gallery-card img {
-    transform: scale(1.045);
-    filter: saturate(1.08) brightness(0.94);
-}
-
-.gallery-info,
-.project-info {
-    padding: 18px;
-
-    background: rgba(13, 13, 19, 0.88);
-
-    border: 1px solid var(--line);
-    border-top: none;
-}
-
-.gallery-title,
-.project-title {
-    color: #ffffff;
-
-    font-family: "Orbitron", sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.gallery-meta,
-.project-meta {
-    color: var(--metadata);
-
-    font-size: 13px;
-    margin-top: 8px;
-    margin-bottom: 14px;
-}
-
-/* =====================================================
-   FAVORITE BUTTON
-===================================================== */
-
-.fav-btn {
-    position: absolute;
-
-    top: 12px;
-    right: 12px;
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: #ffffff;
-
-    background: rgba(8, 8, 13, 0.72);
-
-    border: 1px solid rgba(255, 255, 255, 0.20);
-
-    border-radius: 50%;
-
-    backdrop-filter: blur(8px);
-
-    transition:
-        color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
-}
-
-.fav-btn:hover {
-    color: #ffffff;
-
-    border-color: var(--purple);
-
-    box-shadow:
-        0 0 14px rgba(155, 89, 255, 0.40);
-
-    transform: scale(1.06);
-}
-
-.fav-btn.active {
-    color: #ffffff;
-
-    background: rgba(155, 89, 255, 0.22);
-
-    border-color: var(--purple);
-
-    box-shadow:
-        0 0 16px rgba(155, 89, 255, 0.42);
-}
-
-/* =====================================================
-   PROJECT THUMBNAILS
-===================================================== */
-
-.project-thumb {
-    position: relative;
-
-    aspect-ratio: 16 / 9;
-
-    background-size: cover;
-    background-position: center;
-
-    filter: brightness(0.78) saturate(0.88);
-
-    transition:
-        transform 0.45s ease,
-        filter 0.45s ease;
-}
-
-.project-card:hover .project-thumb {
-    filter: brightness(0.96) saturate(1.05);
-}
-
-.play-icon {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%) scale(0.90);
-
-    color: #ffffff;
-
-    font-size: 46px;
-
-    opacity: 0.86;
-
-    text-shadow:
-        0 0 16px rgba(155, 89, 255, 0.45);
-
-    transition:
-        transform 0.25s ease,
-        color 0.25s ease;
-}
-
-.project-card:hover .play-icon {
-    color: #ffffff;
-    transform: translate(-50%, -50%) scale(1.04);
-
-    text-shadow:
-        0 0 22px rgba(155, 89, 255, 0.75);
-}
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-.modal-content {
-    background: rgba(13, 13, 19, 0.97) !important;
-
-    color: #ffffff !important;
-
-    border: 1px solid rgba(155, 89, 255, 0.35) !important;
-
-    border-radius: 0 !important;
-
-    box-shadow:
-        0 0 40px rgba(0, 0, 0, 0.55),
-        0 0 30px rgba(155, 89, 255, 0.12);
-}
-
-.modal-header {
-    padding: 22px 24px 10px;
-}
-
-.modal-title {
-    color: #ffffff !important;
-}
-
-.modal-body {
-    color: #d0d0d8;
-    padding: 20px 24px 26px;
-}
-
-.modal-body .text-muted {
-    color: #a8a8b3 !important;
-}
-
-.modal-img {
-    width: 100%;
-    max-height: 520px;
-
-    object-fit: cover;
-
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.btn-close-white {
-    opacity: 0.85;
-}
-
-.btn-close-white:hover {
-    opacity: 1;
-}
-
-/* =====================================================
-   RECENTLY VIEWED / EMPTY STATE
-===================================================== */
-
-#recentStrip,
-#recentEmpty,
-#emptyState {
-    color: #a8a8b3 !important;
-}
-
-#recentStrip {
-    min-height: 42px;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-    position: relative;
-    z-index: 1;
-
-    margin-top: 80px;
-
-    background: rgba(8, 8, 13, 0.84) !important;
-
-    border-top: 1px solid var(--line);
-
-    color: #a8a8b3;
-}
-
-footer .text-muted {
-    color: #a8a8b3 !important;
-}
-
-.social-icons {
-    display: flex;
-    gap: 16px;
-}
-
-.social-icons a {
-    color: #a8a8b3;
 
     font-size: 18px;
 
-    transition:
-        color 0.2s ease,
-        text-shadow 0.2s ease;
-}
+    font-weight: 700;
 
-.social-icons a:hover {
-    color: #ffffff;
-
-    text-shadow:
-        0 0 12px rgba(155, 89, 255, 0.75);
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media (max-width: 768px) {
-
-    .navigation {
-        justify-content: center;
-        flex-wrap: wrap;
-
-        gap: 16px 20px;
-
-        padding: 18px 16px;
-    }
-
-    .navigation a {
-        font-size: 9px;
-    }
-
-    .page-header {
-        padding: 65px 16px 40px;
-    }
-
-    .gallery-info,
-    .project-info {
-        padding: 14px;
-    }
-
-    .gallery-title,
-    .project-title {
-        font-size: 13px;
-    }
-
-    .gallery-meta,
-    .project-meta {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .navigation {
-        gap: 12px 14px;
-    }
-
-    .navigation a {
-        font-size: 8px;
-        letter-spacing: 0.4px;
-    }
-
-    .page-header h1 {
-        font-size: 30px;
-    }
-
-    .page-header p {
-        font-size: 14px;
-    }
-
-    .search-input {
-        font-size: 15px;
-    }
-
-    .gallery-card {
-        aspect-ratio: 4 / 3;
-    }
-
-    .fav-btn {
-        width: 34px;
-        height: 34px;
-    }
+    letter-spacing: 3px;
 }
 
 
-/* =====================================================
-   PROJECT-SPECIFIC DETAILS
-===================================================== */
+.logo:hover {
+    color: white;
+}
+
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+.nav-links a {
+    color: #9393a0;
+
+    text-decoration: none;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    transition: var(--transition);
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.project-hero {
+    min-height: calc(55vh - 75px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 90px 20px 50px;
+
+    text-align: center;
+}
+
+
+.project-hero-content {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    animation: projectHeroAppear 0.9s ease forwards;
+}
+
+
+.project-small-title {
+    margin-bottom: 20px;
+
+    color: #777784;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+
+.project-hero h1 {
+    margin: 0 0 22px;
+
+    color: white;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(42px, 8vw, 90px);
+
+    line-height: 0.95;
+
+    font-weight: 700;
+}
+
+
+.project-hero h1 span {
+    color: transparent;
+
+    -webkit-text-stroke: 1px white;
+}
+
+
+.project-hero p {
+    max-width: 680px;
+
+    margin: auto;
+
+    color: var(--text-muted);
+
+    font-size: clamp(14px, 1.5vw, 17px);
+
+    line-height: 1.8;
+}
+
+
+@keyframes projectHeroAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   PROJECT SECTION
+   ========================================================= */
+
+.project-section {
+    position: relative;
+
+    z-index: 1;
+
+    padding: 25px 0 110px;
+}
+
+
+.project-section .container {
+    max-width: 1320px;
+}
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
 
 .project-card {
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: rgba(10, 10, 17, 0.94);
+
+    border: 1px solid var(--line);
+
+    border-radius: 14px;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.project-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(155, 89, 255, 0.65);
+
+    box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.3),
+        0 0 28px rgba(155, 89, 255, 0.08);
+}
+
+
+/* =========================================================
+   PROJECT THUMBNAIL
+
+   IMPORTANT:
+   background-size: CONTAIN
+
+   This means full artwork is displayed.
+   ========================================================= */
+
+.project-thumb {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #07070c;
+
+    background-size: contain !important;
+
+    background-position: center center !important;
+
+    background-repeat: no-repeat !important;
+}
+
+
+/*
+   Dark overlay kept very light.
+   Strong overlays make artwork difficult to see.
+*/
+
+.project-thumb::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(6, 6, 10, 0.36),
+            transparent 55%
+        );
+}
+
+
+/* =========================================================
+   PROJECT VIDEO PREVIEWS
+
+   For any <video> placed inside a thumbnail.
+   ========================================================= */
+
+.project-thumb video {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+
+    object-position: center center !important;
+
+    background: #07070c;
+
+    display: block;
+}
+
+
+/* =========================================================
+   PLAY / VIEW ICON
+   ========================================================= */
+
+.play-icon {
+    position: relative;
+
+    z-index: 3;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 38px;
+
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+
+    transition:
+        transform var(--transition),
+        color var(--transition);
+}
+
+
+.project-card:hover .play-icon {
+    transform: scale(1.1);
+
+    color: white;
+}
+
+
+/* =========================================================
+   PROJECT INFORMATION
+   ========================================================= */
+
+.project-info {
+    min-height: 92px;
+
+    padding: 16px 18px 18px;
+
+    position: relative;
+
+    z-index: 4;
+
+    background: rgba(10, 10, 17, 0.96);
+}
+
+
+.project-title {
+    margin-bottom: 7px;
+
+    color: white;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.7px;
+}
+
+
+.project-meta {
+    color: #8b8b98;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RECENTLY VIEWED
+   ========================================================= */
+
+#recentStrip {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow-x: auto;
+
+    padding: 4px 0 10px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(155, 89, 255, 0.5)
+        rgba(255, 255, 255, 0.05);
+}
+
+
+#recentStrip::-webkit-scrollbar {
+    height: 5px;
+}
+
+
+#recentStrip::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+
+#recentStrip::-webkit-scrollbar-thumb {
+    background: rgba(155, 89, 255, 0.45);
+
+    border-radius: 20px;
+}
+
+
+.recent-thumb {
+    width: 78px;
+    height: 58px;
+
+    flex: 0 0 auto;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    background-color: #07070c;
+
+    background-size: contain !important;
+
+    background-position: center center !important;
+
+    background-repeat: no-repeat !important;
+
+    border: 1px solid var(--line);
+
+    border-radius: 6px;
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+
+.recent-thumb:hover {
+    transform: translateY(-3px);
+
+    border-color: var(--purple);
+}
+
+
+/* =========================================================
+   PROJECT MODAL
+   ========================================================= */
+
+#projectModal .modal-dialog {
+    max-width: 680px;
+}
+
+
+#projectModal .modal-content {
+    overflow: hidden;
+
+    color: white;
+
+    background: #0e0e15;
+
+    border: 1px solid rgba(155, 89, 255, 0.45);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(155, 89, 255, 0.08);
+}
+
+
+#projectModal .modal-header {
+    padding: 20px 25px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+
+#projectModal .modal-title {
+    color: white;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 18px;
+
+    letter-spacing: 1px;
+}
+
+
+#projectModal .modal-body {
+    padding: 23px 26px 26px;
+}
+
+
+#projectModal .modal-body p {
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PROJECT MODAL MEDIA
+
+   Complete image/video display.
+   ========================================================= */
+
+#projectModal .modal-img,
+#modalImg,
+#modalVideo {
+    width: 100%;
+
+    max-height: 65vh;
+
+    object-fit: contain !important;
+
+    object-position: center center !important;
+
+    background: #050508;
+
+    display: block;
+}
+
+
+#modalVideo {
+    aspect-ratio: 16 / 9;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    padding: 38px 20px;
+
+    text-align: center;
+
+    color: #666674;
+
+    background: rgba(5, 5, 9, 0.92);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    font-size: 11px;
+}
+
+
+footer p {
+    margin: 5px 0;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    padding: 5px;
+
+    border: none;
+
+    color: white;
+
+    background: transparent;
+
+    font-size: 25px;
+
     cursor: pointer;
 }
 
-.project-card .project-info {
-    min-height: 112px;
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .project-hero {
+        min-height: 45vh;
+
+        padding-top: 70px;
+    }
+
+
+    .project-section {
+        padding-bottom: 90px;
+    }
+
 }
 
-.project-card .project-meta {
-    margin-bottom: 0;
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .navigation {
+        flex-wrap: wrap;
+
+        padding: 18px 6%;
+    }
+
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    .nav-links {
+        display: none;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 16px;
+
+        padding: 22px 0 8px;
+    }
+
+
+    .nav-links.open {
+        display: flex;
+    }
+
 }
 
-#projectGrid .col-md-4 {
-    margin-bottom: 4px;
-}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .project-hero {
+        min-height: 38vh;
+
+        padding: 60px 18px 35px;
+    }
 
 
-/* =====================================================
-   SOCIAL ICON BRAND COLORS
-===================================================== */
+    .project-hero h1 {
+        font-size: 42px;
+    }
 
-.social-icons a:nth-child(1) {
-    color: #E1306C;
-}
 
-.social-icons a:nth-child(2) {
-    color: #5865F2;
-}
+    .project-section {
+        padding-top: 5px;
+    }
 
-.social-icons a:nth-child(3) {
-    color: #25F4EE;
-}
 
-.social-icons a:nth-child(1):hover {
-    color: #E1306C;
-    text-shadow:
-        0 0 8px rgba(225, 48, 108, 0.65),
-        0 0 16px rgba(253, 29, 29, 0.35);
-}
+    .project-info {
+        min-height: 85px;
 
-.social-icons a:nth-child(2):hover {
-    color: #5865F2;
-    text-shadow:
-        0 0 8px rgba(88, 101, 242, 0.70),
-        0 0 16px rgba(88, 101, 242, 0.35);
-}
+        padding: 14px;
+    }
 
-.social-icons a:nth-child(3):hover {
-    color: #25F4EE;
-    text-shadow:
-        0 0 8px rgba(37, 244, 238, 0.70),
-        0 0 16px rgba(254, 44, 85, 0.35);
-}
 
-/* =====================================================
-   ROUNDED CARDS / BOXES
-===================================================== */
+    .project-title {
+        font-size: 11px;
+    }
 
-.gallery-card,
-.project-card {
-    border-radius: 14px !important;
-}
 
-.gallery-card img,
-.project-thumb {
-    border-radius: 14px 14px 0 0;
-}
+    .project-meta {
+        font-size: 9px;
+    }
 
-.gallery-info,
-.project-info {
-    border-radius: 0 0 14px 14px;
-}
 
-.search-input,
-.filter-chip,
-.btn-outline-accent {
-    border-radius: 10px !important;
-}
+    .play-icon {
+        font-size: 32px;
+    }
 
-.modal-content {
-    border-radius: 14px !important;
-    overflow: hidden;
-}
-
-.modal-img {
-    border-radius: 0;
-}
-
-.navigation {
-    border-radius: 0 0 10px 10px;
 }
