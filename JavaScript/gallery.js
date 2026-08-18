@@ -151,6 +151,8 @@ function applyFilters() {
 
 const galleryModalEl = document.getElementById("galleryModal");
 const galleryModal = new bootstrap.Modal(galleryModalEl);
+const galleryModalImg = document.getElementById("galleryModalImg");
+const galleryModalVideo = document.getElementById("galleryModalVideo");
 
 function openGalleryModal(item) {
   document.getElementById("galleryModalLabel").textContent = item.dataset.title;
@@ -159,11 +161,31 @@ function openGalleryModal(item) {
   document.getElementById("galleryModalDesc").textContent = item.dataset.desc;
   document.getElementById("galleryModalTech").textContent =
     `Software: ${item.dataset.software} \u00B7 Year: ${item.dataset.year}`;
-  document.getElementById("galleryModalImg").src = item.dataset.img;
-  document.getElementById("galleryModalImg").alt = item.dataset.title;
+
+  const videoSrc = item.dataset.video;
+
+  if (videoSrc) {
+    // Video artwork: show the <video> player, hide the <img>
+    galleryModalImg.style.display = "none";
+    galleryModalVideo.style.display = "block";
+    galleryModalVideo.src = videoSrc;
+  } else {
+    // Image artwork: show the <img>, hide the <video>
+    galleryModalVideo.pause();
+    galleryModalVideo.removeAttribute("src");
+    galleryModalVideo.style.display = "none";
+    galleryModalImg.style.display = "block";
+    galleryModalImg.src = item.dataset.img;
+    galleryModalImg.alt = item.dataset.title;
+  }
 
   galleryModal.show();
 }
+
+// Stop video playback when the modal is closed
+galleryModalEl.addEventListener("hidden.bs.modal", () => {
+  galleryModalVideo.pause();
+});
 
 document.querySelectorAll(".view-details-btn").forEach((btn) => {
   btn.addEventListener("click", (e) => {
