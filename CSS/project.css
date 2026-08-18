@@ -33,14 +33,11 @@ html {
     scroll-behavior: smooth;
 }
 
-
 body.project-page {
     margin: 0;
-
     min-height: 100vh;
 
-    color: white;
-
+    color: var(--text-main);
     background-color: var(--bg-main);
 
     font-family: "Inter", Arial, sans-serif;
@@ -49,12 +46,11 @@ body.project-page {
 
 /* =========================================================
    NAVIGATION
-   Basic compatibility only.
+   Leader can override the general appearance later.
    ========================================================= */
 
 .navigation {
     width: 100%;
-
     min-height: 75px;
 
     display: flex;
@@ -74,50 +70,38 @@ body.project-page {
     -webkit-backdrop-filter: blur(12px);
 }
 
-
 .logo {
     color: white;
-
     text-decoration: none;
 
     font-family: "Orbitron", sans-serif;
-
     font-size: 18px;
-
     font-weight: 700;
 
     letter-spacing: 3px;
 }
 
-
 .logo:hover {
     color: white;
 }
 
-
 .nav-links {
     display: flex;
-
     align-items: center;
-
     gap: 28px;
 }
 
-
 .nav-links a {
     color: #9393a0;
-
     text-decoration: none;
 
     font-family: "Orbitron", sans-serif;
-
     font-size: 10px;
 
     letter-spacing: 1.5px;
 
     transition: var(--transition);
 }
-
 
 .nav-links a:hover,
 .nav-links a.active {
@@ -141,10 +125,8 @@ body.project-page {
     text-align: center;
 }
 
-
 .project-hero-content {
     width: 100%;
-
     max-width: 1000px;
 
     margin: auto;
@@ -152,19 +134,16 @@ body.project-page {
     animation: projectHeroAppear 0.9s ease forwards;
 }
 
-
 .project-small-title {
     margin-bottom: 20px;
 
     color: #777784;
 
     font-family: "Orbitron", sans-serif;
-
     font-size: 10px;
 
     letter-spacing: 4px;
 }
-
 
 .project-hero h1 {
     margin: 0 0 22px;
@@ -172,21 +151,16 @@ body.project-page {
     color: white;
 
     font-family: "Orbitron", sans-serif;
-
     font-size: clamp(42px, 8vw, 90px);
 
     line-height: 0.95;
-
     font-weight: 700;
 }
 
-
 .project-hero h1 span {
     color: transparent;
-
     -webkit-text-stroke: 1px white;
 }
-
 
 .project-hero p {
     max-width: 680px;
@@ -200,9 +174,7 @@ body.project-page {
     line-height: 1.8;
 }
 
-
 @keyframes projectHeroAppear {
-
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -212,7 +184,6 @@ body.project-page {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 
@@ -222,15 +193,73 @@ body.project-page {
 
 .project-section {
     position: relative;
-
     z-index: 1;
 
     padding: 25px 0 110px;
 }
 
-
 .project-section .container {
     max-width: 1320px;
+}
+
+
+/* =========================================================
+   PROJECT CATEGORY FILTER
+   ========================================================= */
+
+#projectFilterBar {
+    margin-bottom: 45px;
+}
+
+.project-filter-chip {
+    padding: 10px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 30px;
+
+    background: rgba(0, 0, 0, 0.18);
+
+    color: #9999a4;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 9px;
+
+    letter-spacing: 1.3px;
+
+    transition:
+        color var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.project-filter-chip:hover {
+    color: white;
+
+    border-color: rgba(255, 255, 255, 0.55);
+
+    background: rgba(255, 255, 255, 0.04);
+
+    transform: translateY(-1px);
+}
+
+.project-filter-chip.active {
+    color: #08080d;
+
+    background: white;
+
+    border-color: white;
+}
+
+
+/* =========================================================
+   PROJECT ITEM
+   ========================================================= */
+
+.project-item {
+    transition:
+        opacity var(--transition),
+        transform var(--transition);
 }
 
 
@@ -242,7 +271,6 @@ body.project-page {
     position: relative;
 
     width: 100%;
-
     height: 100%;
 
     overflow: hidden;
@@ -254,7 +282,6 @@ body.project-page {
     background: rgba(10, 10, 17, 0.94);
 
     border: 1px solid var(--line);
-
     border-radius: 14px;
 
     transition:
@@ -263,14 +290,13 @@ body.project-page {
         box-shadow 0.35s ease;
 }
 
-
 .project-card:hover {
     transform: translateY(-6px);
 
     border-color: rgba(155, 89, 255, 0.65);
 
     box-shadow:
-        0 14px 40px rgba(0, 0, 0, 0.3),
+        0 14px 40px rgba(0, 0, 0, 0.30),
         0 0 28px rgba(155, 89, 255, 0.08);
 }
 
@@ -279,16 +305,13 @@ body.project-page {
    PROJECT THUMBNAIL
 
    IMPORTANT:
-   background-size: CONTAIN
-
-   This means full artwork is displayed.
+   Use contain so the complete artwork is visible.
    ========================================================= */
 
 .project-thumb {
     position: relative;
 
     width: 100%;
-
     aspect-ratio: 16 / 9;
 
     overflow: hidden;
@@ -300,23 +323,14 @@ body.project-page {
     background-color: #07070c;
 
     background-size: contain !important;
-
     background-position: center center !important;
-
     background-repeat: no-repeat !important;
 }
-
-
-/*
-   Dark overlay kept very light.
-   Strong overlays make artwork difficult to see.
-*/
 
 .project-thumb::after {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     z-index: 1;
@@ -326,33 +340,44 @@ body.project-page {
     background:
         linear-gradient(
             to top,
-            rgba(6, 6, 10, 0.36),
-            transparent 55%
+            rgba(6, 6, 10, 0.35),
+            transparent 58%
         );
 }
 
 
 /* =========================================================
-   PROJECT VIDEO PREVIEWS
-
-   For any <video> placed inside a thumbnail.
+   VIDEO THUMBNAIL
    ========================================================= */
 
-.project-thumb video {
+.project-thumb-video {
     position: absolute;
-
     inset: 0;
 
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
 
     object-fit: contain !important;
-
     object-position: center center !important;
+
+    display: block;
 
     background: #07070c;
 
-    display: block;
+    z-index: 0;
+}
+
+
+/* If another video is placed inside project thumbnail */
+
+.project-thumb video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    background: #07070c;
 }
 
 
@@ -365,22 +390,85 @@ body.project-page {
 
     z-index: 3;
 
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.92);
 
     font-size: 38px;
 
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+    filter:
+        drop-shadow(
+            0 4px 12px rgba(0, 0, 0, 0.7)
+        );
 
     transition:
         transform var(--transition),
-        color var(--transition);
+        color var(--transition),
+        opacity var(--transition);
 }
-
 
 .project-card:hover .play-icon {
     transform: scale(1.1);
 
     color: white;
+}
+
+
+/* =========================================================
+   VIEWED BADGE
+
+   Inspired by a small application-status indicator.
+   Only the latest five viewed projects display this.
+   ========================================================= */
+
+.viewed-badge {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    z-index: 10;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 6px 10px;
+
+    border: 1px solid rgba(155, 89, 255, 0.55);
+    border-radius: 20px;
+
+    background: rgba(9, 9, 16, 0.84);
+
+    color: #c9a9ff;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    pointer-events: none;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.25);
+
+    transition:
+        opacity var(--transition),
+        transform var(--transition);
+}
+
+.viewed-badge i {
+    font-size: 11px;
+}
+
+.project-card:hover .viewed-badge {
+    border-color: rgba(185, 145, 255, 0.85);
 }
 
 
@@ -391,15 +479,13 @@ body.project-page {
 .project-info {
     min-height: 92px;
 
-    padding: 16px 18px 18px;
-
     position: relative;
-
     z-index: 4;
+
+    padding: 16px 18px 18px;
 
     background: rgba(10, 10, 17, 0.96);
 }
-
 
 .project-title {
     margin-bottom: 7px;
@@ -407,14 +493,11 @@ body.project-page {
     color: white;
 
     font-family: "Orbitron", sans-serif;
-
     font-size: 13px;
-
     font-weight: 600;
 
     letter-spacing: 0.7px;
 }
-
 
 .project-meta {
     color: #8b8b98;
@@ -426,77 +509,15 @@ body.project-page {
 
 
 /* =========================================================
-   RECENTLY VIEWED
+   EMPTY FILTER MESSAGE
    ========================================================= */
 
-#recentStrip {
-    width: 100%;
+#projectEmpty {
+    margin-top: 45px;
 
-    display: flex;
+    color: #727280 !important;
 
-    align-items: center;
-
-    overflow-x: auto;
-
-    padding: 4px 0 10px;
-
-    scrollbar-width: thin;
-
-    scrollbar-color:
-        rgba(155, 89, 255, 0.5)
-        rgba(255, 255, 255, 0.05);
-}
-
-
-#recentStrip::-webkit-scrollbar {
-    height: 5px;
-}
-
-
-#recentStrip::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.04);
-}
-
-
-#recentStrip::-webkit-scrollbar-thumb {
-    background: rgba(155, 89, 255, 0.45);
-
-    border-radius: 20px;
-}
-
-
-.recent-thumb {
-    width: 78px;
-    height: 58px;
-
-    flex: 0 0 auto;
-
-    padding: 0;
-
-    cursor: pointer;
-
-    background-color: #07070c;
-
-    background-size: contain !important;
-
-    background-position: center center !important;
-
-    background-repeat: no-repeat !important;
-
-    border: 1px solid var(--line);
-
-    border-radius: 6px;
-
-    transition:
-        transform var(--transition),
-        border-color var(--transition);
-}
-
-
-.recent-thumb:hover {
-    transform: translateY(-3px);
-
-    border-color: var(--purple);
+    font-size: 13px;
 }
 
 
@@ -508,7 +529,6 @@ body.project-page {
     max-width: 680px;
 }
 
-
 #projectModal .modal-content {
     overflow: hidden;
 
@@ -517,40 +537,40 @@ body.project-page {
     background: #0e0e15;
 
     border: 1px solid rgba(155, 89, 255, 0.45);
-
     border-radius: 16px;
 
     box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.7),
+        0 30px 100px rgba(0, 0, 0, 0.70),
         0 0 40px rgba(155, 89, 255, 0.08);
 }
-
 
 #projectModal .modal-header {
     padding: 20px 25px;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08) !important;
 }
-
 
 #projectModal .modal-title {
     color: white;
 
     font-family: "Orbitron", sans-serif;
-
     font-size: 18px;
 
     letter-spacing: 1px;
 }
 
-
 #projectModal .modal-body {
     padding: 23px 26px 26px;
 }
 
-
 #projectModal .modal-body p {
     line-height: 1.7;
+}
+
+#modalMeta,
+#modalTech {
+    color: #91919f !important;
 }
 
 
@@ -558,6 +578,7 @@ body.project-page {
    PROJECT MODAL MEDIA
 
    Complete image/video display.
+   No cropping.
    ========================================================= */
 
 #projectModal .modal-img,
@@ -568,14 +589,14 @@ body.project-page {
     max-height: 65vh;
 
     object-fit: contain !important;
-
     object-position: center center !important;
 
     background: #050508;
-
-    display: block;
 }
 
+#modalImg {
+    display: block;
+}
 
 #modalVideo {
     aspect-ratio: 16 / 9;
@@ -583,7 +604,21 @@ body.project-page {
 
 
 /* =========================================================
+   MODAL CLOSE BUTTON
+   ========================================================= */
+
+#projectModal .btn-close {
+    opacity: 0.85;
+}
+
+#projectModal .btn-close:hover {
+    opacity: 1;
+}
+
+
+/* =========================================================
    FOOTER
+   Leader can override this later.
    ========================================================= */
 
 footer {
@@ -599,7 +634,6 @@ footer {
 
     font-size: 11px;
 }
-
 
 footer p {
     margin: 5px 0;
@@ -628,6 +662,19 @@ footer p {
 
 
 /* =========================================================
+   LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .project-section .container {
+        max-width: 1100px;
+    }
+
+}
+
+
+/* =========================================================
    TABLET
    ========================================================= */
 
@@ -639,16 +686,19 @@ footer p {
         padding-top: 70px;
     }
 
-
     .project-section {
         padding-bottom: 90px;
+    }
+
+    .project-info {
+        min-height: 90px;
     }
 
 }
 
 
 /* =========================================================
-   MOBILE NAV
+   MOBILE NAVIGATION
    ========================================================= */
 
 @media (max-width: 900px) {
@@ -659,11 +709,9 @@ footer p {
         padding: 18px 6%;
     }
 
-
     .menu-toggle {
         display: block;
     }
-
 
     .nav-links {
         display: none;
@@ -671,7 +719,6 @@ footer p {
         width: 100%;
 
         flex-direction: column;
-
         align-items: flex-start;
 
         gap: 16px;
@@ -679,9 +726,40 @@ footer p {
         padding: 22px 0 8px;
     }
 
-
     .nav-links.open {
         display: flex;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    #projectFilterBar {
+        margin-bottom: 32px !important;
+    }
+
+    .project-filter-chip {
+        padding: 9px 15px;
+
+        font-size: 8px;
+    }
+
+    .viewed-badge {
+        top: 9px;
+        right: 9px;
+
+        padding: 5px 8px;
+
+        font-size: 7px;
+    }
+
+    .viewed-badge i {
+        font-size: 10px;
     }
 
 }
@@ -699,16 +777,30 @@ footer p {
         padding: 60px 18px 35px;
     }
 
-
     .project-hero h1 {
         font-size: 42px;
     }
 
+    .project-hero p {
+        font-size: 13px;
+    }
 
     .project-section {
         padding-top: 5px;
+        padding-bottom: 70px;
     }
 
+    #projectFilterBar {
+        gap: 7px !important;
+    }
+
+    .project-filter-chip {
+        padding: 8px 13px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.9px;
+    }
 
     .project-info {
         min-height: 85px;
@@ -716,19 +808,102 @@ footer p {
         padding: 14px;
     }
 
-
     .project-title {
         font-size: 11px;
     }
-
 
     .project-meta {
         font-size: 9px;
     }
 
-
     .play-icon {
         font-size: 32px;
+    }
+
+    .viewed-badge {
+        top: 8px;
+        right: 8px;
+
+        gap: 4px;
+
+        padding: 5px 7px;
+
+        font-size: 6px;
+
+        letter-spacing: 0.7px;
+    }
+
+    .viewed-badge i {
+        font-size: 9px;
+    }
+
+    #projectModal .modal-dialog {
+        margin: 12px;
+    }
+
+    #projectModal .modal-header {
+        padding: 17px 18px;
+    }
+
+    #projectModal .modal-body {
+        padding: 18px;
+    }
+
+    #projectModal .modal-title {
+        font-size: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .project-filter-chip {
+        padding: 7px 10px;
+
+        font-size: 6.5px;
+    }
+
+    .project-title {
+        font-size: 10px;
+    }
+
+    .project-meta {
+        font-size: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.project-card:focus-visible,
+.project-filter-chip:focus-visible,
+.menu-toggle:focus-visible {
+    outline: 2px solid var(--purple);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 
 }

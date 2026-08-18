@@ -8,7 +8,10 @@
 
     <title>Projects | Canvas Animation & Multimedia Club</title>
 
-    <!-- Google Fonts -->
+    <!-- =====================================================
+         GOOGLE FONTS
+         ===================================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
@@ -17,14 +20,14 @@
         crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
 
-    <!-- Bootstrap -->
+    <!-- =====================================================
+         BOOTSTRAP
+         ===================================================== -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
@@ -33,8 +36,14 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
 
-    <!-- Project CSS -->
-    <link rel="stylesheet" href="../CSS/project.css">
+
+    <!-- =====================================================
+         PROJECT CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../CSS/project.css">
 
 </head>
 
@@ -48,27 +57,64 @@
 
     <nav class="navigation">
 
-        <a href="../index.html" class="logo">
+        <a
+            href="../index.html"
+            class="logo">
+
             CANVAS
+
         </a>
+
 
         <button
             type="button"
             class="menu-toggle"
             id="menuToggle">
+
             ☰
+
         </button>
 
-        <div class="nav-links" id="navLinks">
 
-            <a href="../index.html">Home</a>
-            <a href="../about.html">About</a>
-            <a href="events.html">Events</a>
-            <a href="workshops.html">Workshops</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="project.html" class="active">Projects</a>
-            <a href="join.html">Join</a>
-            <a href="contact.html">Contact</a>
+        <div
+            class="nav-links"
+            id="navLinks">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../about.html">
+                About
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="workshops.html">
+                Workshops
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+            <a
+                href="project.html"
+                class="active">
+
+                Projects
+
+            </a>
+
+            <a href="join.html">
+                Join
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
 
         </div>
 
@@ -84,17 +130,28 @@
         <div class="project-hero-content">
 
             <div class="project-small-title">
+
                 CANVAS // PROJECTS
+
             </div>
 
+
             <h1>
+
                 STUDENT
-                <span>PROJECTS.</span>
+
+                <span>
+                    PROJECTS.
+                </span>
+
             </h1>
 
+
             <p>
-                Explore animation, motion graphics, digital art
-                and multimedia projects created by our members.
+
+                Explore animation, illustration, 3D design,
+                digital art and motion graphics created by our members.
+
             </p>
 
         </div>
@@ -112,598 +169,79 @@
 
 
             <!-- =====================================================
-                 PROJECT GRID
+                 PROJECT CATEGORY FILTER
                  ===================================================== -->
 
-            <div class="row g-4 mb-5" id="projectGrid">
+            <div
+                class="d-flex justify-content-center flex-wrap gap-2 mb-5"
+                id="projectFilterBar">
 
 
-                <!-- =================================================
-                     PROJECT 1 - VIDEO
-                     ================================================= -->
+                <button
+                    type="button"
+                    class="btn project-filter-chip active"
+                    data-filter="all">
 
-                <div class="col-md-6 col-lg-4">
+                    All
 
-                    <div
-                        class="project-card"
-                        data-id="p1"
-                        data-title="Forest Ambience"
-                        data-author="Wong Kar Ling"
-                        data-category="Motion graphics"
-                        data-desc="A peaceful looping forest composition designed as an ambient multimedia background with subtle natural movement."
-                        data-software="Adobe After Effects"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g7-forest-poster.jpg"
-                        data-video="../videos/motion-forest.mp4">
+                </button>
 
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g7-forest-poster.jpg')">
 
-                            <i
-                                class="bi bi-play-circle-fill play-icon"
-                                aria-hidden="true">
-                            </i>
+                <button
+                    type="button"
+                    class="btn project-filter-chip"
+                    data-filter="2d">
 
-                        </div>
+                    2D
 
-                        <div class="project-info">
+                </button>
 
-                            <div class="project-title">
-                                Forest Ambience
-                            </div>
 
-                            <div class="project-meta">
-                                Wong Kar Ling &middot; Motion Graphics
-                            </div>
+                <button
+                    type="button"
+                    class="btn project-filter-chip"
+                    data-filter="3d">
 
-                        </div>
+                    3D
 
-                    </div>
+                </button>
 
-                </div>
 
+                <button
+                    type="button"
+                    class="btn project-filter-chip"
+                    data-filter="motion">
 
-                <!-- =================================================
-                     PROJECT 2 - VIDEO
-                     ================================================= -->
+                    Motion Graphics
 
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p2"
-                        data-title="Nebula Drift"
-                        data-author="David Heng"
-                        data-category="Motion graphics"
-                        data-desc="A colourful animated nebula exploring glowing particles, colour transitions and continuously flowing visual movement."
-                        data-software="Adobe After Effects"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g9-nebula-poster.jpg"
-                        data-video="../videos/motion-nebula.mp4">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g9-nebula-poster.jpg')">
-
-                            <i
-                                class="bi bi-play-circle-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Nebula Drift
-                            </div>
-
-                            <div class="project-meta">
-                                David Heng &middot; Motion Graphics
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 3 - VIDEO
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p3"
-                        data-title="Backyard Loop"
-                        data-author="Farah Iman"
-                        data-category="Motion graphics"
-                        data-desc="A looping outdoor scene focused on gentle environmental movement and natural lighting for multimedia presentation backgrounds."
-                        data-software="Adobe After Effects"
-                        data-year="2024"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g8-backyard-poster.jpg"
-                        data-video="../videos/motion-backyard.mp4">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g8-backyard-poster.jpg')">
-
-                            <i
-                                class="bi bi-play-circle-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Backyard Loop
-                            </div>
-
-                            <div class="project-meta">
-                                Farah Iman &middot; Motion Graphics
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 4 - VIDEO
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p4"
-                        data-title="Golden Corridor"
-                        data-author="Marcus Ooi"
-                        data-category="Motion graphics"
-                        data-desc="A futuristic looping tunnel animation using glowing gold strips, reflective surfaces and continuous camera movement."
-                        data-software="Adobe After Effects"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g10-tunnel-poster.jpg"
-                        data-video="../videos/motion-tunnel.mp4">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g10-tunnel-poster.jpg')">
-
-                            <i
-                                class="bi bi-play-circle-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Golden Corridor
-                            </div>
-
-                            <div class="project-meta">
-                                Marcus Ooi &middot; Motion Graphics
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 5 - VIDEO
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p5"
-                        data-title="Chromatic Vortex"
-                        data-author="Aina Rahman"
-                        data-category="Motion graphics"
-                        data-desc="An abstract animated vortex combining rotational movement, vibrant colour and layered visual effects."
-                        data-software="Adobe After Effects"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g24-vortex-poster.jpg"
-                        data-video="../videos/motion-vortex.mp4">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g24-vortex-poster.jpg')">
-
-                            <i
-                                class="bi bi-play-circle-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Chromatic Vortex
-                            </div>
-
-                            <div class="project-meta">
-                                Aina Rahman &middot; Motion Graphics
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 6 - VIDEO
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p6"
-                        data-title="Violet Current"
-                        data-author="Jason Lee"
-                        data-category="Motion graphics"
-                        data-desc="An experimental purple motion study featuring fluid abstract forms, light trails and rhythmic looping animation."
-                        data-software="Adobe After Effects"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g25-violet-poster.jpg"
-                        data-video="../videos/motion-violet.mp4">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g25-violet-poster.jpg')">
-
-                            <i
-                                class="bi bi-play-circle-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Violet Current
-                            </div>
-
-                            <div class="project-meta">
-                                Jason Lee &middot; Motion Graphics
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 7 - STATIC
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p7"
-                        data-title="Gilded Grid"
-                        data-author="Marcus Ooi"
-                        data-category="3D render"
-                        data-desc="A hard-surface 3D study exploring material contrast between metallic geometric forms and a single gold focal point."
-                        data-software="Blender"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g4-cubes-gold.jpg">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g4-cubes-gold.jpg')">
-
-                            <i
-                                class="bi bi-eye-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Gilded Grid
-                            </div>
-
-                            <div class="project-meta">
-                                Marcus Ooi &middot; 3D Render
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 8 - STATIC
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p8"
-                        data-title="Neon Courier"
-                        data-author="Chen Yi Xuan"
-                        data-category="Digital art"
-                        data-desc="A futuristic character concept featuring dramatic neon lighting, vibrant colour contrast and cyber-inspired styling."
-                        data-software="Adobe Photoshop"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g11-neon-courier.jpg">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g11-neon-courier.jpg')">
-
-                            <i
-                                class="bi bi-eye-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Neon Courier
-                            </div>
-
-                            <div class="project-meta">
-                                Chen Yi Xuan &middot; Digital Art
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 9 - STATIC
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p9"
-                        data-title="Moonlit Kimono"
-                        data-author="Nur Ain"
-                        data-category="Illustration"
-                        data-desc="A character illustration inspired by traditional fashion, combining detailed costume design with a soft moonlit atmosphere."
-                        data-software="Procreate"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g12-moonlit-kimono.jpg">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g12-moonlit-kimono.jpg')">
-
-                            <i
-                                class="bi bi-eye-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Moonlit Kimono
-                            </div>
-
-                            <div class="project-meta">
-                                Nur Ain &middot; Illustration
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 10 - STATIC
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p10"
-                        data-title="Glass Orchard"
-                        data-author="Farah Iman"
-                        data-category="Digital art"
-                        data-desc="An experimental composition exploring transparent forms, reflective surfaces and colourful layered visual depth."
-                        data-software="Adobe Photoshop"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g17-glass-orchard.jpg">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g17-glass-orchard.jpg')">
-
-                            <i
-                                class="bi bi-eye-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Glass Orchard
-                            </div>
-
-                            <div class="project-meta">
-                                Farah Iman &middot; Digital Art
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 11 - STATIC
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p11"
-                        data-title="Fractured Tiles"
-                        data-author="Lim Jia"
-                        data-category="3D design"
-                        data-desc="A geometric visual experiment featuring fragmented surfaces, repeating structures and depth-based composition."
-                        data-software="Blender"
-                        data-year="2024"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g18-fractured-tiles.jpg">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g18-fractured-tiles.jpg')">
-
-                            <i
-                                class="bi bi-eye-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Fractured Tiles
-                            </div>
-
-                            <div class="project-meta">
-                                Lim Jia &middot; 3D Design
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROJECT 12 - STATIC
-                     ================================================= -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div
-                        class="project-card"
-                        data-id="p12"
-                        data-title="Prism Drop"
-                        data-author="Aisha N."
-                        data-category="Digital art"
-                        data-desc="An abstract visual study exploring geometric forms, refraction-inspired colour and a strong central composition."
-                        data-software="Adobe Illustrator + Photoshop"
-                        data-year="2025"
-                        data-team="Solo Project"
-                        data-img="../images/gallery/g22-prism-drop.jpg">
-
-                        <div
-                            class="project-thumb"
-                            style="background-image:url('../images/gallery/g22-prism-drop.jpg')">
-
-                            <i
-                                class="bi bi-eye-fill play-icon"
-                                aria-hidden="true">
-                            </i>
-
-                        </div>
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Prism Drop
-                            </div>
-
-                            <div class="project-meta">
-                                Aisha N. &middot; Digital Art
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                </button>
 
 
             </div>
 
 
             <!-- =====================================================
-                 RECENTLY VIEWED
+                 PROJECT GRID
+
+                 JavaScript will automatically create all cards here.
                  ===================================================== -->
 
-            <div class="mb-5">
-
-                <p class="small text-muted mb-2">
-                    Recently viewed
-                </p>
-
-                <div
-                    class="d-flex gap-2"
-                    id="recentStrip">
-
-                    <p
-                        class="small text-muted"
-                        id="recentEmpty">
-
-                        Open a project to see it here.
-
-                    </p>
-
-                </div>
-
+            <div
+                class="row g-4"
+                id="projectGrid">
             </div>
+
+
+            <!-- Empty Filter State -->
+
+            <p
+                id="projectEmpty"
+                class="text-center text-muted mt-5"
+                style="display:none;">
+
+                No projects are available in this category.
+
+            </p>
 
 
         </div>
@@ -722,12 +260,17 @@
         aria-labelledby="projectModalLabel"
         aria-hidden="true">
 
-        <div class="modal-dialog modal-dialog-centered">
+
+        <div
+            class="modal-dialog modal-dialog-centered">
+
 
             <div class="modal-content">
 
 
-                <!-- Modal Header -->
+                <!-- =================================================
+                     MODAL HEADER
+                     ================================================= -->
 
                 <div class="modal-header border-0">
 
@@ -735,9 +278,10 @@
                         class="modal-title"
                         id="projectModalLabel">
 
-                        Project title
+                        Project Title
 
                     </h5>
+
 
                     <button
                         type="button"
@@ -749,7 +293,9 @@
                 </div>
 
 
-                <!-- Static Project Image -->
+                <!-- =================================================
+                     STATIC IMAGE
+                     ================================================= -->
 
                 <img
                     id="modalImg"
@@ -758,7 +304,9 @@
                     class="modal-img">
 
 
-                <!-- Video Project -->
+                <!-- =================================================
+                     VIDEO
+                     ================================================= -->
 
                 <video
                     id="modalVideo"
@@ -772,9 +320,12 @@
                 </video>
 
 
-                <!-- Project Information -->
+                <!-- =================================================
+                     PROJECT DETAILS
+                     ================================================= -->
 
                 <div class="modal-body">
+
 
                     <p
                         class="small text-muted mb-1"
@@ -784,13 +335,16 @@
 
                     </p>
 
+
                     <p id="modalDesc">
                     </p>
+
 
                     <p
                         class="small text-muted mb-0"
                         id="modalTech">
                     </p>
+
 
                 </div>
 
@@ -827,10 +381,15 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
 
-    <script src="../JavaScript/project.js"></script>
+
+    <script
+        src="../JavaScript/project.js">
+    </script>
 
 
-    <!-- Temporary Mobile Navigation -->
+    <!-- =====================================================
+         MOBILE MENU
+         ===================================================== -->
 
     <script>
 
@@ -839,6 +398,7 @@
 
         const navLinks =
             document.getElementById("navLinks");
+
 
         if (menuToggle && navLinks) {
 
