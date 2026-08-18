@@ -158,7 +158,7 @@ const PROJECTS = [
 
         title: "Ancient Roots",
 
-        author: "David Heng",
+        author: "Adam Leong",
 
         category: "2d",
 
