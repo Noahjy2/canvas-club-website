@@ -5,38 +5,958 @@
 
     <meta charset="UTF-8">
 
-    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Contact | Canvas Animation & Multimedia Club
-    </title>
+    <title>Contact | Canvas Animation & Multimedia Club</title>
 
 
-    <!-- =====================================================
-         GOOGLE FONT
-    ====================================================== -->
-
+    <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
 
-    <!-- =====================================================
-         BOOTSTRAP
-    ====================================================== -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
 
-    <!-- =====================================================
-         MAIN CSS
-    ====================================================== -->
+    <!-- YOUR CSS -->
 
-    <link rel="stylesheet" href="/CSS/join&contact.css">
+    <!-- contact.html is inside HTML/
+         join&contact.css is inside CSS/ -->
+
+    <link rel="stylesheet"
+          href="../CSS/join&contact.css">
+
+
+    <style>
+
+        /* =====================================================
+           CONTACT PAGE
+        ===================================================== */
+
+        .contact-page {
+            background: #09090d;
+            color: white;
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .contact-hero {
+
+            min-height: 60vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 120px 20px 70px;
+
+        }
+
+
+        .contact-hero-content {
+
+            width: min(100%, 1000px);
+
+            margin: auto;
+
+        }
+
+
+        .contact-small-title {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 12px;
+
+            letter-spacing: 5px;
+
+            opacity: .5;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .contact-hero h1 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(45px, 8vw, 100px);
+
+            line-height: .95;
+
+            margin: 0;
+
+            font-weight: 700;
+
+        }
+
+
+        .contact-hero h1 span {
+
+            display: block;
+
+            opacity: .35;
+
+        }
+
+
+        .contact-hero p {
+
+            max-width: 650px;
+
+            margin: 30px auto 0;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            opacity: .65;
+
+        }
+
+
+        /* =====================================================
+           CONTACT MAIN
+        ===================================================== */
+
+        .contact-section {
+
+            padding: 50px 0 120px;
+
+        }
+
+
+        .contact-wrapper {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: .9fr 1.1fr;
+
+            border: 1px solid rgba(255,255,255,.15);
+
+            background: rgba(255,255,255,.02);
+
+        }
+
+
+        /* =====================================================
+           LEFT
+        ===================================================== */
+
+        .contact-info {
+
+            padding: 55px;
+
+            border-right: 1px solid rgba(255,255,255,.15);
+
+        }
+
+
+        .contact-label {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            opacity: .5;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .contact-info h2 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(32px, 4vw, 55px);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .contact-info-text {
+
+            line-height: 1.8;
+
+            opacity: .65;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .contact-item {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .contact-number {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 11px;
+
+            opacity: .35;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .contact-item h3 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .contact-item a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+
+        .contact-item p {
+
+            opacity: .7;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           SOCIAL
+        ===================================================== */
+
+        .social-title {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            opacity: .5;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .social-links {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+        }
+
+
+        .social-links a {
+
+            color: white;
+
+            text-decoration: none;
+
+            border: 1px solid rgba(255,255,255,.2);
+
+            padding: 11px 15px;
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+
+            transition: .3s;
+
+        }
+
+
+        .social-links a:hover {
+
+            background: white;
+
+            color: black;
+
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .contact-image {
+
+            margin-top: 35px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255,255,255,.1);
+
+        }
+
+
+        .contact-image img {
+
+            width: 100%;
+
+            height: 220px;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .contact-form-area {
+
+            padding: 55px;
+
+        }
+
+
+        .contact-form-area h2 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(32px, 5vw, 65px);
+
+            line-height: 1;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .contact-input {
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .contact-input label {
+
+            display: block;
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            opacity: .5;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .contact-input input,
+        .contact-input textarea,
+        .contact-input select {
+
+            width: 100%;
+
+            background: transparent;
+
+            color: white;
+
+            border: none;
+
+            border-bottom: 1px solid rgba(255,255,255,.2);
+
+            outline: none;
+
+            padding: 13px 0;
+
+            font-size: 15px;
+
+        }
+
+
+        .contact-input textarea {
+
+            min-height: 140px;
+
+            resize: vertical;
+
+        }
+
+
+        .contact-input select option {
+
+            background: #111;
+
+            color: white;
+
+        }
+
+
+        .contact-input input:focus,
+        .contact-input textarea:focus,
+        .contact-input select:focus {
+
+            border-bottom-color: white;
+
+        }
+
+
+        .contact-input input::placeholder,
+        .contact-input textarea::placeholder {
+
+            color: rgba(255,255,255,.3);
+
+        }
+
+
+        /* =====================================================
+           CHARACTER COUNT
+        ===================================================== */
+
+        .character-count {
+
+            text-align: right;
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 9px;
+
+            opacity: .4;
+
+            margin-top: -15px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =====================================================
+           SEND BUTTON
+        ===================================================== */
+
+        .contact-submit {
+
+            width: 100%;
+
+            background: white;
+
+            color: black;
+
+            border: 1px solid white;
+
+            padding: 17px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+        }
+
+
+        .contact-submit:hover {
+
+            background: transparent;
+
+            color: white;
+
+        }
+
+
+        .contact-submit:disabled {
+
+            opacity: .5;
+
+        }
+
+
+        /* =====================================================
+           CONTACT MESSAGE
+        ===================================================== */
+
+        #contactMessage {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 14px;
+
+            border: 1px solid rgba(255,255,255,.2);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           REST API SECTION
+        ===================================================== */
+
+        .api-section {
+
+            width: min(1200px, 92%);
+
+            margin: 80px auto 0;
+
+            border: 1px solid rgba(255,255,255,.15);
+
+            padding: 55px;
+
+            background: rgba(255,255,255,.02);
+
+        }
+
+
+        .api-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 30px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .api-heading h2 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(30px, 5vw, 60px);
+
+            line-height: 1;
+
+            margin: 0;
+
+        }
+
+
+        .api-heading h2 span {
+
+            display: block;
+
+            opacity: .3;
+
+        }
+
+
+        .api-description {
+
+            max-width: 500px;
+
+            opacity: .6;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           API BUTTON
+        ===================================================== */
+
+        #loadResources {
+
+            width: 100%;
+
+            border: 1px solid white;
+
+            background: white;
+
+            color: black;
+
+            padding: 18px 20px;
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        #loadResources:hover {
+
+            background: transparent;
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           API LOADING
+        ===================================================== */
+
+        #apiLoading {
+
+            display: none;
+
+            padding: 20px;
+
+            border: 1px solid rgba(255,255,255,.15);
+
+            text-align: center;
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =====================================================
+           API ERROR
+        ===================================================== */
+
+        #apiError {
+
+            display: none;
+
+            padding: 18px;
+
+            border: 1px solid rgba(255,80,80,.5);
+
+            color: #ffaaaa;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =====================================================
+           API CARD
+        ===================================================== */
+
+        .resource-card {
+
+            border: 1px solid rgba(255,255,255,.2);
+
+            padding: 35px;
+
+            background: rgba(255,255,255,.025);
+
+            animation: apiCardIn .5s ease;
+
+        }
+
+
+        .resource-number {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            opacity: .4;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .resource-card h3 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(25px, 4vw, 45px);
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .resource-card p {
+
+            margin-bottom: 12px;
+
+            opacity: .75;
+
+        }
+
+
+        .resource-card strong {
+
+            color: white;
+
+        }
+
+
+        .resource-type {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 8px 12px;
+
+            border: 1px solid rgba(255,255,255,.2);
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            opacity: .6;
+
+        }
+
+
+        @keyframes apiCardIn {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(20px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SUCCESS POPUP
+        ===================================================== */
+
+        .popup {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 99999;
+
+            background: rgba(0,0,0,.9);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+        }
+
+
+        .popup.show {
+
+            display: flex;
+
+        }
+
+
+        .popup-content {
+
+            width: min(500px, 100%);
+
+            background: #101015;
+
+            border: 1px solid rgba(255,255,255,.3);
+
+            padding: 50px 30px;
+
+            text-align: center;
+
+        }
+
+
+        .success-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            border: 2px solid white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: auto auto 25px;
+
+            font-size: 35px;
+
+        }
+
+
+        .popup-content h2 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 45px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .popup-content button {
+
+            margin-top: 25px;
+
+            padding: 13px 20px;
+
+            border: none;
+
+            background: white;
+
+            color: black;
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .contact-wrapper {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .contact-info {
+
+                border-right: none;
+
+                border-bottom: 1px solid rgba(255,255,255,.15);
+
+            }
+
+
+            .api-heading {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .contact-info,
+            .contact-form-area,
+            .api-section {
+
+                padding: 30px 20px;
+
+            }
+
+
+            .contact-hero {
+
+                padding-top: 100px;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -45,85 +965,63 @@
 
 
     <!-- =====================================================
-         ANIMATED BACKGROUND
-    ====================================================== -->
-
-    <div class="animated-background">
-
-        <span class="floating-shape shape-1"></span>
-
-        <span class="floating-shape shape-2"></span>
-
-        <span class="floating-shape shape-3"></span>
-
-        <span class="floating-shape shape-4"></span>
-
-        <span class="floating-shape shape-5"></span>
-
-        <span class="floating-shape shape-6"></span>
-
-    </div>
-
-
-
-    <!-- =====================================================
          NAVIGATION
-    ====================================================== -->
+    ===================================================== -->
 
     <nav class="navigation">
 
-        <!-- Logo -->
-
         <a href="index.html" class="logo">
-
             CANVAS
-
         </a>
 
 
-        <!-- Mobile menu -->
-
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu">
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle">
 
             ☰
 
         </button>
 
 
-        <!-- Links -->
+        <div
+            class="nav-links"
+            id="navLinks">
 
-        <div class="nav-links" id="navLinks">
-
-            <a href="/HTML/index.html">
+            <a href="index.html">
                 Home
             </a>
 
-            <a href="/HTML/about.html">
+            <a href="about.html">
                 About
             </a>
 
-            <a href="/HTML/events.html">
+            <a href="events.html">
                 Events
             </a>
 
-            <a href="/HTML/workshops.html">
+            <a href="workshops.html">
                 Workshops
             </a>
 
-            <a href="/HTML/gallery.html">
+            <a href="gallery.html">
                 Gallery
             </a>
 
-            <a href="/HTML/project.html">
+            <a href="project.html">
                 Projects
             </a>
 
-            <a href="/HTML/join.html">
+            <a href="join.html">
                 Join
             </a>
 
-            <a href="/HTML/contact.html" class="active">
+            <a href="contact.html"
+               class="active">
+
                 Contact
+
             </a>
 
         </div>
@@ -131,33 +1029,25 @@
     </nav>
 
 
-
     <!-- =====================================================
          HERO
-    ====================================================== -->
+    ===================================================== -->
 
     <section class="contact-hero">
 
         <div class="contact-hero-content">
 
-
-            <div class="hero-line">
-
-                <span></span>
-
-                LET'S CONNECT
-
-                <span></span>
-
+            <div class="contact-small-title">
+                CANVAS // CONTACT
             </div>
 
 
             <h1>
 
-                FIND
+                LET'S
 
                 <span>
-                    YOUR SPACE.
+                    CONNECT.
                 </span>
 
             </h1>
@@ -166,500 +1056,352 @@
             <p>
 
                 Have an idea, question or creative project?
-                Let's make something together.
+
+                Let's create something different together.
 
             </p>
-
-
-            <div class="contact-scroll">
-
-                <span>
-                    EXPLORE BELOW
-                </span>
-
-                <div>
-                    ↓
-                </div>
-
-            </div>
 
         </div>
 
     </section>
 
 
-
     <!-- =====================================================
-         CONTACT INFORMATION
-    ====================================================== -->
+         CONTACT
+    ===================================================== -->
 
-    <section class="contact-info-section">
+    <section class="contact-section">
 
-        <div class="container">
+        <div class="contact-wrapper">
 
 
-            <!-- Section heading -->
+            <!-- =================================================
+                 CONTACT INFORMATION
+            ================================================= -->
 
-            <div class="contact-section-heading">
+            <div class="contact-info">
 
-                <p>
+                <div class="contact-label">
                     CANVAS // CONTACT
-                </p>
+                </div>
+
 
                 <h2>
                     LET'S TALK.
                 </h2>
 
+
+                <p class="contact-info-text">
+
+                    Whether you have a question about our club,
+                    want to collaborate, or simply want to share
+                    a creative idea, we would love to hear from you.
+
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-number">
+                        01
+                    </div>
+
+                    <h3>
+                        EMAIL
+                    </h3>
+
+                    <a href="mailto:canvasclub@example.com">
+
+                        canvasclub@example.com
+
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-number">
+                        02
+                    </div>
+
+                    <h3>
+                        LOCATION
+                    </h3>
+
+                    <p>
+
+                        University Campus<br>
+
+                        Malaysia
+
+                    </p>
+
+                </div>
+
+
+                <div class="social-title">
+                    FOLLOW CANVAS
+                </div>
+
+
+                <div class="social-links">
+
+                    <a href="https://www.instagram.com/"
+                       target="_blank"
+                       rel="noopener">
+
+                        INSTAGRAM
+
+                    </a>
+
+
+                    <a href="https://www.youtube.com/"
+                       target="_blank"
+                       rel="noopener">
+
+                        YOUTUBE
+
+                    </a>
+
+
+                    <a href="https://www.facebook.com/"
+                       target="_blank"
+                       rel="noopener">
+
+                        FACEBOOK
+
+                    </a>
+
+                </div>
+
+
+                <div class="contact-image">
+
+                    <img
+                        src="../images/canvas-studio-background.png"
+                        alt="Canvas Animation Studio">
+
+                </div>
+
             </div>
 
 
+            <!-- =================================================
+                 CONTACT FORM
+            ================================================= -->
 
-            <div class="row g-4">
+            <div class="contact-form-area">
 
-
-                <!-- =================================================
-                     EMAIL
-                ================================================== -->
-
-                <div class="col-12 col-md-4">
-
-                    <div class="contact-card">
-
-
-                        <div class="contact-card-number">
-                            01
-                        </div>
-
-
-                        <div class="contact-icon">
-                            @
-                        </div>
-
-
-                        <p class="contact-label">
-                            EMAIL
-                        </p>
-
-
-                        <h3>
-                            canvasclub@example.com
-                        </h3>
-
-
-                        <p class="contact-description">
-                            Send us your questions,
-                            ideas or collaboration proposals.
-                        </p>
-
-
-                        <a href="mailto:canvasclub@example.com" class="contact-link">
-
-                            SEND EMAIL →
-
-                        </a>
-
-                    </div>
-
+                <div class="contact-label">
+                    HAVE AN IDEA?
                 </div>
 
 
+                <h2>
 
-                <!-- =================================================
-                     LOCATION
-                ================================================== -->
+                    SEND US A<br>
 
-                <div class="col-12 col-md-4">
+                    MESSAGE.
 
-                    <div class="contact-card">
-
-
-                        <div class="contact-card-number">
-                            02
-                        </div>
+                </h2>
 
 
-                        <div class="contact-icon">
-                            +
-                        </div>
+                <form id="contactForm">
 
 
-                        <p class="contact-label">
-                            LOCATION
-                        </p>
+                    <div class="contact-input">
 
+                        <label for="contactName">
+                            YOUR NAME
+                        </label>
 
-                        <h3>
-                            UTAR CAMPUS
-                        </h3>
-
-
-                        <p class="contact-description">
-                            Find us through our university
-                            community and club activities.
-                        </p>
-
-
-                        <a href="https://www.google.com/maps" target="_blank" class="contact-link">
-
-                            VIEW MAP →
-
-                        </a>
+                        <input
+                            type="text"
+                            id="contactName"
+                            name="name"
+                            placeholder="Enter your name"
+                            required>
 
                     </div>
 
-                </div>
 
+                    <div class="contact-input">
 
+                        <label for="contactEmail">
+                            YOUR EMAIL
+                        </label>
 
-                <!-- =================================================
-                     SOCIAL MEDIA
-                ================================================== -->
-
-                <div class="col-12 col-md-4">
-
-                    <div class="contact-card">
-
-
-                        <div class="contact-card-number">
-                            03
-                        </div>
-
-
-                        <div class="contact-icon">
-                            #
-                        </div>
-
-
-                        <p class="contact-label">
-                            SOCIAL MEDIA
-                        </p>
-
-
-                        <h3>
-                            @CANVAS.CLUB
-                        </h3>
-
-
-                        <p class="contact-description">
-                            Follow our latest animation,
-                            projects and club activities.
-                        </p>
-
-
-                        <a href="#socialMedia" class="contact-link">
-
-                            FOLLOW US →
-
-                        </a>
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            name="email"
+                            placeholder="example@email.com"
+                            required>
 
                     </div>
 
-                </div>
 
+                    <div class="contact-input">
 
-            </div>
+                        <label for="subject">
+                            SUBJECT
+                        </label>
 
-        </div>
+                        <select
+                            id="subject"
+                            name="subject"
+                            required>
 
-    </section>
+                            <option value="">
+                                Select a subject
+                            </option>
 
+                            <option value="Membership">
+                                Membership
+                            </option>
 
+                            <option value="Event">
+                                Event
+                            </option>
 
-    <!-- =====================================================
-         CONTACT FORM
-    ====================================================== -->
+                            <option value="Workshop">
+                                Workshop
+                            </option>
 
-    <section class="message-section">
+                            <option value="Collaboration">
+                                Collaboration
+                            </option>
 
-        <div class="container">
+                            <option value="General Enquiry">
+                                General Enquiry
+                            </option>
 
-            <div class="row justify-content-center">
-
-                <div class="col-12 col-lg-8">
-
-
-                    <div class="message-card">
-
-
-                        <!-- Top -->
-
-                        <div class="message-card-top">
-
-                            <span>
-                                CANVAS // 002
-                            </span>
-
-                            <span>
-                                MESSAGE
-                            </span>
-
-                        </div>
-
-
-
-                        <div class="message-heading">
-
-                            <p>
-                                HAVE AN IDEA?
-                            </p>
-
-                            <h2>
-                                SEND US A MESSAGE.
-                            </h2>
-
-                        </div>
-
-
-
-                        <!-- =================================================
-                             FORM
-                        ================================================== -->
-
-                        <form id="contactForm">
-
-
-                            <!-- Name -->
-
-                            <div class="contact-input">
-
-                                <label for="contactName">
-                                    YOUR NAME
-                                </label>
-
-                                <input type="text" id="contactName" name="contactName" placeholder="Enter your name"
-                                    required>
-
-                            </div>
-
-
-
-                            <!-- Email -->
-
-                            <div class="contact-input">
-
-                                <label for="contactEmail">
-                                    YOUR EMAIL
-                                </label>
-
-                                <input type="email" id="contactEmail" name="contactEmail"
-                                    placeholder="example@email.com" required>
-
-                            </div>
-
-
-
-                            <!-- Subject -->
-
-                            <div class="contact-input">
-
-                                <label for="subject">
-                                    SUBJECT
-                                </label>
-
-                                <select id="subject" name="subject" required>
-
-                                    <option value="">
-                                        Select a subject
-                                    </option>
-
-                                    <option value="Membership">
-                                        Membership
-                                    </option>
-
-                                    <option value="Event">
-                                        Event
-                                    </option>
-
-                                    <option value="Workshop">
-                                        Workshop
-                                    </option>
-
-                                    <option value="Collaboration">
-                                        Collaboration
-                                    </option>
-
-                                    <option value="General Enquiry">
-                                        General Enquiry
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-
-                            <!-- Message -->
-
-                            <div class="contact-input">
-
-                                <label for="message">
-                                    YOUR MESSAGE
-                                </label>
-
-                                <textarea id="message" name="message" rows="6" maxlength="500"
-                                    placeholder="Tell us what is on your mind..." required></textarea>
-
-                            </div>
-
-
-
-                            <!-- Counter -->
-
-                            <div class="message-counter">
-
-                                <span id="messageCount">
-                                    0
-                                </span>
-
-                                / 500
-
-                            </div>
-
-
-
-                            <!-- Submit -->
-
-                            <div class="contact-submit-area">
-
-                                <button type="submit" id="sendMessageButton" class="contact-submit">
-
-                                    <span>
-                                        SEND MESSAGE
-                                    </span>
-
-                                    <span>
-                                        →
-                                    </span>
-
-                                </button>
-
-                            </div>
-
-
-
-                            <!-- Message result -->
-
-                            <div id="contactMessage" class="contact-message">
-                            </div>
-
-
-                        </form>
+                        </select>
 
                     </div>
 
-                </div>
+
+                    <div class="contact-input">
+
+                        <label for="message">
+                            YOUR MESSAGE
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            maxlength="500"
+                            placeholder="Tell us what is on your mind..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <div class="character-count">
+
+                        <span id="messageCount">
+                            0
+                        </span>
+
+                        / 500
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        id="sendMessageButton"
+                        class="contact-submit">
+
+                        <span>
+                            SEND MESSAGE
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <div id="contactMessage"></div>
+
+
+                </form>
 
             </div>
 
         </div>
 
-    </section>
+
+        <!-- =====================================================
+             REST API SECTION
+        ===================================================== -->
+
+        <div class="api-section">
 
 
-
-    <!-- =====================================================
-         REST API
-    ====================================================== -->
-
-    <section class="api-section">
-
-        <div class="container">
+            <div class="contact-label">
+                CANVAS // API
+            </div>
 
 
             <div class="api-heading">
 
-                <p>
-                    CANVAS // API
-                </p>
-
                 <h2>
-                    CREATIVE RESOURCES.
-                </h2>
 
-                <span>
-                    Explore animation-related books and
-                    creative resources retrieved from a
-                    RESTful API.
-                </span>
-
-            </div>
-
-
-
-            <!-- API explanation -->
-
-            <div class="api-explanation">
-
-                <div class="api-step">
-                    <span>01</span>
-                    REQUEST
-                </div>
-
-                <div class="api-arrow">
-                    →
-                </div>
-
-                <div class="api-step">
-                    <span>02</span>
-                    JSON DATA
-                </div>
-
-                <div class="api-arrow">
-                    →
-                </div>
-
-                <div class="api-step">
-                    <span>03</span>
-                    DISPLAY
-                </div>
-
-            </div>
-
-
-
-            <!-- Load button -->
-
-            <div class="api-button-area">
-
-                <button id="loadResources" class="api-button">
-
-                    LOAD CREATIVE RESOURCES
+                    CREATIVE
 
                     <span>
-                        →
+                        RESOURCES.
                     </span>
 
-                </button>
-
-            </div>
+                </h2>
 
 
+                <p class="api-description">
 
-            <!-- Loading -->
+                    Connect to a live REST API and retrieve
+                    current information dynamically.
 
-            <div id="apiLoading" class="api-loading">
+                    Click the button to request live data.
 
-                <div class="loading-circle"></div>
-
-                <p>
-                    CONNECTING TO API...
                 </p>
 
             </div>
 
 
+            <!-- API BUTTON -->
 
-            <!-- API results -->
+            <button
+                type="button"
+                id="loadResources">
 
-            <div id="resourceContainer" class="row g-4">
+                LOAD CREATIVE RESOURCES →
+
+            </button>
+
+
+            <!-- API LOADING -->
+
+            <div id="apiLoading">
+
+                CONNECTING TO API...
 
             </div>
 
 
+            <!-- API ERROR -->
 
-            <!-- API error -->
+            <div id="apiError"></div>
 
-            <div id="apiError" class="api-error">
+
+            <!-- API RESULTS -->
+
+            <div
+                id="resourceContainer"
+                class="row g-4">
 
             </div>
 
@@ -667,200 +1409,60 @@
         </div>
 
     </section>
-
 
 
     <!-- =====================================================
-         SOCIAL MEDIA PLUGIN
-    ====================================================== -->
+         SUCCESS POPUP
+    ===================================================== -->
 
-    <section class="social-section" id="socialMedia">
+    <div
+        id="successPopup"
+        class="popup">
 
-        <div class="container">
+        <div class="popup-content">
 
 
-            <div class="social-heading">
-
-                <p>
-                    CANVAS // SOCIAL
-                </p>
-
-                <h2>
-                    FOLLOW THE PROCESS.
-                </h2>
-
-                <span>
-                    See our latest creative work,
-                    activities and updates.
-                </span>
-
+            <div class="success-icon">
+                ✓
             </div>
 
 
-
-            <div class="row justify-content-center">
-
-
-                <!-- =================================================
-                     INSTAGRAM SOCIAL PLUGIN
-                ================================================== -->
-
-                <div class="col-12 col-lg-7">
-
-                    <div class="social-card">
-
-
-                        <div class="social-card-top">
-
-                            <span>
-                                INSTAGRAM
-                            </span>
-
-                            <span>
-                                @CANVAS.CLUB
-                            </span>
-
-                        </div>
-
-
-
-                        <!--
-                            IMPORTANT:
-                            Replace the URL below with your
-                            group's REAL Instagram post URL.
-                        -->
-
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/"
-                            data-instgrm-version="14">
-
-                        </blockquote>
-
-
-                    </div>
-
-                </div>
-
-
+            <div class="contact-label">
+                CANVAS // MESSAGE SENT
             </div>
+
+
+            <h2>
+                THANK YOU.
+            </h2>
+
+
+            <p>
+                Your message has been successfully submitted.
+            </p>
+
+
+            <p>
+                The Canvas team will get back to you soon.
+            </p>
+
+
+            <button
+                type="button"
+                id="closePopup">
+
+                BACK TO CANVAS
+
+            </button>
 
         </div>
 
-    </section>
-
-
-
-    <!-- =====================================================
-         API TECHNOLOGY EXPLANATION
-    ====================================================== -->
-
-    <section class="technology-section">
-
-        <div class="container">
-
-
-            <div class="technology-heading">
-
-                <p>
-                    HOW IT WORKS
-                </p>
-
-                <h2>
-                    BEHIND THE PAGE.
-                </h2>
-
-            </div>
-
-
-
-            <div class="row g-4">
-
-
-                <!-- jQuery -->
-
-                <div class="col-12 col-md-4">
-
-                    <div class="technology-card">
-
-                        <span>
-                            01
-                        </span>
-
-                        <h3>
-                            jQuery
-                        </h3>
-
-                        <p>
-                            jQuery AJAX sends a GET request
-                            to the RESTful API.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- REST -->
-
-                <div class="col-12 col-md-4">
-
-                    <div class="technology-card">
-
-                        <span>
-                            02
-                        </span>
-
-                        <h3>
-                            REST API
-                        </h3>
-
-                        <p>
-                            The external API returns
-                            animation-related information
-                            in JSON format.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Dynamic -->
-
-                <div class="col-12 col-md-4">
-
-                    <div class="technology-card">
-
-                        <span>
-                            03
-                        </span>
-
-                        <h3>
-                            DYNAMIC UI
-                        </h3>
-
-                        <p>
-                            JavaScript processes the response
-                            and creates resource cards dynamically.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
+    </div>
 
 
     <!-- =====================================================
          FOOTER
-    ====================================================== -->
+    ===================================================== -->
 
     <footer>
 
@@ -875,33 +1477,34 @@
     </footer>
 
 
-
     <!-- =====================================================
-         JAVASCRIPT LIBRARIES
-    ====================================================== -->
+         JAVASCRIPT
+    ===================================================== -->
 
     <!-- jQuery -->
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 
     <!-- Bootstrap -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <!-- Instagram Social Plugin -->
+    <!-- YOUR JAVASCRIPT
 
-    <script async src="https://www.instagram.com/embed.js">
-    </script>
+         IMPORTANT:
 
+         contact.html
+         is inside HTML/
 
-    <!-- Your JavaScript -->
+         script.js
+         is inside JavaScript/
 
-    <script src="js/script.js">
-    </script>
+         Therefore:
+
+         ../JavaScript/script.js
+    -->
+
+    <script src="../JavaScript/script.js"></script>
 
 
 </body>
