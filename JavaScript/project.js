@@ -50,14 +50,35 @@ function openProjectModal(p) {
   document.getElementById("modalDesc").textContent = p.desc;
   document.getElementById("modalTech").textContent =
     `Software: ${p.software} \u00B7 Year: ${p.year} \u00B7 ${p.team}`;
-  document.getElementById("modalImg").src = p.img;
-  document.getElementById("modalImg").alt = p.title;
+
+  const modalImg = document.getElementById("modalImg");
+  const modalVideo = document.getElementById("modalVideo");
+
+  if (p.video) {
+    // Video project: show the <video> player, hide the <img>
+    modalImg.style.display = "none";
+    modalVideo.style.display = "block";
+    modalVideo.src = p.video;
+  } else {
+    // Image project: show the <img>, hide the <video>
+    modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalVideo.style.display = "none";
+    modalImg.style.display = "block";
+    modalImg.src = p.img;
+    modalImg.alt = p.title;
+  }
 
   const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("projectModal"));
   modal.show();
 
   addToRecent(p);
 }
+
+// Stop video playback when the modal is closed
+document.getElementById("projectModal").addEventListener("hidden.bs.modal", () => {
+  document.getElementById("modalVideo").pause();
+});
 
 // Wire up project cards
 document.querySelectorAll(".project-card").forEach((card) => {
@@ -72,6 +93,7 @@ document.querySelectorAll(".project-card").forEach((card) => {
       year: card.dataset.year,
       team: card.dataset.team,
       img: card.dataset.img,
+      video: card.dataset.video || null,
     };
     openProjectModal(project);
   });
