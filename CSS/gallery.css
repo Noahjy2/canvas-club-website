@@ -1,0 +1,711 @@
+
+/* =====================================================
+   CANVAS — GALLERY / PROJECTS VISUAL STYLE
+   Dark creative-studio aesthetic matching Join / Contact
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #08080d;
+    --bg-light: #111118;
+    --card: rgba(20, 20, 29, 0.84);
+    --card-light: rgba(27, 27, 37, 0.92);
+    --line: rgba(255, 255, 255, 0.14);
+    --line-strong: rgba(255, 255, 255, 0.24);
+    --text: #ffffff;
+    --text-muted: #a8a8b3;
+    --metadata: #c2c2cf;
+    --purple: #9b59ff;
+    --purple-soft: rgba(155, 89, 255, 0.18);
+    --purple-glow: rgba(155, 89, 255, 0.35);
+}
+
+body {
+    min-height: 100vh;
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            rgba(8, 8, 13, 0.72),
+            rgba(8, 8, 13, 0.88)
+        ),
+        url("/images/canvas-studio-background2.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation {
+    position: relative;
+    z-index: 10;
+
+    min-height: 64px;
+    padding: 20px 36px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 28px;
+
+    background: rgba(8, 8, 13, 0.72);
+    border-bottom: 1px solid var(--line);
+
+    backdrop-filter: blur(10px);
+}
+
+.navigation a {
+    position: relative;
+
+    color: #b8b8c5;
+    text-decoration: none;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+
+    transition: color 0.25s ease;
+}
+
+.navigation a::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--purple);
+
+    box-shadow: 0 0 8px var(--purple-glow);
+
+    transition: width 0.25s ease;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    color: #ffffff;
+}
+
+.navigation a:hover::after,
+.navigation a.active::after {
+    width: 100%;
+}
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+    position: relative;
+    z-index: 1;
+
+    padding: 90px 20px 55px;
+
+    background:
+        linear-gradient(
+            rgba(8, 8, 13, 0.20),
+            rgba(8, 8, 13, 0.42)
+        );
+
+    border-bottom: 1px solid var(--line);
+}
+
+.logo-font {
+    font-family: "Orbitron", sans-serif;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 18px rgba(255, 255, 255, 0.10);
+}
+
+.page-header h1 {
+    font-size: clamp(34px, 5vw, 64px);
+    font-weight: 700;
+}
+
+.page-header p {
+    color: var(--text-muted) !important;
+    font-size: 16px;
+    margin-top: 12px;
+}
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-input {
+    min-height: 48px;
+
+    background: rgba(8, 8, 13, 0.72) !important;
+    color: #ffffff !important;
+
+    border: 1px solid var(--line-strong) !important;
+    border-radius: 0 !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 12px 16px;
+
+    box-shadow: none !important;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: #a8a8b3 !important;
+    opacity: 1;
+}
+
+.search-input:focus {
+    outline: none !important;
+
+    border-color: var(--purple) !important;
+
+    box-shadow:
+        0 0 0 1px var(--purple),
+        0 0 12px rgba(155, 89, 255, 0.40),
+        0 0 25px rgba(155, 89, 255, 0.16) !important;
+}
+
+/* =====================================================
+   FILTER BUTTONS
+===================================================== */
+
+.filter-chip,
+.btn-outline-accent {
+    color: #c2c2cf !important;
+
+    border: 1px solid var(--line-strong) !important;
+    border-radius: 0 !important;
+
+    background: rgba(8, 8, 13, 0.62) !important;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-chip.active,
+.btn-outline-accent:hover {
+    color: #ffffff !important;
+
+    border-color: var(--purple) !important;
+
+    background: rgba(155, 89, 255, 0.10) !important;
+
+    box-shadow:
+        0 0 10px rgba(155, 89, 255, 0.28),
+        inset 0 0 12px rgba(155, 89, 255, 0.06);
+}
+
+.fav-badge {
+    background: var(--purple) !important;
+    color: #ffffff !important;
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.gallery-card,
+.project-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--card) !important;
+
+    border: 1px solid var(--line) !important;
+
+    border-radius: 0 !important;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.28);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.gallery-card:hover,
+.project-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(155, 89, 255, 0.65) !important;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.38),
+        0 0 24px rgba(155, 89, 255, 0.13);
+}
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery-card {
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    filter: saturate(0.88) brightness(0.78);
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+.gallery-item:hover .gallery-card img {
+    transform: scale(1.045);
+    filter: saturate(1.08) brightness(0.94);
+}
+
+.gallery-info,
+.project-info {
+    padding: 18px;
+
+    background: rgba(13, 13, 19, 0.88);
+
+    border: 1px solid var(--line);
+    border-top: none;
+}
+
+.gallery-title,
+.project-title {
+    color: #ffffff;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.gallery-meta,
+.project-meta {
+    color: var(--metadata);
+
+    font-size: 13px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+/* =====================================================
+   FAVORITE BUTTON
+===================================================== */
+
+.fav-btn {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+
+    background: rgba(8, 8, 13, 0.72);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 50%;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.fav-btn:hover {
+    color: #ffffff;
+
+    border-color: var(--purple);
+
+    box-shadow:
+        0 0 14px rgba(155, 89, 255, 0.40);
+
+    transform: scale(1.06);
+}
+
+.fav-btn.active {
+    color: #ffffff;
+
+    background: rgba(155, 89, 255, 0.22);
+
+    border-color: var(--purple);
+
+    box-shadow:
+        0 0 16px rgba(155, 89, 255, 0.42);
+}
+
+/* =====================================================
+   PROJECT THUMBNAILS
+===================================================== */
+
+.project-thumb {
+    position: relative;
+
+    aspect-ratio: 16 / 9;
+
+    background-size: cover;
+    background-position: center;
+
+    filter: brightness(0.78) saturate(0.88);
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+.project-card:hover .project-thumb {
+    filter: brightness(0.96) saturate(1.05);
+}
+
+.play-icon {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) scale(0.90);
+
+    color: #ffffff;
+
+    font-size: 46px;
+
+    opacity: 0.86;
+
+    text-shadow:
+        0 0 16px rgba(155, 89, 255, 0.45);
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+.project-card:hover .play-icon {
+    color: #ffffff;
+    transform: translate(-50%, -50%) scale(1.04);
+
+    text-shadow:
+        0 0 22px rgba(155, 89, 255, 0.75);
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal-content {
+    background: rgba(13, 13, 19, 0.97) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(155, 89, 255, 0.35) !important;
+
+    border-radius: 0 !important;
+
+    box-shadow:
+        0 0 40px rgba(0, 0, 0, 0.55),
+        0 0 30px rgba(155, 89, 255, 0.12);
+}
+
+.modal-header {
+    padding: 22px 24px 10px;
+}
+
+.modal-title {
+    color: #ffffff !important;
+}
+
+.modal-body {
+    color: #d0d0d8;
+    padding: 20px 24px 26px;
+}
+
+.modal-body .text-muted {
+    color: #a8a8b3 !important;
+}
+
+.modal-img {
+    width: 100%;
+    max-height: 520px;
+
+    object-fit: cover;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.btn-close-white {
+    opacity: 0.85;
+}
+
+.btn-close-white:hover {
+    opacity: 1;
+}
+
+/* =====================================================
+   RECENTLY VIEWED / EMPTY STATE
+===================================================== */
+
+#recentStrip,
+#recentEmpty,
+#emptyState {
+    color: #a8a8b3 !important;
+}
+
+#recentStrip {
+    min-height: 42px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 80px;
+
+    background: rgba(8, 8, 13, 0.84) !important;
+
+    border-top: 1px solid var(--line);
+
+    color: #a8a8b3;
+}
+
+footer .text-muted {
+    color: #a8a8b3 !important;
+}
+
+.social-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.social-icons a {
+    color: #a8a8b3;
+
+    font-size: 18px;
+
+    transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px rgba(155, 89, 255, 0.75);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .navigation {
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: 16px 20px;
+
+        padding: 18px 16px;
+    }
+
+    .navigation a {
+        font-size: 9px;
+    }
+
+    .page-header {
+        padding: 65px 16px 40px;
+    }
+
+    .gallery-info,
+    .project-info {
+        padding: 14px;
+    }
+
+    .gallery-title,
+    .project-title {
+        font-size: 13px;
+    }
+
+    .gallery-meta,
+    .project-meta {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .navigation {
+        gap: 12px 14px;
+    }
+
+    .navigation a {
+        font-size: 8px;
+        letter-spacing: 0.4px;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .page-header p {
+        font-size: 14px;
+    }
+
+    .search-input {
+        font-size: 15px;
+    }
+
+    .gallery-card {
+        aspect-ratio: 4 / 3;
+    }
+
+    .fav-btn {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+/* =====================================================
+   GALLERY-SPECIFIC DETAILS
+===================================================== */
+
+.gallery-item {
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.gallery-item[style*="display: none"] {
+    display: none !important;
+}
+
+.gallery-info .view-details-btn {
+    width: 100%;
+}
+
+#filterBar {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =====================================================
+   FINAL VISUAL POLISH
+   Rounded cards + colored social media icons
+===================================================== */
+
+/* Rounded UI frames */
+.search-input,
+.filter-chip,
+.btn-outline-accent,
+.gallery-card,
+.project-card,
+.modal-content,
+.gallery-info,
+.project-info {
+    border-radius: 14px !important;
+}
+
+/* Keep gallery/project image corners consistent with the cards */
+.gallery-card {
+    overflow: hidden;
+}
+
+/* Colored social media icons */
+.social-icons a:nth-child(1) {
+    color: #E1306C;
+}
+
+.social-icons a:nth-child(2) {
+    color: #5865F2;
+}
+
+.social-icons a:nth-child(3) {
+    color: #25F4EE;
+}
+
+/* Individual hover glow */
+.social-icons a:nth-child(1):hover {
+    color: #E1306C;
+    text-shadow: 0 0 14px rgba(225, 48, 108, 0.75);
+}
+
+.social-icons a:nth-child(2):hover {
+    color: #5865F2;
+    text-shadow: 0 0 14px rgba(88, 101, 242, 0.75);
+}
+
+.social-icons a:nth-child(3):hover {
+    color: #25F4EE;
+    text-shadow:
+        3px 0 8px rgba(254, 44, 85, 0.55),
+        -3px 0 8px rgba(37, 244, 238, 0.55);
+}
+
+/* Keep the rounded shape when the card is hovered */
+.gallery-card:hover,
+.project-card:hover {
+    border-radius: 14px !important;
+}

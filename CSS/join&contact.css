@@ -29,7 +29,7 @@ body {
      */
     background:
         linear-gradient(
-            rgba(8, 8, 13, 0.98),
+            rgba(8, 8, 13, 0.70),
             rgba(8, 8, 13, 0.84)
         ),
         url("/images/canvas-studio-background.png");
@@ -576,7 +576,7 @@ footer {
 .scroll-indicator {
     margin-top: 60px;
 
-    color: #777783;
+    color: #c0c0c6;
 
     font-family: "Orbitron", sans-serif;
 
@@ -1038,7 +1038,7 @@ footer {
 
     font-size: 20px;
 
-    color: #555560;
+    color: #7c7c88;
 
     transition: 0.3s;
 }
@@ -1065,7 +1065,7 @@ footer {
 
 
 .profile-title {
-    color: #666672;
+    color: #b9b9bf;
 
     font-size: 8px;
 
@@ -1091,9 +1091,9 @@ footer {
 
     border-radius: 20px;
 
-    color: #aaaab4;
+    color: #b7b7be;
 
-    font-size: 11px;
+    font-size: 15px;
 }
 
 
@@ -1115,7 +1115,7 @@ footer {
 
     margin-top: 8px;
 
-    color: #666672;
+    color: #9d9da9;
 
     font-family: "Orbitron", sans-serif;
 
@@ -1192,7 +1192,7 @@ footer {
 .submit-area p {
     margin-top: 15px;
 
-    color: #666672;
+    color: #afafb8;
 
     font-size: 11px;
 }
@@ -1285,7 +1285,7 @@ footer {
 
 
 .why-number {
-    color: #555560;
+    color: #b0b0b9;
 
     font-size: 12px;
 
@@ -1497,7 +1497,7 @@ footer {
 
     border-top: 1px solid var(--line);
 
-    color: #666672;
+    color: #9a9aa2;
 }
 
 
@@ -3235,4 +3235,78 @@ footer p {
 
 }
 
+}
+
+
+/* =====================================================
+   CONTACT FORM — SAME EFFECT AS JOIN FORM
+   These overrides apply only to the Contact page form.
+===================================================== */
+
+.contact-input label {
+    color: #c2c2cf;
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(194, 194, 207, 0.12);
+}
+
+.contact-input input,
+.contact-input select,
+.contact-input textarea {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5;
+    border-bottom-color: #555562;
+}
+
+.contact-input input::placeholder,
+.contact-input textarea::placeholder {
+    color: #a8a8b3;
+    opacity: 1;
+}
+
+.contact-input input:focus,
+.contact-input select:focus,
+.contact-input textarea:focus {
+    outline: none;
+    color: #ffffff;
+    border-bottom-color: #9b59ff;
+
+    box-shadow:
+        0 0 0 1px #9b59ff,
+        0 0 12px rgba(155, 89, 255, 0.45),
+        0 0 25px rgba(155, 89, 255, 0.20);
+}
+
+.contact-input input:hover,
+.contact-input select:hover,
+.contact-input textarea:hover {
+    border-bottom-color: rgba(155, 89, 255, 0.75);
+}
+
+.contact-input select {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.message-card-top {
+    color: #b8b8c5;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 480px) {
+    .contact-input input,
+    .contact-input select,
+    .contact-input textarea {
+        font-size: 15px;
+        line-height: 1.5;
+    }
 }
