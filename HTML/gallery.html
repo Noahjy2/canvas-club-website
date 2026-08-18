@@ -1,268 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery | Canvas</title>
+<title>Gallery | Canvas Animation & Multimedia Club</title>
+
+
+<!-- =====================================================
+     GOOGLE FONT
+     ===================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<!-- =====================================================
+     BOOTSTRAP
+     ===================================================== -->
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/CSS/style.css">
+
+
+<!-- =====================================================
+     YOUR CSS
+
+     IMPORTANT:
+     gallery.html is inside HTML folder.
+     CSS is outside HTML folder.
+
+     Therefore:
+     ../CSS/style.css
+     ===================================================== -->
+
+<link rel="stylesheet" href="../CSS/style.css">
+
+
+<!-- =====================================================
+     GALLERY PAGE CSS
+     ===================================================== -->
+
+<style>
+
+    /* =================================================
+       HERO
+       ================================================= */
+
+    .gallery-hero {
+        min-height: calc(55vh - 75px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 90px 20px 50px;
+    }
+
+    .gallery-hero-content {
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        animation: heroAppear 1s ease forwards;
+    }
+
+    .gallery-small-title {
+        font-family: "Orbitron", sans-serif;
+        color: #666672;
+        font-size: 10px;
+        letter-spacing: 4px;
+        margin-bottom: 20px;
+    }
+
+    .gallery-hero h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(40px, 8vw, 90px);
+        line-height: 0.95;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .gallery-hero h1 span {
+        color: transparent;
+        -webkit-text-stroke: 1px white;
+    }
+
+    .gallery-hero p {
+        max-width: 600px;
+        margin: auto;
+        color: var(--text-muted);
+        font-size: clamp(14px, 1.5vw, 18px);
+        line-height: 1.8;
+    }
+
+
+    /* =================================================
+       SECTION
+       ================================================= */
+
+    .gallery-section {
+        padding: 20px 0 120px;
+        position: relative;
+        z-index: 1;
+    }
+
+
+    /* =================================================
+       SEARCH
+       ================================================= */
+
+    .search-input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #393943;
+        border-radius: 0;
+        color: white;
+        padding: 12px 5px;
+        font-size: 15px;
+    }
+
+    .search-input::placeholder {
+        color: #555560;
+    }
+
+    .search-input:focus {
+        background: transparent;
+        color: white;
+        border-bottom-color: #9b59ff;
+        box-shadow: none;
+    }
+
+
+    /* =================================================
+       FILTER CHIPS / BUTTONS
+       ================================================= */
+
+    .filter-chip {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: #9999a4;
+        font-family: "Orbitron", sans-serif;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        padding: 10px 20px;
+        border-radius: 30px;
+        transition: 0.3s;
+    }
+
+    .filter-chip:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+        color: white;
+    }
+
+    .filter-chip.active {
+        background: white;
+        color: black;
+        border-color: white;
+    }
+
+    .btn-outline-canvas {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: #9999a4;
+        font-family: "Orbitron", sans-serif;
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 10px 18px;
+        border-radius: 30px;
+        transition: 0.3s;
+    }
+
+    .btn-outline-canvas:hover {
+        border-color: white;
+        color: white;
+    }
+
+    .btn-outline-canvas.active {
+        background: white;
+        color: black;
+        border-color: white;
+    }
+
+    .fav-badge {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        margin-left: 6px;
+        border-radius: 20px;
+    }
+
+
+    /* =================================================
+       GALLERY CARD
+       ================================================= */
+
+    .gallery-item {
+        transition: 0.3s;
+    }
+
+    .gallery-item.hidden {
+        display: none;
+    }
+
+    .gallery-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.02);
+        aspect-ratio: 4 / 3;
+        transition: 0.4s ease;
+    }
+
+    .gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(20%);
+        transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    .gallery-item:hover .gallery-card {
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-6px);
+    }
+
+    .gallery-item:hover .gallery-card img {
+        transform: scale(1.08);
+        filter: grayscale(0%);
+    }
+
+    .video-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        color: white;
+        font-size: 13px;
+    }
+
+    .fav-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .fav-btn:hover {
+        border-color: #9b59ff;
+    }
+
+    .fav-btn.active {
+        background: white;
+        color: #ff4d6d;
+        border-color: white;
+    }
+
+    .gallery-info {
+        padding: 16px 4px 4px;
+    }
+
+    .gallery-title {
+        font-family: "Orbitron", sans-serif;
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+    }
+
+    .gallery-meta {
+        color: #777783;
+        font-size: 12px;
+        margin-bottom: 14px;
+    }
+
+    .view-details-btn {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: #9999a4;
+        font-family: "Orbitron", sans-serif;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        padding: 10px;
+        transition: 0.3s;
+    }
+
+    .view-details-btn:hover {
+        background: white;
+        color: black;
+        border-color: white;
+    }
+
+    .gallery-empty {
+        color: #666672;
+        margin-top: 40px;
+    }
+
+
+    /* =================================================
+       DETAIL MODAL
+       ================================================= */
+
+    #galleryModal .modal-content {
+        background: #111118;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 0;
+        color: white;
+    }
+
+    #galleryModal .modal-title {
+        font-family: "Orbitron", sans-serif;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .modal-img {
+        width: 100%;
+        max-height: 60vh;
+        object-fit: cover;
+        display: block;
+        background: black;
+    }
+
+
+    /* =================================================
+       MOBILE MENU (same pattern as join.html)
+       ================================================= */
+
+    .menu-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+
+        .navigation {
+            flex-wrap: wrap;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+
+        .nav-links {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+    }
+
+</style>
+
 </head>
-<body>
 
-<!-- Navigation -->
-<div class="navigation">
-    <a href="/index.html">Home</a>
-    <a href="/about.html">About</a>
-    <a href="/HTML/events.html">Events</a>
-    <a href="/HTML/workshops.html">Workshops</a>
-    <a href="/HTML/gallery.html" class="active">Gallery</a>
-    <a href="/HTML/project.html">Projects</a>
-    <a href="/HTML/join.html">Join</a>
-    <a href="/HTML/contact.html">Contact</a>
-</div>
 
-<!-- Page header -->
-<header class="page-header text-center">
-  <div class="container">
-    <h1 class="logo-font">Gallery</h1>
-    <p class="text-muted">A showcase of student animation, motion and digital art</p>
-  </div>
-</header>
+<body class="gallery-page">
 
-<div class="container">
 
-  <!-- Search bar -->
-  <div class="row justify-content-center mb-3">
-    <div class="col-md-6">
-      <input type="text" id="searchInput" class="form-control search-input"
-             placeholder="Search by title, student or category...">
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <nav class="navigation">
+
+        <a href="../index.html" class="logo">
+            CANVAS
+        </a>
+
+        <button type="button" class="menu-toggle" id="menuToggle">
+            ☰
+        </button>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="workshops.html">Workshops</a>
+            <a href="gallery.html" class="active">Gallery</a>
+            <a href="project.html">Projects</a>
+            <a href="join.html">Join</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <header class="gallery-hero">
+
+        <div class="gallery-hero-content">
+
+            <div class="gallery-small-title">
+                CANVAS // GALLERY
+            </div>
+
+            <h1>
+                THE
+                <span>GALLERY.</span>
+            </h1>
+
+            <p>
+                A showcase of student animation, motion and digital art.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         GALLERY SECTION
+         ===================================================== -->
+
+    <section class="gallery-section">
+
+        <div class="container">
+
+            <!-- Search bar -->
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-6">
+                    <input type="text" id="searchInput" class="form-control search-input"
+                           placeholder="Search by title, student or category...">
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-3" id="filterBar">
+                <button class="btn filter-chip active" data-filter="all">All</button>
+                <button class="btn filter-chip" data-filter="2d">2D</button>
+                <button class="btn filter-chip" data-filter="3d">3D</button>
+                <button class="btn filter-chip" data-filter="motion">Motion graphics</button>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-2 mb-5">
+                <button class="btn btn-outline-canvas" id="favToggle">
+                    <i class="bi bi-heart-fill me-1"></i> View favorites
+                    <span class="badge fav-badge" id="favCount">0</span>
+                </button>
+                <button class="btn btn-outline-canvas" id="clearFavBtn">
+                    <i class="bi bi-trash me-1"></i> Clear favorites
+                </button>
+            </div>
+
+            <!-- Gallery grid -->
+            <div class="row g-4 mb-3" id="galleryGrid">
+
+                <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g1"
+                     data-title="Autumn Watch" data-student="Tan Wei" data-cat-label="2D animation"
+                     data-desc="A warm, storybook-style owl illustration exploring soft shading and an autumn colour palette."
+                     data-software="Procreate" data-year="2025"
+                     data-img="../images/gallery/g1-owl.png">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g1-owl.png" alt="Autumn Watch, a storybook-style illustration of an owl among autumn leaves">
+                        <button class="fav-btn" data-id="g1" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Autumn Watch</div>
+                        <div class="gallery-meta">Tan Wei &middot; 2D animation</div>
+                        <button class="btn view-details-btn w-100" data-id="g1">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g2"
+                     data-title="Blade of Dawn" data-student="Lim Jia" data-cat-label="2D animation"
+                     data-desc="A stylised armoured warrior piece built around a glowing energy blade and moody rim lighting."
+                     data-software="Clip Studio Paint" data-year="2025"
+                     data-img="../images/gallery/g2-warrior-blue.png">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g2-warrior-blue.png" alt="Blade of Dawn, a stylised armoured warrior with a glowing blue energy blade">
+                        <button class="fav-btn" data-id="g2" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Blade of Dawn</div>
+                        <div class="gallery-meta">Lim Jia &middot; 2D animation</div>
+                        <button class="btn view-details-btn w-100" data-id="g2">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g3"
+                     data-title="Verdant Reaper" data-student="Aisha N." data-cat-label="2D animation"
+                     data-desc="A companion piece exploring a second colour palette for the armoured warrior concept, focused on toxic-green lighting."
+                     data-software="Clip Studio Paint" data-year="2024"
+                     data-img="../images/gallery/g3-warrior-green.png">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g3-warrior-green.png" alt="Verdant Reaper, a stylised armoured warrior with a glowing green energy blade">
+                        <button class="fav-btn" data-id="g3" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Verdant Reaper</div>
+                        <div class="gallery-meta">Aisha N. &middot; 2D animation</div>
+                        <button class="btn view-details-btn w-100" data-id="g3">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g4"
+                     data-title="Gilded Grid" data-student="Marcus Ooi" data-cat-label="3D render"
+                     data-desc="A procedural cube field render highlighting a single gold accent piece among brushed metal tiles."
+                     data-software="Blender" data-year="2025"
+                     data-img="../images/gallery/g4-cubes-gold.jpg">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g4-cubes-gold.jpg" alt="Gilded Grid, a 3D render of metallic cubes with one gold cube standing out">
+                        <button class="fav-btn" data-id="g4" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Gilded Grid</div>
+                        <div class="gallery-meta">Marcus Ooi &middot; 3D render</div>
+                        <button class="btn view-details-btn w-100" data-id="g4">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g5"
+                     data-title="Wooden Horizon" data-student="Chen Yi Xuan" data-cat-label="3D render"
+                     data-desc="A tunnel-style arrangement of wooden blocks rendered with a soft light source at the centre."
+                     data-software="Cinema 4D" data-year="2024"
+                     data-img="../images/gallery/g5-cubes-wood.jpg">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g5-cubes-wood.jpg" alt="Wooden Horizon, a 3D render of a wooden cube tunnel with a glowing light at the centre">
+                        <button class="fav-btn" data-id="g5" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Wooden Horizon</div>
+                        <div class="gallery-meta">Chen Yi Xuan &middot; 3D render</div>
+                        <button class="btn view-details-btn w-100" data-id="g5">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g6"
+                     data-title="Sweet Slice" data-student="Nur Ain" data-cat-label="3D render"
+                     data-desc="A playful stylised 3D render of watermelon slices set against a pastel sky."
+                     data-software="Blender" data-year="2025"
+                     data-img="../images/gallery/g6-watermelon.jpg">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g6-watermelon.jpg" alt="Sweet Slice, a playful 3D render of watermelon slices against a pastel sky">
+                        <button class="fav-btn" data-id="g6" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Sweet Slice</div>
+                        <div class="gallery-meta">Nur Ain &middot; 3D render</div>
+                        <button class="btn view-details-btn w-100" data-id="g6">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g7"
+                     data-title="Forest Ambience" data-student="Wong Kar Ling" data-cat-label="Motion graphics"
+                     data-desc="A looping ambient forest scene rendered as a short motion piece, exploring calm background loops."
+                     data-software="After Effects" data-year="2025"
+                     data-img="../images/gallery/g7-forest-poster.jpg" data-video="../videos/motion-forest.mp4">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g7-forest-poster.jpg" alt="Forest Ambience, a still frame from a looping forest motion background">
+                        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
+                        <button class="fav-btn" data-id="g7" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Forest Ambience</div>
+                        <div class="gallery-meta">Wong Kar Ling &middot; Motion graphics</div>
+                        <button class="btn view-details-btn w-100" data-id="g7">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g8"
+                     data-title="Backyard Loop" data-student="Farah Iman" data-cat-label="Motion graphics"
+                     data-desc="A looping backyard motion background exploring natural lighting and gentle camera drift."
+                     data-software="After Effects" data-year="2024"
+                     data-img="../images/gallery/g8-backyard-poster.jpg" data-video="../videos/motion-backyard.mp4">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g8-backyard-poster.jpg" alt="Backyard Loop, a still frame from a looping backyard motion background">
+                        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
+                        <button class="fav-btn" data-id="g8" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Backyard Loop</div>
+                        <div class="gallery-meta">Farah Iman &middot; Motion graphics</div>
+                        <button class="btn view-details-btn w-100" data-id="g8">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g9"
+                     data-title="Nebula Drift" data-student="David Heng" data-cat-label="Motion graphics"
+                     data-desc="A colourful looping nebula motion background built for use as a dynamic backdrop."
+                     data-software="After Effects" data-year="2025"
+                     data-img="../images/gallery/g9-nebula-poster.jpg" data-video="../videos/motion-nebula.mp4">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g9-nebula-poster.jpg" alt="Nebula Drift, a still frame from a looping colourful nebula motion background">
+                        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
+                        <button class="fav-btn" data-id="g9" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Nebula Drift</div>
+                        <div class="gallery-meta">David Heng &middot; Motion graphics</div>
+                        <button class="btn view-details-btn w-100" data-id="g9">View details</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g10"
+                     data-title="Golden Corridor" data-student="Marcus Ooi" data-cat-label="Motion graphics"
+                     data-desc="A looping rotating tunnel animation built around glowing gold light strips and reflective panels."
+                     data-software="After Effects" data-year="2025"
+                     data-img="../images/gallery/g10-tunnel-poster.jpg" data-video="../videos/motion-tunnel.mp4">
+                    <div class="gallery-card">
+                        <img src="../images/gallery/g10-tunnel-poster.jpg" alt="Golden Corridor, a still frame from a looping rotating gold tunnel animation">
+                        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
+                        <button class="fav-btn" data-id="g10" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="gallery-info">
+                        <div class="gallery-title">Golden Corridor</div>
+                        <div class="gallery-meta">Marcus Ooi &middot; Motion graphics</div>
+                        <button class="btn view-details-btn w-100" data-id="g10">View details</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-center gallery-empty" id="emptyState" style="display:none;">
+                No artwork matches your search or filter.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ARTWORK DETAIL MODAL
+         ===================================================== -->
+
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="galleryModalLabel">Artwork title</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <img id="galleryModalImg" src="" alt="" class="modal-img">
+                <video id="galleryModalVideo" class="modal-img" style="display:none;" controls loop playsinline></video>
+                <div class="modal-body">
+                    <p class="small text-muted mb-1" id="galleryModalMeta">by &mdash; &middot; &mdash;</p>
+                    <p id="galleryModalDesc"></p>
+                    <p class="small text-muted mb-0" id="galleryModalTech"></p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Filters -->
-  <div class="d-flex justify-content-center flex-wrap gap-2 mb-3" id="filterBar">
-    <button class="btn filter-chip active" data-filter="all">All</button>
-    <button class="btn filter-chip" data-filter="2d">2D</button>
-    <button class="btn filter-chip" data-filter="3d">3D</button>
-    <button class="btn filter-chip" data-filter="motion">Motion graphics</button>
-  </div>
 
-  <div class="d-flex justify-content-center align-items-center flex-wrap gap-2 mb-4">
-    <button class="btn btn-outline-accent" id="favToggle">
-      <i class="bi bi-heart-fill me-1"></i> View favorites
-      <span class="badge fav-badge" id="favCount">0</span>
-    </button>
-    <button class="btn btn-outline-accent" id="clearFavBtn">
-      <i class="bi bi-trash me-1"></i> Clear favorites
-    </button>
-  </div>
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
 
-  <!-- Gallery grid -->
-  <div class="row g-3 mb-3" id="galleryGrid">
+    <footer>
+        <p>© 2026 Canvas Animation & Multimedia Club</p>
+        <p>Create. Animate. Inspire.</p>
+    </footer>
 
-    <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g1"
-         data-title="Autumn Watch" data-student="Tan Wei" data-cat-label="2D animation"
-         data-desc="A warm, storybook-style owl illustration exploring soft shading and an autumn colour palette."
-         data-software="Procreate" data-year="2025"
-         data-img="/images/gallery/g1-owl.png">
-      <div class="gallery-card">
-        <img src="/images/gallery/g1-owl.png" alt="Autumn Watch, a storybook-style illustration of an owl among autumn leaves">
-        <button class="fav-btn" data-id="g1" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Autumn Watch</div>
-        <div class="gallery-meta">Tan Wei &middot; 2D animation</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g1">View details</button>
-      </div>
-    </div>
 
-    <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g2"
-         data-title="Blade of Dawn" data-student="Lim Jia" data-cat-label="2D animation"
-         data-desc="A stylised armoured warrior piece built around a glowing energy blade and moody rim lighting."
-         data-software="Clip Studio Paint" data-year="2025"
-         data-img="/images/gallery/g2-warrior-blue.png">
-      <div class="gallery-card">
-        <img src="/images/gallery/g2-warrior-blue.png" alt="Blade of Dawn, a stylised armoured warrior with a glowing blue energy blade">
-        <button class="fav-btn" data-id="g2" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Blade of Dawn</div>
-        <div class="gallery-meta">Lim Jia &middot; 2D animation</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g2">View details</button>
-      </div>
-    </div>
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
 
-    <div class="col-6 col-md-4 gallery-item" data-category="2d" data-id="g3"
-         data-title="Verdant Reaper" data-student="Aisha N." data-cat-label="2D animation"
-         data-desc="A companion piece exploring a second colour palette for the armoured warrior concept, focused on toxic-green lighting."
-         data-software="Clip Studio Paint" data-year="2024"
-         data-img="/images/gallery/g3-warrior-green.png">
-      <div class="gallery-card">
-        <img src="/images/gallery/g3-warrior-green.png" alt="Verdant Reaper, a stylised armoured warrior with a glowing green energy blade">
-        <button class="fav-btn" data-id="g3" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Verdant Reaper</div>
-        <div class="gallery-meta">Aisha N. &middot; 2D animation</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g3">View details</button>
-      </div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JavaScript/gallery.js"></script>
 
-    <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g4"
-         data-title="Gilded Grid" data-student="Marcus Ooi" data-cat-label="3D render"
-         data-desc="A procedural cube field render highlighting a single gold accent piece among brushed metal tiles."
-         data-software="Blender" data-year="2025"
-         data-img="/images/gallery/g4-cubes-gold.jpg">
-      <div class="gallery-card">
-        <img src="/images/gallery/g4-cubes-gold.jpg" alt="Gilded Grid, a 3D render of metallic cubes with one gold cube standing out">
-        <button class="fav-btn" data-id="g4" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Gilded Grid</div>
-        <div class="gallery-meta">Marcus Ooi &middot; 3D render</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g4">View details</button>
-      </div>
-    </div>
+    <script>
 
-    <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g5"
-         data-title="Wooden Horizon" data-student="Chen Yi Xuan" data-cat-label="3D render"
-         data-desc="A tunnel-style arrangement of wooden blocks rendered with a soft light source at the centre."
-         data-software="Cinema 4D" data-year="2024"
-         data-img="/images/gallery/g5-cubes-wood.jpg">
-      <div class="gallery-card">
-        <img src="/images/gallery/g5-cubes-wood.jpg" alt="Wooden Horizon, a 3D render of a wooden cube tunnel with a glowing light at the centre">
-        <button class="fav-btn" data-id="g5" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Wooden Horizon</div>
-        <div class="gallery-meta">Chen Yi Xuan &middot; 3D render</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g5">View details</button>
-      </div>
-    </div>
+        /* =================================================
+           MOBILE MENU (same pattern as contact.html / join.html)
+           ================================================= */
 
-    <div class="col-6 col-md-4 gallery-item" data-category="3d" data-id="g6"
-         data-title="Sweet Slice" data-student="Nur Ain" data-cat-label="3D render"
-         data-desc="A playful stylised 3D render of watermelon slices set against a pastel sky."
-         data-software="Blender" data-year="2025"
-         data-img="/images/gallery/g6-watermelon.jpg">
-      <div class="gallery-card">
-        <img src="/images/gallery/g6-watermelon.jpg" alt="Sweet Slice, a playful 3D render of watermelon slices against a pastel sky">
-        <button class="fav-btn" data-id="g6" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Sweet Slice</div>
-        <div class="gallery-meta">Nur Ain &middot; 3D render</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g6">View details</button>
-      </div>
-    </div>
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
 
-    <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g7"
-         data-title="Forest Ambience" data-student="Wong Kar Ling" data-cat-label="Motion graphics"
-         data-desc="A looping ambient forest scene rendered as a short motion piece, exploring calm background loops."
-         data-software="After Effects" data-year="2025"
-         data-img="/images/gallery/g7-forest-poster.jpg" data-video="/videos/motion-forest.mp4">
-      <div class="gallery-card">
-        <img src="/images/gallery/g7-forest-poster.jpg" alt="Forest Ambience, a still frame from a looping forest motion background">
-        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
-        <button class="fav-btn" data-id="g7" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Forest Ambience</div>
-        <div class="gallery-meta">Wong Kar Ling &middot; Motion graphics</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g7">View details</button>
-      </div>
-    </div>
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener("click", function () {
+                navLinks.classList.toggle("open");
+            });
+        }
 
-    <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g8"
-         data-title="Backyard Loop" data-student="Farah Iman" data-cat-label="Motion graphics"
-         data-desc="A looping backyard motion background exploring natural lighting and gentle camera drift."
-         data-software="After Effects" data-year="2024"
-         data-img="/images/gallery/g8-backyard-poster.jpg" data-video="/videos/motion-backyard.mp4">
-      <div class="gallery-card">
-        <img src="/images/gallery/g8-backyard-poster.jpg" alt="Backyard Loop, a still frame from a looping backyard motion background">
-        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
-        <button class="fav-btn" data-id="g8" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Backyard Loop</div>
-        <div class="gallery-meta">Farah Iman &middot; Motion graphics</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g8">View details</button>
-      </div>
-    </div>
+    </script>
 
-    <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g9"
-         data-title="Nebula Drift" data-student="David Heng" data-cat-label="Motion graphics"
-         data-desc="A colourful looping nebula motion background built for use as a dynamic backdrop."
-         data-software="After Effects" data-year="2025"
-         data-img="/images/gallery/g9-nebula-poster.jpg" data-video="/videos/motion-nebula.mp4">
-      <div class="gallery-card">
-        <img src="/images/gallery/g9-nebula-poster.jpg" alt="Nebula Drift, a still frame from a looping colourful nebula motion background">
-        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
-        <button class="fav-btn" data-id="g9" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Nebula Drift</div>
-        <div class="gallery-meta">David Heng &middot; Motion graphics</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g9">View details</button>
-      </div>
-    </div>
 
-    <div class="col-6 col-md-4 gallery-item" data-category="motion" data-id="g10"
-         data-title="Golden Corridor" data-student="Marcus Ooi" data-cat-label="Motion graphics"
-         data-desc="A looping rotating tunnel animation built around glowing gold light strips and reflective panels."
-         data-software="After Effects" data-year="2025"
-         data-img="/images/gallery/g10-tunnel-poster.jpg" data-video="/videos/motion-tunnel.mp4">
-      <div class="gallery-card">
-        <img src="/images/gallery/g10-tunnel-poster.jpg" alt="Golden Corridor, a still frame from a looping rotating gold tunnel animation">
-        <span class="video-badge"><i class="bi bi-play-fill"></i></span>
-        <button class="fav-btn" data-id="g10" aria-label="Save to favorites"><i class="bi bi-heart"></i></button>
-      </div>
-      <div class="gallery-info">
-        <div class="gallery-title">Golden Corridor</div>
-        <div class="gallery-meta">Marcus Ooi &middot; Motion graphics</div>
-        <button class="btn btn-sm btn-outline-accent w-100 view-details-btn" data-id="g10">View details</button>
-      </div>
-    </div>
-
-  </div>
-  <p class="text-center text-muted small" id="emptyState" style="display:none;">No artwork matches your search or filter.</p>
-</div>
-
-<!-- Artwork detail modal -->
-<div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <h5 class="modal-title logo-font" id="galleryModalLabel">Artwork title</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <img id="galleryModalImg" src="" alt="" class="modal-img">
-      <video id="galleryModalVideo" class="modal-img" style="display:none;" controls loop playsinline></video>
-      <div class="modal-body">
-        <p class="small text-muted mb-1" id="galleryModalMeta">by &mdash; &middot; &mdash;</p>
-        <p id="galleryModalDesc"></p>
-        <p class="small text-muted mb-0" id="galleryModalTech"></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="text-center py-4">
-  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-    <span class="small text-muted">&copy; Canvas Club</span>
-    <div class="social-icons mt-2 mt-md-0">
-      <a href="#"><i class="bi bi-instagram"></i></a>
-      <a href="#"><i class="bi bi-discord"></i></a>
-      <a href="#"><i class="bi bi-tiktok"></i></a>
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/JavaScript/gallery.js"></script>
 </body>
 </html>
