@@ -8,10 +8,7 @@
 
     <title>Projects | Canvas Animation & Multimedia Club</title>
 
-    <!-- =====================================================
-         GOOGLE FONTS
-         ===================================================== -->
-
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
@@ -23,11 +20,7 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-
-    <!-- =====================================================
-         BOOTSTRAP
-         ===================================================== -->
-
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
@@ -36,14 +29,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
 
-
-    <!-- =====================================================
-         PROJECT CSS
-         ===================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="/CSS/project.css">
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="../CSS/project.css">
 
 </head>
 
@@ -57,64 +44,42 @@
 
     <nav class="navigation">
 
-        <a
-            href="/HTML/index.html"
-            class="logo">
-
+        <a href="index.html" class="logo">
             CANVAS
-
         </a>
 
 
         <button
             type="button"
             class="menu-toggle"
-            id="menuToggle">
+            id="menuToggle"
+            aria-label="Toggle navigation menu"
+            aria-controls="navLinks"
+            aria-expanded="false">
 
             ☰
 
         </button>
 
 
-        <div
-            class="nav-links"
-            id="navLinks">
+        <div class="nav-links" id="navLinks">
 
-            <a href="/HTML/index.html">
-                Home
-            </a>
-
-            <a href="/HTML/about.html">
-                About
-            </a>
-
-            <a href="/HTML/events.html">
-                Events
-            </a>
-
-            <a href="/HTML/workshops.html">
-                Workshops
-            </a>
-
-            <a href="/HTML/gallery.html">
-                Gallery
-            </a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="workshops.html">Workshops</a>
+            <a href="gallery.html">Gallery</a>
 
             <a
-                href="/HTML/project.html"
+                href="project.html"
                 class="active">
 
                 Projects
 
             </a>
 
-            <a href="/HTML/join.html">
-                Join
-            </a>
-
-            <a href="/HTML/contact.html">
-                Contact
-            </a>
+            <a href="join.html">Join</a>
+            <a href="contact.html">Contact</a>
 
         </div>
 
@@ -130,9 +95,7 @@
         <div class="project-hero-content">
 
             <div class="project-small-title">
-
                 CANVAS // PROJECTS
-
             </div>
 
 
@@ -148,10 +111,8 @@
 
 
             <p>
-
-                Explore animation, illustration, 3D design,
-                digital art and motion graphics created by our members.
-
+                Discover complete student projects with project details,
+                creative tools and motion previews.
             </p>
 
         </div>
@@ -168,12 +129,12 @@
         <div class="container">
 
 
-            <!-- =====================================================
-                 PROJECT CATEGORY FILTER
-                 ===================================================== -->
+            <!-- =================================================
+                 CATEGORY FILTER
+                 ================================================= -->
 
             <div
-                class="d-flex justify-content-center flex-wrap gap-2 mb-5"
+                class="d-flex justify-content-center flex-wrap gap-2 mb-4"
                 id="projectFilterBar">
 
 
@@ -216,15 +177,26 @@
 
                 </button>
 
-
             </div>
 
 
-            <!-- =====================================================
-                 PROJECT GRID
+            <!-- =================================================
+                 PROJECT COUNT
+                 ================================================= -->
 
-                 JavaScript will automatically create all cards here.
-                 ===================================================== -->
+            <p
+                id="projectCount"
+                class="text-center text-muted small mb-4">
+
+                27 Student Projects
+
+            </p>
+
+
+            <!-- =================================================
+                 PROJECT GRID
+                 Generated automatically by project.js
+                 ================================================= -->
 
             <div
                 class="row g-4"
@@ -232,7 +204,9 @@
             </div>
 
 
-            <!-- Empty Filter State -->
+            <!-- =================================================
+                 EMPTY STATE
+                 ================================================= -->
 
             <p
                 id="projectEmpty"
@@ -242,7 +216,6 @@
                 No projects are available in this category.
 
             </p>
-
 
         </div>
 
@@ -261,16 +234,10 @@
         aria-hidden="true">
 
 
-        <div
-            class="modal-dialog modal-dialog-centered">
-
+        <div class="modal-dialog modal-dialog-centered">
 
             <div class="modal-content">
 
-
-                <!-- =================================================
-                     MODAL HEADER
-                     ================================================= -->
 
                 <div class="modal-header border-0">
 
@@ -293,20 +260,12 @@
                 </div>
 
 
-                <!-- =================================================
-                     STATIC IMAGE
-                     ================================================= -->
-
                 <img
                     id="modalImg"
                     src=""
                     alt=""
                     class="modal-img">
 
-
-                <!-- =================================================
-                     VIDEO
-                     ================================================= -->
 
                 <video
                     id="modalVideo"
@@ -320,24 +279,15 @@
                 </video>
 
 
-                <!-- =================================================
-                     PROJECT DETAILS
-                     ================================================= -->
-
                 <div class="modal-body">
-
 
                     <p
                         class="small text-muted mb-1"
                         id="modalMeta">
-
-                        by &mdash; &middot; &mdash;
-
                     </p>
 
 
-                    <p id="modalDesc">
-                    </p>
+                    <p id="modalDesc"></p>
 
 
                     <p
@@ -345,9 +295,7 @@
                         id="modalTech">
                     </p>
 
-
                 </div>
-
 
             </div>
 
@@ -381,15 +329,10 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
 
-
-    <script
-        src="/JavaScript/project.js">
-    </script>
+    <script src="../JavaScript/project.js"></script>
 
 
-    <!-- =====================================================
-         MOBILE MENU
-         ===================================================== -->
+    <!-- Mobile Navigation -->
 
     <script>
 
@@ -406,7 +349,13 @@
                 "click",
                 function () {
 
-                    navLinks.classList.toggle("open");
+                    const isOpen =
+                        navLinks.classList.toggle("open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
 
                 }
             );
@@ -414,7 +363,6 @@
         }
 
     </script>
-
 
 </body>
 

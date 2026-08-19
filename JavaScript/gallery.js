@@ -1,301 +1,978 @@
-// gallery.js — category filter + search + favorites + motion previews + detail modal
+// =========================================================
+// CANVAS GALLERY
+//
+// Features:
+// 1. Search
+// 2. Category filtering
+// 3. Favorites
+// 4. LocalStorage
+// 5. Favorite counter
+// 6. Favorites-only view
+// 7. Artwork detail modal
+// 8. Motion Graphics preview
+// 9. Curated mixed showcase layout
+// 10. Dynamic artwork count
+// =========================================================
+
+
+// =========================================================
+// LOCAL STORAGE
+// =========================================================
 
 const FAV_KEY = "canvas_gallery_favorites";
 
-const filterChips = document.querySelectorAll(".filter-chip");
-const galleryItems = document.querySelectorAll(".gallery-item");
-const favToggle = document.getElementById("favToggle");
-const favCountEl = document.getElementById("favCount");
-const clearFavBtn = document.getElementById("clearFavBtn");
-const searchInput = document.getElementById("searchInput");
-const emptyState = document.getElementById("emptyState");
 
-let favoritesViewActive = false;
-let activeCategory = "all";
+// =========================================================
+// DOM ELEMENTS
+// =========================================================
 
-// ---------- localStorage favorites ----------
+const filterButtons =
+    document.querySelectorAll(".filter-chip");
 
-function getFavorites() {
-  try {
-    const stored = localStorage.getItem(FAV_KEY);
-    const parsed = stored ? JSON.parse(stored) : [];
-    return Array.isArray(parsed) ? parsed : [];
-  } catch (error) {
-    console.warn("Could not read gallery favorites. Resetting favorites.", error);
-    return [];
-  }
-}
+const favoriteButtons =
+    document.querySelectorAll(".fav-btn");
 
-function saveFavorites(favorites) {
-  localStorage.setItem(FAV_KEY, JSON.stringify(favorites));
-}
+const favoriteToggle =
+    document.getElementById("favToggle");
 
-function isFavorite(id) {
-  return getFavorites().includes(id);
-}
+const favoriteToggleText =
+    document.getElementById("favToggleText");
 
-function toggleFavorite(id) {
-  let favorites = getFavorites();
+const favoriteToggleIcon =
+    document.getElementById("favToggleIcon");
 
-  if (favorites.includes(id)) {
-    favorites = favorites.filter((item) => item !== id);
-  } else {
-    favorites.push(id);
-  }
+const clearFavoriteButton =
+    document.getElementById("clearFavBtn");
 
-  saveFavorites(favorites);
-  return favorites.includes(id);
-}
+const searchInput =
+    document.getElementById("searchInput");
 
-// ---------- favorite counter ----------
+const emptyState =
+    document.getElementById("emptyState");
 
-function updateFavCount() {
-  if (favCountEl) {
-    favCountEl.textContent = getFavorites().length;
-  }
-}
+const galleryGrid =
+    document.getElementById("galleryGrid");
 
-// Restore favorite button states on load
-document.querySelectorAll(".fav-btn").forEach((btn) => {
-  const id = btn.dataset.id;
+const galleryCount =
+    document.getElementById("galleryCount");
 
-  if (isFavorite(id)) {
-    btn.classList.add("active");
-    btn.querySelector("i").className = "bi bi-heart-fill";
-    btn.setAttribute("aria-label", "Remove from favorites");
-  }
 
-  btn.addEventListener("click", (event) => {
-    event.stopPropagation();
+// =========================================================
+// MODAL
+// =========================================================
 
-    const nowActive = toggleFavorite(id);
-    btn.classList.toggle("active", nowActive);
-    btn.querySelector("i").className = nowActive ? "bi bi-heart-fill" : "bi bi-heart";
-    btn.setAttribute(
-      "aria-label",
-      nowActive ? "Remove from favorites" : "Save to favorites"
+const galleryModalElement =
+    document.getElementById("galleryModal");
+
+const galleryModal =
+    bootstrap.Modal.getOrCreateInstance(
+        galleryModalElement
     );
 
-    updateFavCount();
+const galleryModalImg =
+    document.getElementById("galleryModalImg");
 
-    if (favoritesViewActive) {
-      applyFilters();
+const galleryModalVideo =
+    document.getElementById("galleryModalVideo");
+
+
+// =========================================================
+// CURRENT STATE
+// =========================================================
+
+let activeFilter = "all";
+let favoritesOnly = false;
+
+
+// =========================================================
+// CURATED SHOWCASE ORDER
+//
+// Desktop rows:
+//
+// Neon Courier | Gilded Grid | Nebula Drift
+// Moonlit Kimono | Glass Orchard | Golden Corridor
+// Blade of Dawn | Fractured Tiles | Chromatic Vortex
+// etc.
+// =========================================================
+
+const GALLERY_SHOWCASE_ORDER = [
+
+    "g11",
+    "g4",
+    "g9",
+
+    "g12",
+    "g17",
+    "g10",
+
+    "g2",
+    "g18",
+    "g24",
+
+    "g1",
+    "g5",
+    "g25",
+
+    "g3",
+    "g22",
+    "g26",
+
+    "g14",
+    "g6",
+    "g7"
+
+];
+
+
+// =========================================================
+// GET FAVORITES
+// =========================================================
+
+function getFavorites() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(FAV_KEY);
+
+        if (!saved) {
+            return [];
+        }
+
+        const parsed =
+            JSON.parse(saved);
+
+        return Array.isArray(parsed)
+            ? parsed
+            : [];
+
     }
-  });
-});
 
-updateFavCount();
+    catch (error) {
 
-// ---------- clear favorites ----------
+        console.warn(
+            "Unable to read favorites.",
+            error
+        );
 
-if (clearFavBtn) {
-  clearFavBtn.addEventListener("click", () => {
-    saveFavorites([]);
+        return [];
 
-    document.querySelectorAll(".fav-btn").forEach((btn) => {
-      btn.classList.remove("active");
-      btn.querySelector("i").className = "bi bi-heart";
-      btn.setAttribute("aria-label", "Save to favorites");
-    });
-
-    updateFavCount();
-
-    if (favoritesViewActive) {
-      applyFilters();
     }
-  });
+
 }
 
-// ---------- category filter ----------
 
-filterChips.forEach((chip) => {
-  chip.addEventListener("click", () => {
-    filterChips.forEach((item) => item.classList.remove("active"));
-    chip.classList.add("active");
+// =========================================================
+// SAVE FAVORITES
+// =========================================================
 
-    activeCategory = chip.dataset.filter;
-    favoritesViewActive = false;
+function saveFavorites(favorites) {
 
-    if (favToggle) {
-      favToggle.classList.remove("active");
-    }
+    localStorage.setItem(
+        FAV_KEY,
+        JSON.stringify(favorites)
+    );
 
-    applyFilters();
-  });
-});
-
-// ---------- favorites-only view ----------
-
-if (favToggle) {
-  favToggle.addEventListener("click", () => {
-    favoritesViewActive = !favoritesViewActive;
-    favToggle.classList.toggle("active", favoritesViewActive);
-
-    if (favoritesViewActive) {
-      filterChips.forEach((chip) => chip.classList.remove("active"));
-    } else {
-      activeCategory = "all";
-      filterChips.forEach((chip) => chip.classList.remove("active"));
-      if (filterChips[0]) {
-        filterChips[0].classList.add("active");
-      }
-    }
-
-    applyFilters();
-  });
 }
 
-// ---------- search ----------
+
+// =========================================================
+// ARRANGE SHOWCASE
+// =========================================================
+
+function arrangeGalleryShowcase() {
+
+    if (!galleryGrid) {
+        return;
+    }
+
+
+    const itemMap =
+        new Map();
+
+
+    document
+        .querySelectorAll(".gallery-item")
+        .forEach(
+            (item) => {
+
+                itemMap.set(
+                    item.dataset.id,
+                    item
+                );
+
+            }
+        );
+
+
+    GALLERY_SHOWCASE_ORDER.forEach(
+        (id) => {
+
+            const item =
+                itemMap.get(id);
+
+            if (item) {
+
+                galleryGrid.appendChild(
+                    item
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// UPDATE FAVORITE UI
+// =========================================================
+
+function updateFavoriteUI() {
+
+    const favorites =
+        getFavorites();
+
+
+    document
+        .querySelectorAll(".fav-btn")
+        .forEach(
+            (button) => {
+
+                const id =
+                    button.dataset.id;
+
+                const icon =
+                    button.querySelector("i");
+
+
+                if (favorites.includes(id)) {
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                    icon.classList.remove(
+                        "bi-heart"
+                    );
+
+                    icon.classList.add(
+                        "bi-heart-fill"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Remove artwork from favorites"
+                    );
+
+                }
+
+                else {
+
+                    button.classList.remove(
+                        "active"
+                    );
+
+                    icon.classList.remove(
+                        "bi-heart-fill"
+                    );
+
+                    icon.classList.add(
+                        "bi-heart"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Save artwork to favorites"
+                    );
+
+                }
+
+            }
+        );
+
+
+    const favCount =
+        document.getElementById("favCount");
+
+
+    if (favCount) {
+
+        favCount.textContent =
+            favorites.length;
+
+    }
+
+}
+
+
+// =========================================================
+// FAVORITE BUTTONS
+// =========================================================
+
+favoriteButtons.forEach(
+    (button) => {
+
+        button.addEventListener(
+            "click",
+            (event) => {
+
+                event.stopPropagation();
+
+
+                const id =
+                    button.dataset.id;
+
+
+                let favorites =
+                    getFavorites();
+
+
+                if (favorites.includes(id)) {
+
+                    favorites =
+                        favorites.filter(
+                            (favoriteId) =>
+                                favoriteId !== id
+                        );
+
+                }
+
+                else {
+
+                    favorites.push(id);
+
+                }
+
+
+                saveFavorites(
+                    favorites
+                );
+
+
+                updateFavoriteUI();
+
+                applyFilters();
+
+            }
+        );
+
+    }
+);
+
+
+// =========================================================
+// CATEGORY FILTER
+// =========================================================
+
+filterButtons.forEach(
+    (button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                filterButtons.forEach(
+                    (item) => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                activeFilter =
+                    button.dataset.filter;
+
+
+                applyFilters();
+
+            }
+        );
+
+    }
+);
+
+
+// =========================================================
+// FAVORITES VIEW
+// =========================================================
+
+if (favoriteToggle) {
+
+    favoriteToggle.addEventListener(
+        "click",
+        () => {
+
+            favoritesOnly =
+                !favoritesOnly;
+
+
+            favoriteToggle.classList.toggle(
+                "active",
+                favoritesOnly
+            );
+
+
+            if (favoriteToggleText) {
+
+                favoriteToggleText.textContent =
+                    favoritesOnly
+                        ? "Show All"
+                        : "View Favorites";
+
+            }
+
+
+            if (favoriteToggleIcon) {
+
+                favoriteToggleIcon.className =
+                    favoritesOnly
+                        ? "bi bi-grid me-1"
+                        : "bi bi-heart-fill me-1";
+
+            }
+
+
+            applyFilters();
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// CLEAR FAVORITES
+// =========================================================
+
+if (clearFavoriteButton) {
+
+    clearFavoriteButton.addEventListener(
+        "click",
+        () => {
+
+            localStorage.removeItem(
+                FAV_KEY
+            );
+
+
+            favoritesOnly =
+                false;
+
+
+            favoriteToggle?.classList.remove(
+                "active"
+            );
+
+
+            if (favoriteToggleText) {
+
+                favoriteToggleText.textContent =
+                    "View Favorites";
+
+            }
+
+
+            if (favoriteToggleIcon) {
+
+                favoriteToggleIcon.className =
+                    "bi bi-heart-fill me-1";
+
+            }
+
+
+            updateFavoriteUI();
+
+            applyFilters();
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// SEARCH
+// =========================================================
 
 if (searchInput) {
-  searchInput.addEventListener("input", applyFilters);
+
+    searchInput.addEventListener(
+        "input",
+        applyFilters
+    );
+
 }
 
-// ---------- motion previews ----------
 
-function setPreviewPlayback(item, shouldPlay) {
-  const previewVideo = item.querySelector(".gallery-preview-video");
-  if (!previewVideo) return;
+// =========================================================
+// UPDATE ARTWORK COUNT
+// =========================================================
 
-  previewVideo.muted = true;
+function updateGalleryCount(
+    visibleCount
+) {
 
-  if (shouldPlay) {
-    previewVideo.play().catch(() => {
-      // Muted autoplay is normally allowed. If the browser still blocks it,
-      // the poster frame remains visible instead of breaking the gallery.
-    });
-  } else {
-    previewVideo.pause();
-  }
+    if (!galleryCount) {
+        return;
+    }
+
+
+    if (favoritesOnly) {
+
+        galleryCount.textContent =
+            visibleCount === 1
+                ? "1 Favorite Artwork"
+                : `${visibleCount} Favorite Artworks`;
+
+        return;
+
+    }
+
+
+    if (activeFilter === "2d") {
+
+        galleryCount.textContent =
+            `${visibleCount} 2D Artworks`;
+
+    }
+
+    else if (
+        activeFilter === "3d"
+    ) {
+
+        galleryCount.textContent =
+            `${visibleCount} 3D Artworks`;
+
+    }
+
+    else if (
+        activeFilter === "motion"
+    ) {
+
+        galleryCount.textContent =
+            `${visibleCount} Motion Graphics Artworks`;
+
+    }
+
+    else {
+
+        galleryCount.textContent =
+            visibleCount === 1
+                ? "1 Artwork"
+                : `${visibleCount} Artworks`;
+
+    }
+
 }
 
-function startVisibleMotionPreviews() {
-  galleryItems.forEach((item) => {
-    const isVisible = !item.classList.contains("hidden");
-    setPreviewPlayback(item, isVisible);
-  });
-}
 
-// ---------- combined filter: category / favorites + search ----------
+// =========================================================
+// APPLY SEARCH + FILTER + FAVORITES
+// =========================================================
 
 function applyFilters() {
-  const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
-  const favorites = getFavorites();
-  let anyVisible = false;
 
-  galleryItems.forEach((item) => {
-    const matchesCategory = favoritesViewActive
-      ? favorites.includes(item.dataset.id)
-      : activeCategory === "all" || item.dataset.category === activeCategory;
+    const searchTerm =
+        searchInput
+            ? searchInput.value
+                .trim()
+                .toLowerCase()
+            : "";
 
-    const searchable = [
-      item.dataset.title || "",
-      item.dataset.student || "",
-      item.dataset.catLabel || "",
-    ]
-      .join(" ")
-      .toLowerCase();
 
-    const matchesSearch =
-      searchTerm === "" || searchable.includes(searchTerm);
+    const favorites =
+        getFavorites();
 
-    const visible = matchesCategory && matchesSearch;
 
-    item.classList.toggle("hidden", !visible);
-    setPreviewPlayback(item, visible);
+    let visibleCount = 0;
 
-    if (visible) {
-      anyVisible = true;
+
+    document
+        .querySelectorAll(".gallery-item")
+        .forEach(
+            (item) => {
+
+                const category =
+                    item.dataset.category;
+
+                const id =
+                    item.dataset.id;
+
+                const title =
+                    (
+                        item.dataset.title ||
+                        ""
+                    ).toLowerCase();
+
+                const student =
+                    (
+                        item.dataset.student ||
+                        ""
+                    ).toLowerCase();
+
+                const categoryLabel =
+                    (
+                        item.dataset.catLabel ||
+                        ""
+                    ).toLowerCase();
+
+
+                const matchesCategory =
+                    activeFilter === "all" ||
+                    category === activeFilter;
+
+
+                const matchesFavorites =
+                    !favoritesOnly ||
+                    favorites.includes(id);
+
+
+                const matchesSearch =
+                    !searchTerm ||
+                    title.includes(searchTerm) ||
+                    student.includes(searchTerm) ||
+                    categoryLabel.includes(searchTerm);
+
+
+                const shouldShow =
+                    matchesCategory &&
+                    matchesFavorites &&
+                    matchesSearch;
+
+
+                item.style.display =
+                    shouldShow
+                        ? ""
+                        : "none";
+
+
+                if (shouldShow) {
+
+                    visibleCount++;
+
+                }
+
+
+                const previewVideo =
+                    item.querySelector(
+                        ".gallery-preview-video"
+                    );
+
+
+                if (previewVideo) {
+
+                    if (shouldShow) {
+
+                        previewVideo
+                            .play()
+                            .catch(
+                                () => {
+                                    // Browser may block autoplay.
+                                }
+                            );
+
+                    }
+
+                    else {
+
+                        previewVideo.pause();
+
+                    }
+
+                }
+
+            }
+        );
+
+
+    if (emptyState) {
+
+        emptyState.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+
     }
-  });
 
-  if (emptyState) {
-    emptyState.style.display = anyVisible ? "none" : "block";
 
-    if (!anyVisible && favoritesViewActive && getFavorites().length === 0) {
-      emptyState.textContent =
-        "No favorite artworks yet. Click the heart icon to save your favorite works.";
-    } else if (!anyVisible) {
-      emptyState.textContent = "No artwork matches your search or filter.";
-    }
-  }
+    updateGalleryCount(
+        visibleCount
+    );
+
 }
 
-// ---------- artwork detail modal ----------
 
-const galleryModalEl = document.getElementById("galleryModal");
-const galleryModal = bootstrap.Modal.getOrCreateInstance(galleryModalEl);
-const galleryModalImg = document.getElementById("galleryModalImg");
-const galleryModalVideo = document.getElementById("galleryModalVideo");
+// =========================================================
+// VIEW DETAILS
+// =========================================================
+
+document
+    .querySelectorAll(
+        ".view-details-btn"
+    )
+    .forEach(
+        (button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const item =
+                        button.closest(
+                            ".gallery-item"
+                        );
+
+
+                    if (!item) {
+                        return;
+                    }
+
+
+                    openGalleryModal(
+                        item
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+// =========================================================
+// OPEN GALLERY MODAL
+// =========================================================
 
 function openGalleryModal(item) {
-  document.getElementById("galleryModalLabel").textContent =
-    item.dataset.title || "Artwork";
-  document.getElementById("galleryModalMeta").textContent =
-    `by ${item.dataset.student || "—"} · ${item.dataset.catLabel || "—"}`;
-  document.getElementById("galleryModalDesc").textContent =
-    item.dataset.desc || "";
-  document.getElementById("galleryModalTech").textContent =
-    `Software: ${item.dataset.software || "—"} · Year: ${item.dataset.year || "—"}`;
 
-  const videoSrc = item.dataset.video;
+    const title =
+        item.dataset.title;
 
-  if (videoSrc) {
-    galleryModalImg.style.display = "none";
-    galleryModalImg.removeAttribute("src");
+    const student =
+        item.dataset.student;
 
-    galleryModalVideo.style.display = "block";
-    galleryModalVideo.muted = true;
-    galleryModalVideo.loop = true;
-    galleryModalVideo.playsInline = true;
-    galleryModalVideo.poster = item.dataset.img || "";
-    galleryModalVideo.src = videoSrc;
-    galleryModalVideo.load();
-  } else {
-    galleryModalVideo.pause();
-    galleryModalVideo.removeAttribute("src");
-    galleryModalVideo.load();
-    galleryModalVideo.style.display = "none";
+    const category =
+        item.dataset.catLabel;
 
-    galleryModalImg.style.display = "block";
-    galleryModalImg.src = item.dataset.img || "";
-    galleryModalImg.alt = item.dataset.title || "Artwork";
-  }
+    const description =
+        item.dataset.desc;
 
-  galleryModal.show();
+    const software =
+        item.dataset.software;
+
+    const year =
+        item.dataset.year;
+
+    const image =
+        item.dataset.img;
+
+    const video =
+        item.dataset.video;
+
+
+    document.getElementById(
+        "galleryModalLabel"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "galleryModalMeta"
+    ).textContent =
+        `by ${student} · ${category}`;
+
+
+    document.getElementById(
+        "galleryModalDesc"
+    ).textContent =
+        description;
+
+
+    document.getElementById(
+        "galleryModalTech"
+    ).textContent =
+        `Software: ${software} · Year: ${year}`;
+
+
+    // =====================================================
+    // VIDEO
+    // =====================================================
+
+    if (video) {
+
+        galleryModalImg.style.display =
+            "none";
+
+
+        galleryModalImg.removeAttribute(
+            "src"
+        );
+
+
+        galleryModalVideo.style.display =
+            "block";
+
+
+        galleryModalVideo.muted =
+            true;
+
+
+        galleryModalVideo.loop =
+            true;
+
+
+        galleryModalVideo.playsInline =
+            true;
+
+
+        if (image) {
+
+            galleryModalVideo.poster =
+                image;
+
+        }
+
+        else {
+
+            galleryModalVideo.removeAttribute(
+                "poster"
+            );
+
+        }
+
+
+        galleryModalVideo.src =
+            video;
+
+
+        galleryModalVideo.load();
+
+    }
+
+
+    // =====================================================
+    // IMAGE
+    // =====================================================
+
+    else {
+
+        galleryModalVideo.pause();
+
+
+        galleryModalVideo.removeAttribute(
+            "src"
+        );
+
+
+        galleryModalVideo.load();
+
+
+        galleryModalVideo.style.display =
+            "none";
+
+
+        galleryModalImg.style.display =
+            "block";
+
+
+        galleryModalImg.src =
+            image;
+
+
+        galleryModalImg.alt =
+            title;
+
+    }
+
+
+    galleryModal.show();
+
 }
 
-// Autoplay the selected motion artwork after Bootstrap finishes opening the modal.
-galleryModalEl.addEventListener("shown.bs.modal", () => {
-  if (
-    galleryModalVideo.style.display !== "none" &&
-    galleryModalVideo.getAttribute("src")
-  ) {
-    galleryModalVideo.muted = true;
-    galleryModalVideo.play().catch(() => {
-      // Controls remain available if autoplay is blocked by the browser.
-    });
-  }
-});
 
-// Stop and reset modal video after closing.
-galleryModalEl.addEventListener("hidden.bs.modal", () => {
-  galleryModalVideo.pause();
-  galleryModalVideo.currentTime = 0;
-  galleryModalVideo.removeAttribute("src");
-  galleryModalVideo.load();
-});
+// =========================================================
+// MODAL VIDEO AUTOPLAY
+// =========================================================
 
-document.querySelectorAll(".view-details-btn").forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    event.stopPropagation();
-    const parentItem = btn.closest(".gallery-item");
+galleryModalElement.addEventListener(
+    "shown.bs.modal",
+    () => {
 
-    if (parentItem) {
-      openGalleryModal(parentItem);
+        if (
+            galleryModalVideo.style.display !== "none" &&
+            galleryModalVideo.getAttribute("src")
+        ) {
+
+            galleryModalVideo.muted =
+                true;
+
+
+            galleryModalVideo
+                .play()
+                .catch(
+                    () => {
+                        // Controls remain available.
+                    }
+                );
+
+        }
+
     }
-  });
-});
+);
 
-// Start the four motion previews when the page loads.
-startVisibleMotionPreviews();
+
+// =========================================================
+// STOP VIDEO WHEN MODAL CLOSES
+// =========================================================
+
+galleryModalElement.addEventListener(
+    "hidden.bs.modal",
+    () => {
+
+        galleryModalVideo.pause();
+
+
+        try {
+
+            galleryModalVideo.currentTime =
+                0;
+
+        }
+
+        catch (error) {
+
+            // Ignore before metadata loads.
+
+        }
+
+
+        galleryModalVideo.removeAttribute(
+            "src"
+        );
+
+
+        galleryModalVideo.load();
+
+    }
+);
+
+
+// =========================================================
+// INITIALISE
+// =========================================================
+
+arrangeGalleryShowcase();
+
+updateFavoriteUI();
+
+applyFilters();

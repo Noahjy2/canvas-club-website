@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,11 +9,7 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
@@ -30,15 +25,11 @@
         rel="stylesheet">
 
     <!-- Gallery CSS -->
-    <link
-        rel="stylesheet"
-        href="../CSS/gallery.css">
-
+    <link rel="stylesheet" href="../CSS/gallery.css">
 </head>
 
 
 <body class="gallery-page">
-
 
     <!-- =====================================================
          NAVIGATION
@@ -46,43 +37,36 @@
 
     <nav class="navigation">
 
-        <a
-            href="../index.html"
-            class="logo">
-
+        <a href="index.html" class="logo">
             CANVAS
-
         </a>
 
         <button
             type="button"
             class="menu-toggle"
-            id="menuToggle">
+            id="menuToggle"
+            aria-label="Toggle navigation menu"
+            aria-controls="navLinks"
+            aria-expanded="false">
 
             ☰
 
         </button>
 
-        <div
-            class="nav-links"
-            id="navLinks">
+        <div class="nav-links" id="navLinks">
 
-            <a href="/HTML/index.html">Home</a>
-            <a href="/HTML/about.html">About</a>
-            <a href="/HTML/events.html">Events</a>
-            <a href="/HTML/workshops.html">Workshops</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="workshops.html">Workshops</a>
 
-            <a
-                href="/HTML/gallery.html"
-                class="active">
-
+            <a href="gallery.html" class="active">
                 Gallery
-
             </a>
 
-            <a href="/HTML/project.html">Projects</a>
-            <a href="/HTML/join.html">Join</a>
-            <a href="/HTML/contact.html">Contact</a>
+            <a href="project.html">Projects</a>
+            <a href="join.html">Join</a>
+            <a href="contact.html">Contact</a>
 
         </div>
 
@@ -107,8 +91,8 @@
             </h1>
 
             <p>
-                Explore animation, illustration, digital art,
-                3D design and motion graphics created by our members.
+                Browse individual artworks and save your favourite pieces
+                from our members.
             </p>
 
         </div>
@@ -125,11 +109,21 @@
         <div class="container">
 
 
-            <!-- Search -->
+            <!-- =================================================
+                 SEARCH
+                 ================================================= -->
 
             <div class="row justify-content-center mb-3">
 
                 <div class="col-md-6">
+
+                    <label
+                        for="searchInput"
+                        class="visually-hidden">
+
+                        Search gallery
+
+                    </label>
 
                     <input
                         type="text"
@@ -142,13 +136,16 @@
             </div>
 
 
-            <!-- Filters -->
+            <!-- =================================================
+                 FILTERS
+                 ================================================= -->
 
             <div
                 class="d-flex justify-content-center flex-wrap gap-2 mb-3"
                 id="filterBar">
 
                 <button
+                    type="button"
                     class="btn filter-chip active"
                     data-filter="all">
 
@@ -157,6 +154,7 @@
                 </button>
 
                 <button
+                    type="button"
                     class="btn filter-chip"
                     data-filter="2d">
 
@@ -165,6 +163,7 @@
                 </button>
 
                 <button
+                    type="button"
                     class="btn filter-chip"
                     data-filter="3d">
 
@@ -173,6 +172,7 @@
                 </button>
 
                 <button
+                    type="button"
                     class="btn filter-chip"
                     data-filter="motion">
 
@@ -183,18 +183,26 @@
             </div>
 
 
-            <!-- Favorites -->
+            <!-- =================================================
+                 FAVORITES
+                 ================================================= -->
 
             <div
-                class="d-flex justify-content-center align-items-center flex-wrap gap-2 mb-5">
+                class="d-flex justify-content-center align-items-center flex-wrap gap-2 mb-4">
 
                 <button
+                    type="button"
                     class="btn btn-outline-canvas"
                     id="favToggle">
 
-                    <i class="bi bi-heart-fill me-1"></i>
+                    <i
+                        class="bi bi-heart-fill me-1"
+                        id="favToggleIcon">
+                    </i>
 
-                    View Favorites
+                    <span id="favToggleText">
+                        View Favorites
+                    </span>
 
                     <span
                         class="badge fav-badge"
@@ -206,7 +214,9 @@
 
                 </button>
 
+
                 <button
+                    type="button"
                     class="btn btn-outline-canvas"
                     id="clearFavBtn">
 
@@ -219,8 +229,22 @@
             </div>
 
 
+            <!-- =================================================
+                 ARTWORK COUNT
+                 ================================================= -->
+
+            <p
+                id="galleryCount"
+                class="text-center text-muted small mb-4">
+
+                18 Artworks
+
+            </p>
+
+
             <!-- =====================================================
                  GALLERY GRID
+                 JavaScript rearranges this into a curated mixed order.
                  ===================================================== -->
 
             <div
@@ -251,9 +275,10 @@
                             alt="Autumn Watch">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g1"
-                            aria-label="Save to favorites">
+                            aria-label="Save Autumn Watch to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -272,6 +297,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g1">
 
@@ -307,9 +333,10 @@
                             alt="Blade of Dawn">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g2"
-                            aria-label="Save to favorites">
+                            aria-label="Save Blade of Dawn to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -328,6 +355,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g2">
 
@@ -363,9 +391,10 @@
                             alt="Verdant Reaper">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g3"
-                            aria-label="Save to favorites">
+                            aria-label="Save Verdant Reaper to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -384,6 +413,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g3">
 
@@ -419,9 +449,10 @@
                             alt="Neon Courier">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g11"
-                            aria-label="Save to favorites">
+                            aria-label="Save Neon Courier to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -440,6 +471,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g11">
 
@@ -475,9 +507,10 @@
                             alt="Moonlit Kimono">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g12"
-                            aria-label="Save to favorites">
+                            aria-label="Save Moonlit Kimono to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -496,6 +529,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g12">
 
@@ -531,9 +565,10 @@
                             alt="Late Night Deadline">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g14"
-                            aria-label="Save to favorites">
+                            aria-label="Save Late Night Deadline to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -552,6 +587,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g14">
 
@@ -587,9 +623,10 @@
                             alt="Gilded Grid">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g4"
-                            aria-label="Save to favorites">
+                            aria-label="Save Gilded Grid to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -608,6 +645,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g4">
 
@@ -643,9 +681,10 @@
                             alt="Wooden Horizon">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g5"
-                            aria-label="Save to favorites">
+                            aria-label="Save Wooden Horizon to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -664,6 +703,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g5">
 
@@ -699,9 +739,10 @@
                             alt="Sweet Slice">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g6"
-                            aria-label="Save to favorites">
+                            aria-label="Save Sweet Slice to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -720,6 +761,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g6">
 
@@ -755,9 +797,10 @@
                             alt="Glass Orchard">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g17"
-                            aria-label="Save to favorites">
+                            aria-label="Save Glass Orchard to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -776,6 +819,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g17">
 
@@ -811,9 +855,10 @@
                             alt="Fractured Tiles">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g18"
-                            aria-label="Save to favorites">
+                            aria-label="Save Fractured Tiles to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -832,6 +877,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g18">
 
@@ -867,9 +913,10 @@
                             alt="Prism Drop">
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g22"
-                            aria-label="Save to favorites">
+                            aria-label="Save Prism Drop to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -888,6 +935,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g22">
 
@@ -935,9 +983,10 @@
                         </video>
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g7"
-                            aria-label="Save to favorites">
+                            aria-label="Save Forest Ambience to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -956,6 +1005,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g7">
 
@@ -969,7 +1019,7 @@
 
 
                 <!-- =================================================
-                     MOTION 02 - ADAM LEONG
+                     MOTION 02
                      ================================================= -->
 
                 <div
@@ -1003,9 +1053,10 @@
                         </video>
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g9"
-                            aria-label="Save to favorites">
+                            aria-label="Save Nebula Drift to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -1024,6 +1075,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g9">
 
@@ -1071,9 +1123,10 @@
                         </video>
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g10"
-                            aria-label="Save to favorites">
+                            aria-label="Save Golden Corridor to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -1092,6 +1145,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g10">
 
@@ -1139,9 +1193,10 @@
                         </video>
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g24"
-                            aria-label="Save to favorites">
+                            aria-label="Save Chromatic Vortex to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -1160,6 +1215,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g24">
 
@@ -1207,9 +1263,10 @@
                         </video>
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g25"
-                            aria-label="Save to favorites">
+                            aria-label="Save Violet Current to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -1228,6 +1285,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g25">
 
@@ -1275,9 +1333,10 @@
                         </video>
 
                         <button
+                            type="button"
                             class="fav-btn"
                             data-id="g26"
-                            aria-label="Save to favorites">
+                            aria-label="Save Neon Pulse to favorites">
 
                             <i class="bi bi-heart"></i>
 
@@ -1296,6 +1355,7 @@
                         </div>
 
                         <button
+                            type="button"
                             class="btn view-details-btn w-100"
                             data-id="g26">
 
@@ -1307,11 +1367,12 @@
 
                 </div>
 
-
             </div>
 
 
-            <!-- Empty State -->
+            <!-- =================================================
+                 EMPTY STATE
+                 ================================================= -->
 
             <p
                 class="text-center gallery-empty"
@@ -1322,14 +1383,13 @@
 
             </p>
 
-
         </div>
 
     </section>
 
 
     <!-- =====================================================
-         GALLERY DETAIL MODAL
+         ARTWORK DETAIL MODAL
          ===================================================== -->
 
     <div
@@ -1387,9 +1447,6 @@
                     <p
                         class="small text-muted mb-1"
                         id="galleryModalMeta">
-
-                        by &mdash; &middot; &mdash;
-
                     </p>
 
                     <p id="galleryModalDesc"></p>
@@ -1433,10 +1490,10 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
 
-    <script
-        src="../JavaScript/gallery.js">
-    </script>
+    <script src="../JavaScript/gallery.js"></script>
 
+
+    <!-- Mobile Navigation -->
 
     <script>
 
@@ -1453,7 +1510,13 @@
                 "click",
                 function () {
 
-                    navLinks.classList.toggle("open");
+                    const isOpen =
+                        navLinks.classList.toggle("open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
 
                 }
             );
@@ -1461,7 +1524,6 @@
         }
 
     </script>
-
 
 </body>
 

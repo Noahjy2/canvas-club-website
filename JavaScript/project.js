@@ -2,12 +2,17 @@
 // CANVAS STUDENT PROJECTS
 //
 // Features:
-// 1. Dynamic project cards
-// 2. All / 2D / 3D / Motion Graphics filter
-// 3. Project detail modal
-// 4. Motion Graphics video autoplay
-// 5. LocalStorage recently viewed system
-// 6. VIEWED badge on latest 5 viewed projects
+// 1. 27 student projects
+// 2. 9 x 2D
+// 3. 9 x 3D
+// 4. 9 x Motion Graphics
+// 5. Curated mixed All view
+// 6. Category filter
+// 7. Dynamic project count
+// 8. Project detail modal
+// 9. Motion video autoplay
+// 10. LocalStorage recently viewed
+// 11. VIEWED badge on latest 5 projects
 // =========================================================
 
 
@@ -15,8 +20,11 @@
 // LOCAL STORAGE
 // =========================================================
 
-const RECENT_KEY = "canvas_project_recent";
-const MAX_RECENT = 5;
+const RECENT_KEY =
+    "canvas_project_recent";
+
+const MAX_RECENT =
+    5;
 
 
 // =========================================================
@@ -26,7 +34,7 @@ const MAX_RECENT = 5;
 const PROJECTS = [
 
     // =====================================================
-    // 2D / ILLUSTRATION
+    // 2D — 9
     // =====================================================
 
     {
@@ -35,14 +43,11 @@ const PROJECTS = [
         author: "Tan Wei",
         category: "2d",
         categoryLabel: "2D Illustration",
-
         description:
             "A warm storybook-style illustration exploring character design, soft shading and an autumn-inspired colour palette.",
-
         software: "Procreate",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g1-owl.png"
     },
 
@@ -53,14 +58,11 @@ const PROJECTS = [
         author: "Lim Jia",
         category: "2d",
         categoryLabel: "2D Illustration",
-
         description:
             "A stylised armoured character concept combining dramatic lighting, colour contrast and a glowing energy blade.",
-
         software: "Clip Studio Paint",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g2-warrior-blue.png"
     },
 
@@ -71,14 +73,11 @@ const PROJECTS = [
         author: "Aisha N.",
         category: "2d",
         categoryLabel: "2D Illustration",
-
         description:
             "A fantasy character concept exploring green lighting, visual contrast and atmospheric character presentation.",
-
         software: "Clip Studio Paint",
         year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g3-warrior-green.png"
     },
 
@@ -89,14 +88,11 @@ const PROJECTS = [
         author: "Chen Yi Xuan",
         category: "2d",
         categoryLabel: "Digital Illustration",
-
         description:
             "A futuristic character artwork combining neon lighting, saturated colour and cyber-inspired visual styling.",
-
         software: "Adobe Photoshop",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g11-neon-courier.jpg"
     },
 
@@ -107,14 +103,11 @@ const PROJECTS = [
         author: "Nur Ain",
         category: "2d",
         categoryLabel: "Digital Illustration",
-
         description:
             "A detailed character illustration inspired by traditional clothing and a soft moonlit colour atmosphere.",
-
         software: "Procreate",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g12-moonlit-kimono.jpg"
     },
 
@@ -125,14 +118,11 @@ const PROJECTS = [
         author: "David Heng",
         category: "2d",
         categoryLabel: "Concept Art",
-
         description:
             "A fantasy environment concept exploring natural forms, ancient structures and atmospheric visual storytelling.",
-
         software: "Adobe Photoshop",
         year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g13-ancient-roots.jpg"
     },
 
@@ -143,14 +133,11 @@ const PROJECTS = [
         author: "Farah Iman",
         category: "2d",
         categoryLabel: "Digital Illustration",
-
         description:
             "A narrative illustration inspired by the atmosphere of a late-night creative workspace and student project life.",
-
         software: "Adobe Photoshop",
-        year: "2025",
+        year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g14-late-night-deadline.jpg"
     },
 
@@ -161,14 +148,11 @@ const PROJECTS = [
         author: "Nur Ain",
         category: "2d",
         categoryLabel: "Digital Art",
-
         description:
             "A colourful digital artwork inspired by underwater forms, organic shapes and vibrant environmental colour.",
-
         software: "Adobe Photoshop",
         year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g15-coral-companion.jpg"
     },
 
@@ -179,20 +163,17 @@ const PROJECTS = [
         author: "Marcus Ooi",
         category: "2d",
         categoryLabel: "Digital Art",
-
         description:
             "An energetic urban-inspired artwork combining street imagery, movement and colourful visual composition.",
-
         software: "Adobe Photoshop",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g16-street-cart-rush.jpg"
     },
 
 
     // =====================================================
-    // 3D / DIGITAL DESIGN
+    // 3D — 9
     // =====================================================
 
     {
@@ -201,14 +182,11 @@ const PROJECTS = [
         author: "Marcus Ooi",
         category: "3d",
         categoryLabel: "3D Render",
-
         description:
             "A hard-surface rendering study exploring geometric repetition, metallic materials and a contrasting gold focal point.",
-
         software: "Blender",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g4-cubes-gold.jpg"
     },
 
@@ -219,33 +197,12 @@ const PROJECTS = [
         author: "Chen Yi Xuan",
         category: "3d",
         categoryLabel: "3D Render",
-
         description:
             "A tunnel-style 3D composition created from repeating wooden forms and a dramatic central light source.",
-
         software: "Cinema 4D",
         year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g5-cubes-wood.jpg"
-    },
-
-
-    {
-        id: "p12",
-        title: "Sweet Slice",
-        author: "Nur Ain",
-        category: "3d",
-        categoryLabel: "3D Render",
-
-        description:
-            "A playful stylised render exploring colourful fruit forms, simple geometry and a bright pastel environment.",
-
-        software: "Blender",
-        year: "2025",
-        team: "Solo Project",
-
-        img: "../images/gallery/g6-watermelon.jpg"
     },
 
 
@@ -255,14 +212,11 @@ const PROJECTS = [
         author: "Jason Lee",
         category: "3d",
         categoryLabel: "3D / Digital Art",
-
         description:
             "An experimental visual composition exploring transparency, reflective surfaces and layered depth.",
-
         software: "Blender + Photoshop",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g17-glass-orchard.jpg"
     },
 
@@ -273,14 +227,11 @@ const PROJECTS = [
         author: "Lim Jia",
         category: "3d",
         categoryLabel: "3D Design",
-
         description:
             "A geometric design study focused on fragmented surfaces, repetition and depth-based composition.",
-
         software: "Blender",
         year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g18-fractured-tiles.jpg"
     },
 
@@ -291,14 +242,11 @@ const PROJECTS = [
         author: "Aina Rahman",
         category: "3d",
         categoryLabel: "Abstract 3D",
-
         description:
             "An abstract 3D artwork exploring flowing shapes, vivid pink tones and a strong sense of visual movement.",
-
         software: "Cinema 4D",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g19-pink-vortex.jpg"
     },
 
@@ -309,14 +257,11 @@ const PROJECTS = [
         author: "David Heng",
         category: "3d",
         categoryLabel: "3D Render",
-
         description:
             "A cinematic architectural render experimenting with copper surfaces, perspective and directional lighting.",
-
         software: "Blender",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g20-copper-corridor.jpg"
     },
 
@@ -327,14 +272,11 @@ const PROJECTS = [
         author: "Marcus Ooi",
         category: "3d",
         categoryLabel: "3D Design",
-
         description:
             "A geometric depth study using repeated structural forms, shadows and layered perspective.",
-
         software: "Blender",
         year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g21-brick-depth.jpg"
     },
 
@@ -345,14 +287,11 @@ const PROJECTS = [
         author: "Aisha N.",
         category: "3d",
         categoryLabel: "3D / Digital Art",
-
         description:
             "An abstract geometric composition exploring refraction-inspired colours, reflective surfaces and central balance.",
-
         software: "Blender",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g22-prism-drop.jpg"
     },
 
@@ -363,20 +302,17 @@ const PROJECTS = [
         author: "Farah Iman",
         category: "3d",
         categoryLabel: "Abstract 3D",
-
         description:
             "A sculptural digital artwork exploring folded forms, strong red tones and dramatic surface lighting.",
-
         software: "Cinema 4D",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g23-crimson-folds.jpg"
     },
 
 
     // =====================================================
-    // MOTION GRAPHICS
+    // MOTION — 9
     // =====================================================
 
     {
@@ -385,16 +321,12 @@ const PROJECTS = [
         author: "Wong Kar Ling",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "A peaceful looping forest scene designed as an atmospheric multimedia background.",
-
         software: "Adobe After Effects",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g7-forest-poster.jpg",
-
         video: "../videos/motion-forest.mp4"
     },
 
@@ -405,23 +337,15 @@ const PROJECTS = [
         author: "Farah Iman",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "A looping outdoor scene exploring natural lighting, environmental movement and gentle visual rhythm.",
-
         software: "Adobe After Effects",
         year: "2024",
         team: "Solo Project",
-
         img: "../images/gallery/g8-backyard-poster.jpg",
-
         video: "../videos/motion-backyard.mp4"
     },
 
-
-    // =====================================================
-    // NEBULA DRIFT — ADAM LEONG
-    // =====================================================
 
     {
         id: "p22",
@@ -429,16 +353,12 @@ const PROJECTS = [
         author: "Adam Leong",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "A vibrant animated nebula exploring particles, colour transitions and continuously flowing movement.",
-
         software: "Adobe After Effects",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g9-nebula-poster.jpg",
-
         video: "../videos/motion-nebula.mp4"
     },
 
@@ -449,16 +369,12 @@ const PROJECTS = [
         author: "Marcus Ooi",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "A futuristic animated tunnel combining glowing gold light strips, reflective surfaces and continuous camera movement.",
-
         software: "Adobe After Effects",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g10-tunnel-poster.jpg",
-
         video: "../videos/motion-tunnel.mp4"
     },
 
@@ -469,16 +385,12 @@ const PROJECTS = [
         author: "Aina Rahman",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "An abstract motion experiment combining rotational movement, bright colours and layered distortion effects.",
-
         software: "Adobe After Effects",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g24-vortex-poster.jpg",
-
         video: "../videos/motion-vortex.mp4"
     },
 
@@ -489,16 +401,12 @@ const PROJECTS = [
         author: "Jason Lee",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "A purple abstract animation featuring fluid forms, light trails and rhythmic looping movement.",
-
         software: "Adobe After Effects",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g25-violet-poster.jpg",
-
         video: "../videos/motion-violet.mp4"
     },
 
@@ -509,16 +417,12 @@ const PROJECTS = [
         author: "Farah Iman",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "A looping neon animation featuring flowing luminous lines against a dark digital environment.",
-
         software: "Adobe After Effects",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g26-neonlines-poster.jpg",
-
         video: "../videos/motion-neonlines.mp4"
     },
 
@@ -529,16 +433,12 @@ const PROJECTS = [
         author: "Lim Jia",
         category: "motion",
         categoryLabel: "Motion Graphics",
-
         description:
             "A fast-paced geometric motion experiment combining animated cubes, perspective and colourful transitions.",
-
         software: "Cinema 4D + After Effects",
         year: "2025",
         team: "Solo Project",
-
         img: "../images/gallery/g27-cuberush-poster.jpg",
-
         video: "../videos/motion-cuberush.mp4"
     },
 
@@ -549,18 +449,59 @@ const PROJECTS = [
         author: "Wong Kar Ling",
         category: "motion",
         categoryLabel: "Video Editing",
-
         description:
             "A cinematic video editing study focused on pacing, colour grading and atmospheric sunset imagery.",
-
         software: "Adobe Premiere Pro",
         year: "2025",
         team: "Solo Project",
-
         img: null,
-
         video: "../videos/edit-sunset-walk.mp4"
     }
+
+];
+
+
+// =========================================================
+// CURATED SHOWCASE ORDER
+// =========================================================
+
+const PROJECT_SHOWCASE_ORDER = [
+
+    "p5",
+    "p13",
+    "p23",
+
+    "p4",
+    "p10",
+    "p22",
+
+    "p2",
+    "p14",
+    "p24",
+
+    "p1",
+    "p15",
+    "p25",
+
+    "p3",
+    "p18",
+    "p26",
+
+    "p6",
+    "p16",
+    "p20",
+
+    "p7",
+    "p17",
+    "p27",
+
+    "p8",
+    "p19",
+    "p21",
+
+    "p9",
+    "p11",
+    "p28"
 
 ];
 
@@ -572,34 +513,44 @@ const PROJECTS = [
 const projectGrid =
     document.getElementById("projectGrid");
 
-
 const filterButtons =
-    document.querySelectorAll(".project-filter-chip");
-
+    document.querySelectorAll(
+        ".project-filter-chip"
+    );
 
 const projectEmpty =
-    document.getElementById("projectEmpty");
+    document.getElementById(
+        "projectEmpty"
+    );
 
+const projectCount =
+    document.getElementById(
+        "projectCount"
+    );
 
 const projectModalElement =
-    document.getElementById("projectModal");
-
+    document.getElementById(
+        "projectModal"
+    );
 
 const projectModal =
     bootstrap.Modal.getOrCreateInstance(
         projectModalElement
     );
 
-
 const modalImg =
-    document.getElementById("modalImg");
-
+    document.getElementById(
+        "modalImg"
+    );
 
 const modalVideo =
-    document.getElementById("modalVideo");
+    document.getElementById(
+        "modalVideo"
+    );
 
 
-let activeCategory = "all";
+let activeCategory =
+    "all";
 
 
 // =========================================================
@@ -611,13 +562,13 @@ function getRecentIds() {
     try {
 
         const stored =
-            localStorage.getItem(RECENT_KEY);
+            localStorage.getItem(
+                RECENT_KEY
+            );
 
 
         if (!stored) {
-
             return [];
-
         }
 
 
@@ -626,38 +577,40 @@ function getRecentIds() {
 
 
         if (!Array.isArray(parsed)) {
-
             return [];
-
         }
 
 
         return parsed
-            .map((item) => {
+            .map(
+                (item) => {
 
-                // New format
-                if (typeof item === "string") {
+                    if (
+                        typeof item ===
+                        "string"
+                    ) {
 
-                    return item;
+                        return item;
+
+                    }
+
+
+                    if (
+                        typeof item ===
+                        "object" &&
+                        item !== null &&
+                        item.id
+                    ) {
+
+                        return item.id;
+
+                    }
+
+
+                    return null;
 
                 }
-
-
-                // Old format
-                if (
-                    typeof item === "object" &&
-                    item !== null &&
-                    item.id
-                ) {
-
-                    return item.id;
-
-                }
-
-
-                return null;
-
-            })
+            )
             .filter(Boolean);
 
     }
@@ -691,7 +644,7 @@ function saveRecentIds(ids) {
 
 
 // =========================================================
-// ADD PROJECT TO RECENTLY VIEWED
+// ADD TO RECENTLY VIEWED
 // =========================================================
 
 function addToRecent(projectId) {
@@ -702,11 +655,14 @@ function addToRecent(projectId) {
 
     recent =
         recent.filter(
-            (id) => id !== projectId
+            (id) =>
+                id !== projectId
         );
 
 
-    recent.unshift(projectId);
+    recent.unshift(
+        projectId
+    );
 
 
     recent =
@@ -716,7 +672,9 @@ function addToRecent(projectId) {
         );
 
 
-    saveRecentIds(recent);
+    saveRecentIds(
+        recent
+    );
 
 
     updateViewedBadges();
@@ -731,7 +689,9 @@ function addToRecent(projectId) {
 function createProjectCard(project) {
 
     const wrapper =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     wrapper.className =
@@ -746,7 +706,7 @@ function createProjectCard(project) {
 
 
     // =====================================================
-    // PROJECT WITH POSTER IMAGE
+    // IMAGE / POSTER
     // =====================================================
 
     if (project.img) {
@@ -779,7 +739,6 @@ function createProjectCard(project) {
                     aria-hidden="true">
                 </i>
 
-
             </div>
 
         `;
@@ -788,7 +747,7 @@ function createProjectCard(project) {
 
 
     // =====================================================
-    // PROJECT WITHOUT POSTER IMAGE
+    // VIDEO WITHOUT POSTER
     // =====================================================
 
     else {
@@ -796,7 +755,6 @@ function createProjectCard(project) {
         thumbnailHTML = `
 
             <div class="project-thumb">
-
 
                 <video
                     class="project-thumb-video"
@@ -824,7 +782,6 @@ function createProjectCard(project) {
                     aria-hidden="true">
                 </i>
 
-
             </div>
 
         `;
@@ -836,35 +793,28 @@ function createProjectCard(project) {
 
         <div
             class="project-card"
-            data-project-id="${project.id}">
-
+            data-project-id="${project.id}"
+            role="button"
+            tabindex="0"
+            aria-label="View project ${project.title}">
 
             ${thumbnailHTML}
 
-
             <div class="project-info">
 
-
                 <div class="project-title">
-
                     ${project.title}
-
                 </div>
-
 
                 <div class="project-meta">
 
                     ${project.author}
-
                     &middot;
-
                     ${project.categoryLabel}
 
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -872,14 +822,39 @@ function createProjectCard(project) {
 
 
     const card =
-        wrapper.querySelector(".project-card");
+        wrapper.querySelector(
+            ".project-card"
+        );
 
 
     card.addEventListener(
         "click",
         () => {
 
-            openProjectModal(project);
+            openProjectModal(
+                project
+            );
+
+        }
+    );
+
+
+    card.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                openProjectModal(
+                    project
+                );
+
+            }
 
         }
     );
@@ -891,24 +866,53 @@ function createProjectCard(project) {
 
 
 // =========================================================
+// GET CURATED SHOWCASE ORDER
+// =========================================================
+
+function getShowcaseOrder() {
+
+    const projectMap =
+        new Map(
+            PROJECTS.map(
+                (project) => [
+                    project.id,
+                    project
+                ]
+            )
+        );
+
+
+    return PROJECT_SHOWCASE_ORDER
+        .map(
+            (id) =>
+                projectMap.get(id)
+        )
+        .filter(Boolean);
+
+}
+
+
+// =========================================================
 // RENDER PROJECTS
 // =========================================================
 
 function renderProjects() {
 
-    projectGrid.innerHTML = "";
+    projectGrid.innerHTML =
+        "";
 
 
-    PROJECTS.forEach(
+    const showcaseProjects =
+        getShowcaseOrder();
+
+
+    showcaseProjects.forEach(
         (project) => {
 
-
-            const projectCard =
-                createProjectCard(project);
-
-
             projectGrid.appendChild(
-                projectCard
+                createProjectCard(
+                    project
+                )
             );
 
         }
@@ -923,17 +927,15 @@ function renderProjects() {
 
 
 // =========================================================
-// FILTER BUTTON EVENTS
+// FILTER BUTTONS
 // =========================================================
 
 filterButtons.forEach(
     (button) => {
 
-
         button.addEventListener(
             "click",
             () => {
-
 
                 filterButtons.forEach(
                     (item) => {
@@ -965,7 +967,7 @@ filterButtons.forEach(
 
 
 // =========================================================
-// APPLY FILTER
+// APPLY FILTER + UPDATE COUNT
 // =========================================================
 
 function applyProjectFilter() {
@@ -976,16 +978,17 @@ function applyProjectFilter() {
         );
 
 
-    let visibleCount = 0;
+    let visibleCount =
+        0;
 
 
     items.forEach(
         (item) => {
 
-
             const matches =
                 activeCategory === "all" ||
-                item.dataset.category === activeCategory;
+                item.dataset.category ===
+                activeCategory;
 
 
             item.style.display =
@@ -1004,6 +1007,10 @@ function applyProjectFilter() {
     );
 
 
+    // =====================================================
+    // EMPTY STATE
+    // =====================================================
+
     if (projectEmpty) {
 
         projectEmpty.style.display =
@@ -1013,11 +1020,55 @@ function applyProjectFilter() {
 
     }
 
+
+    // =====================================================
+    // PROJECT COUNT
+    // =====================================================
+
+    if (projectCount) {
+
+        if (
+            activeCategory === "2d"
+        ) {
+
+            projectCount.textContent =
+                `${visibleCount} 2D Projects`;
+
+        }
+
+        else if (
+            activeCategory === "3d"
+        ) {
+
+            projectCount.textContent =
+                `${visibleCount} 3D Projects`;
+
+        }
+
+        else if (
+            activeCategory ===
+            "motion"
+        ) {
+
+            projectCount.textContent =
+                `${visibleCount} Motion Graphics Projects`;
+
+        }
+
+        else {
+
+            projectCount.textContent =
+                `${visibleCount} Student Projects`;
+
+        }
+
+    }
+
 }
 
 
 // =========================================================
-// UPDATE VIEWED BADGES
+// VIEWED BADGES
 // =========================================================
 
 function updateViewedBadges() {
@@ -1033,26 +1084,16 @@ function updateViewedBadges() {
         .forEach(
             (badge) => {
 
-
                 const projectId =
                     badge.dataset.viewedId;
 
 
-                if (
-                    recent.includes(projectId)
-                ) {
-
-                    badge.style.display =
-                        "inline-flex";
-
-                }
-
-                else {
-
-                    badge.style.display =
-                        "none";
-
-                }
+                badge.style.display =
+                    recent.includes(
+                        projectId
+                    )
+                        ? "inline-flex"
+                        : "none";
 
             }
         );
@@ -1065,7 +1106,6 @@ function updateViewedBadges() {
 // =========================================================
 
 function openProjectModal(project) {
-
 
     document.getElementById(
         "projectModalLabel"
@@ -1092,11 +1132,10 @@ function openProjectModal(project) {
 
 
     // =====================================================
-    // VIDEO PROJECT
+    // VIDEO
     // =====================================================
 
     if (project.video) {
-
 
         modalImg.style.display =
             "none";
@@ -1149,11 +1188,10 @@ function openProjectModal(project) {
 
 
     // =====================================================
-    // STATIC IMAGE PROJECT
+    // STATIC IMAGE
     // =====================================================
 
     else {
-
 
         modalVideo.pause();
 
@@ -1184,43 +1222,41 @@ function openProjectModal(project) {
     }
 
 
-    // Save recently viewed
     addToRecent(
         project.id
     );
 
 
-    // Open Bootstrap modal
     projectModal.show();
 
 }
 
 
 // =========================================================
-// VIDEO AUTOPLAY
+// MODAL VIDEO AUTOPLAY
 // =========================================================
 
 projectModalElement.addEventListener(
     "shown.bs.modal",
     () => {
 
-
         if (
-            modalVideo.style.display !== "none" &&
-            modalVideo.getAttribute("src")
+            modalVideo.style.display !==
+                "none" &&
+            modalVideo.getAttribute(
+                "src"
+            )
         ) {
-
 
             modalVideo.muted =
                 true;
 
 
-            modalVideo.play()
+            modalVideo
+                .play()
                 .catch(
                     () => {
-
-                        // Manual controls remain available.
-
+                        // Controls remain available.
                     }
                 );
 
@@ -1238,7 +1274,6 @@ projectModalElement.addEventListener(
     "hidden.bs.modal",
     () => {
 
-
         modalVideo.pause();
 
 
@@ -1251,7 +1286,7 @@ projectModalElement.addEventListener(
 
         catch (error) {
 
-            // Ignore if metadata has not loaded.
+            // Ignore before metadata loads.
 
         }
 
