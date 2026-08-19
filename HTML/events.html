@@ -129,7 +129,7 @@
                     Reserve your place by completing the registration form below.
                 </p>
 
-                <form method="post" action="#">
+                <form id="eventRegistrationForm">
 
                     <label for="name">Name:</label>
                     <input id="name" name="name" type="text" required>
@@ -171,15 +171,7 @@
         </div>
     </footer>
 
-    <script>
-        const navToggle = document.getElementById("navToggle");
-        const navLinks = document.getElementById("navLinks");
-
-        navToggle.addEventListener("click", function () {
-            const isOpen = navLinks.classList.toggle("open");
-            navToggle.setAttribute("aria-expanded", isOpen);
-        });
-    </script>
+    <script src="/JavaScript/events.js"></script>
 
 </body>
 </html>
