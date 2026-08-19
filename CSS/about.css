@@ -1,0 +1,297 @@
+/* =========================================================
+   CANVAS ANIMATION & MULTIMEDIA CLUB
+   ABOUT PAGE
+   ========================================================= */
+
+.about-hero {
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    padding: 95px 0 80px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(950px, 90vw);
+    height: 420px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center, rgba(155,89,255,.10), transparent 68%);
+    pointer-events: none;
+}
+
+.about-hero .container {
+    position: relative;
+    z-index: 1;
+    animation: aboutReveal .9s ease both;
+}
+
+.about-hero .eyebrow,
+.about-hero .section-lead {
+    margin-inline: auto;
+}
+
+.about-title {
+    max-width: 980px;
+    margin: 0 auto 30px;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(42px, 6.8vw, 88px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.mission-section,
+.history-section,
+.team-section,
+.values-section {
+    padding: clamp(75px, 9vw, 120px) 0;
+}
+
+.mission-section,
+.team-section {
+    background: linear-gradient(180deg, rgba(255,255,255,.012), transparent);
+}
+
+.history-section,
+.values-section {
+    border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.timeline {
+    position: relative;
+    max-width: 930px;
+    margin-top: 48px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 85px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(var(--purple), rgba(255,255,255,.08));
+}
+
+.timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 30px;
+    padding: 0 0 44px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.timeline-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 80px;
+    top: 8px;
+    width: 11px;
+    height: 11px;
+    border: 2px solid var(--purple);
+    border-radius: 50%;
+    background: var(--bg-main);
+    box-shadow: 0 0 18px rgba(155,89,255,.32);
+}
+
+.timeline-year {
+    color: #d2b8ff;
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.timeline-item h4 {
+    margin: 0 0 9px;
+    color: #fff;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(17px, 2vw, 22px);
+}
+
+.timeline-item p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
+.team-tabs {
+    gap: 8px;
+    margin: 0 0 30px;
+    border: 0;
+    flex-wrap: wrap;
+}
+
+.team-tabs .nav-item {
+    margin: 0;
+}
+
+.team-tabs .nav-link {
+    padding: 10px 15px;
+    color: #9696a5;
+    background: rgba(255,255,255,.02);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    transition: color .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.team-tabs .nav-link:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,.35);
+}
+
+.team-tabs .nav-link.active {
+    color: #fff;
+    background: var(--purple-soft);
+    border-color: rgba(155,89,255,.60);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 20px;
+}
+
+.member-card {
+    position: relative;
+    min-height: 265px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 34px 24px;
+    text-align: center;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012)),
+        var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(155,89,255,.55);
+    box-shadow: 0 24px 60px rgba(0,0,0,.24);
+}
+
+.member-photo {
+    width: 96px;
+    height: 96px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+    border: 1px solid rgba(155,89,255,.55);
+    border-radius: 50%;
+    color: #e4d5ff;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(155,89,255,.25), transparent 45%),
+        rgba(255,255,255,.025);
+    font-family: "Orbitron", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.member-card h4 {
+    margin: 0 0 7px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 17px;
+}
+
+.member-role {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.fav-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    color: #898997;
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.fav-btn:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,.40);
+    transform: scale(1.06);
+}
+
+.fav-btn.active {
+    color: #d7bbff;
+    border-color: rgba(155,89,255,.62);
+    background: rgba(155,89,255,.13);
+}
+
+@keyframes aboutReveal {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .about-hero {
+        min-height: auto;
+        padding: 72px 0 68px;
+    }
+
+    .timeline::before {
+        left: 17px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding-left: 48px;
+    }
+
+    .timeline-item::before {
+        left: 12px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
