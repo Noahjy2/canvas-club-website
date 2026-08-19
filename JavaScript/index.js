@@ -27,11 +27,16 @@ $(function () {
         return match ? decodeURIComponent(match[2]) : null;
     }
 
-    /* ---------- mobile nav toggle ---------- */
+    /* ---------- mobile navigation ---------- */
     $('#navToggle').on('click', function () {
         const $links = $('#navLinks');
         $links.toggleClass('open');
         $(this).attr('aria-expanded', $links.hasClass('open'));
+    });
+
+    $('#navLinks a').on('click', function () {
+        $('#navLinks').removeClass('open');
+        $('#navToggle').attr('aria-expanded', 'false');
     });
 
     /* ---------- COOKIE: consent banner ---------- */
@@ -93,7 +98,14 @@ $(function () {
         const email = $('#newsletterEmail').val().trim();
         if (!email) return;
 
-        const list = JSON.parse(localStorage.getItem('amc_newsletter_list') || '[]');
+        let list = [];
+        try {
+            const stored = JSON.parse(localStorage.getItem('amc_newsletter_list') || '[]');
+            list = Array.isArray(stored) ? stored : [];
+        } catch (error) {
+            console.warn('Could not read the saved newsletter list. Resetting it.', error);
+            localStorage.removeItem('amc_newsletter_list');
+        }
         if (list.includes(email)) {
             $('#newsletterStatus').text(`${email} is already on the reminder list.`);
         } else {
