@@ -26,11 +26,16 @@ $(function () {
         return match ? decodeURIComponent(match[2]) : null;
     }
 
-    /* ---------- mobile nav toggle ---------- */
+    /* ---------- mobile navigation ---------- */
     $('#navToggle').on('click', function () {
         const $links = $('#navLinks');
         $links.toggleClass('open');
         $(this).attr('aria-expanded', $links.hasClass('open'));
+    });
+
+    $('#navLinks a').on('click', function () {
+        $('#navLinks').removeClass('open');
+        $('#navToggle').attr('aria-expanded', 'false');
     });
 
     /* ---------- team data ---------- */
@@ -59,7 +64,14 @@ $(function () {
 
     /* ---------- localStorage: favourite members ---------- */
     function getFavourites() {
-        return JSON.parse(localStorage.getItem('amc_fav_members') || '[]');
+        try {
+            const stored = JSON.parse(localStorage.getItem('amc_fav_members') || '[]');
+            return Array.isArray(stored) ? stored : [];
+        } catch (error) {
+            console.warn('Could not read saved favourite members. Resetting them.', error);
+            localStorage.removeItem('amc_fav_members');
+            return [];
+        }
     }
     function toggleFavourite(id) {
         let favs = getFavourites();
@@ -123,7 +135,8 @@ $(function () {
     });
 
     // COOKIE: restore last-viewed team tab on load (defaults to leadership)
-    const lastTab = getCookie('amc_last_team_tab') || 'leadership';
+    const savedTab = getCookie('amc_last_team_tab');
+    const lastTab = savedTab && TEAM[savedTab] ? savedTab : 'leadership';
     activateTab(lastTab, { persist: false });
 
     /* ---------- timeline scroll reveal ---------- */
