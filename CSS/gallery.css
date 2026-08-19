@@ -47,79 +47,92 @@ body.gallery-page {
 }
 
 
-/* =========================================================
-   NAVIGATION
-   Basic compatibility only.
-   Leader can override this later.
-   ========================================================= */
+/* ===================== NAVIGATION ===================== */
 
 .navigation {
     width: 100%;
-
     min-height: 75px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    gap: 28px;
     padding: 0 6%;
-
     position: relative;
     z-index: 100;
-
     background: rgba(8, 8, 13, 0.88);
-
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
-
 .logo {
+    flex: 0 0 auto;
+    color: #ffffff;
     text-decoration: none;
-
-    color: white;
-
     font-family: "Orbitron", sans-serif;
     font-size: 18px;
     font-weight: 700;
-
     letter-spacing: 3px;
 }
 
-
-.logo:hover {
-    color: white;
-}
-
+.logo:hover,
+.logo:focus { color: #ffffff; }
 
 .nav-links {
     display: flex;
     align-items: center;
-
     gap: 28px;
 }
 
-
 .nav-links a {
+    position: relative;
     color: #9393a0;
-
     text-decoration: none;
-
     font-family: "Orbitron", sans-serif;
-
     font-size: 10px;
-
+    font-weight: 500;
     letter-spacing: 1.5px;
-
-    transition: var(--transition);
+    text-transform: uppercase;
+    transition: color var(--transition), transform var(--transition);
 }
 
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    width: 0;
+    height: 1px;
+    background: var(--purple);
+    transform: translateX(-50%);
+    transition: width var(--transition);
+}
 
 .nav-links a:hover,
+.nav-links a:focus,
 .nav-links a.active {
-    color: white;
+    color: #ffffff;
+}
+
+.nav-links a:hover { transform: translateY(-2px); }
+
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #ffffff;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
 }
 
 
