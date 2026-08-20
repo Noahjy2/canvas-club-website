@@ -318,6 +318,10 @@ footer {
 }
 
 
+/* =====================================================
+   LOGO
+===================================================== */
+
 .logo {
     color: white;
 
@@ -341,6 +345,10 @@ footer {
     transform: scale(1.04);
 }
 
+
+/* =====================================================
+   NAVIGATION LINKS
+===================================================== */
 
 .nav-links {
     display: flex;
@@ -405,7 +413,9 @@ footer {
 }
 
 
-/* Mobile menu button */
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
 
 .menu-toggle {
     display: none;
@@ -428,11 +438,123 @@ footer {
 }
 
 
+/* =====================================================
+   TABLET
+   <= 992px
+===================================================== */
 
-/*
- * Subtle local overlay over the hero area.
- * This improves text contrast without hiding the people/artwork.
- */
+@media (max-width: 992px) {
+
+    .navigation {
+        padding-left: 30px;
+
+        padding-right: 30px;
+    }
+
+
+    .nav-links {
+        gap: 14px;
+    }
+
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE NAVIGATION
+   <= 768px
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .navigation {
+        min-height: 65px;
+
+        padding: 12px 20px;
+
+        flex-wrap: wrap;
+    }
+
+
+    /* Show hamburger button */
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    /* Hide navigation links */
+
+    .nav-links {
+        display: none;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px 0 5px;
+
+        border-top: 1px solid var(--line);
+
+        margin-top: 5px;
+    }
+
+
+    /* Show navigation when JavaScript
+       adds the "open" class */
+
+    .nav-links.open {
+        display: flex;
+    }
+
+
+    .nav-links a {
+        width: 100%;
+
+        padding: 13px 5px;
+
+        font-size: 11px;
+    }
+
+
+    /* Remove desktop underline effect */
+
+    .nav-links a::after {
+        display: none;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONE
+   <= 480px
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .navigation {
+        padding: 12px 15px;
+    }
+
+
+    .logo {
+        font-size: 18px;
+
+        letter-spacing: 2px;
+    }
+
+}
+
+
 .join-hero::before {
     content: "";
     position: absolute;
