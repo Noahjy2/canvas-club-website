@@ -625,6 +625,32 @@ body.gallery-page {
     line-height: 1.7;
 }
 
+/* Keep the artwork information readable on the dark modal background. */
+#galleryModalMeta {
+    margin-bottom: 10px;
+
+    color: #c4c8d4 !important;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+#galleryModalDesc {
+    margin-bottom: 16px;
+
+    color: #ffffff !important;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#galleryModalTech {
+    color: #aeb4c3 !important;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
 
 #galleryModal .modal-img,
 #galleryModalImg,
