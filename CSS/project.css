@@ -484,7 +484,7 @@ body.project-page {
    ========================================================= */
 
 .project-info {
-    min-height: 112px;
+    min-height: 92px;
 
     position: relative;
     z-index: 4;
@@ -504,18 +504,6 @@ body.project-page {
     font-weight: 600;
 
     letter-spacing: 0.7px;
-}
-
-.project-type {
-    margin-bottom: 5px;
-
-    color: #c7a6ff;
-
-    font-size: 9px;
-    font-weight: 600;
-    line-height: 1.45;
-
-    letter-spacing: 0.45px;
 }
 
 .project-meta {
@@ -587,84 +575,9 @@ body.project-page {
     line-height: 1.7;
 }
 
-.project-modal-byline {
-    margin-bottom: 20px;
-
-    color: #c4c8d4;
-
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.project-detail-section {
-    padding: 18px 0;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.project-detail-label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #b889ff;
-
-    font-family: "Orbitron", sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 1.1px;
-}
-
-.project-overview-text,
-.project-outcome-text {
-    margin: 0;
-
-    color: #ffffff;
-
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.75 !important;
-}
-
-.project-detail-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 12px;
-
-    padding: 18px 0;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.project-detail-item {
-    min-height: 72px;
-
-    padding: 13px 14px;
-
-    background: rgba(255, 255, 255, 0.025);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-}
-
-.project-detail-item .project-detail-label {
-    margin-bottom: 6px;
-}
-
-.project-detail-value {
-    display: block;
-
-    color: #d7dae3;
-
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.5;
-}
-
-.project-outcome-section {
-    padding-bottom: 0;
+#modalMeta,
+#modalTech {
+    color: #91919f !important;
 }
 
 
@@ -778,7 +691,7 @@ footer p {
     }
 
     .project-info {
-        min-height: 108px;
+        min-height: 90px;
     }
 
 }
@@ -890,7 +803,7 @@ footer p {
     }
 
     .project-info {
-        min-height: 102px;
+        min-height: 85px;
 
         padding: 14px;
     }
@@ -899,20 +812,8 @@ footer p {
         font-size: 11px;
     }
 
-    .project-type {
-        font-size: 8px;
-    }
-
     .project-meta {
         font-size: 9px;
-    }
-
-    .project-detail-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .project-detail-item {
-        min-height: 0;
     }
 
     .play-icon {
@@ -969,10 +870,6 @@ footer p {
 
     .project-title {
         font-size: 10px;
-    }
-
-    .project-type {
-        font-size: 7.5px;
     }
 
     .project-meta {

@@ -625,32 +625,6 @@ body.gallery-page {
     line-height: 1.7;
 }
 
-/* Keep the artwork information readable on the dark modal background. */
-#galleryModalMeta {
-    margin-bottom: 10px;
-
-    color: #c4c8d4 !important;
-
-    font-size: 13px;
-    font-weight: 500;
-}
-
-#galleryModalDesc {
-    margin-bottom: 16px;
-
-    color: #ffffff !important;
-
-    font-size: 15px;
-    font-weight: 500;
-}
-
-#galleryModalTech {
-    color: #aeb4c3 !important;
-
-    font-size: 13px;
-    font-weight: 500;
-}
-
 
 #galleryModal .modal-img,
 #galleryModalImg,
@@ -873,3 +847,26 @@ body.gallery-page::before {
     opacity: 1;
 }
 
+
+/* =========================================================
+   GALLERY MODAL TEXT VISIBILITY FIX
+   Keeps the original Gallery layout and functionality.
+   Only improves readability of creator/category and software/year.
+   ========================================================= */
+
+#galleryModalMeta,
+#galleryModalMeta.text-muted {
+    color: #b8bdca !important;
+    opacity: 1 !important;
+}
+
+#galleryModalDesc {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+#galleryModalTech,
+#galleryModalTech.text-muted {
+    color: #9fa7b8 !important;
+    opacity: 1 !important;
+}
