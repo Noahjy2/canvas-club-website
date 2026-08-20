@@ -1,13 +1,3 @@
-/* =====================================================
-   CANVAS
-   ANIMATION & MULTIMEDIA CLUB
-===================================================== */
-
-
-/* =====================================================
-   RESET
-===================================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -23,10 +13,6 @@ html {
 body {
     min-height: 100vh;
 
-    /*
-     * Full-page background image.
-     * The dark overlay keeps the white CANVAS typography readable.
-     */
     background:
         linear-gradient(
             rgba(8, 8, 13, 0.70),
@@ -118,11 +104,6 @@ body {
 
     pointer-events: none;
 
-    /*
-     * The photograph is now the body background.
-     * Keep this layer transparent so the existing floating
-     * shapes can remain as subtle foreground decoration.
-     */
     z-index: 0;
     background: transparent;
 }
@@ -242,12 +223,6 @@ body {
 
 }
 
-
-
-/*
- * Keep the page content above the background image and
- * floating decorative shapes.
- */
 .navigation,
 .join-hero,
 .join-section,
@@ -439,10 +414,6 @@ footer {
 
 
 
-/*
- * Subtle local overlay over the hero area.
- * This improves text contrast without hiding the people/artwork.
- */
 .join-hero::before {
     content: "";
     position: absolute;
@@ -883,11 +854,7 @@ footer {
     background: transparent;
 
     color: #ffffff;
-
-    /*
-     * Use a clean, highly readable font for user input.
-     * Orbitron is kept for headings/labels, but not for typing.
-     */
+    
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
     font-weight: 500;

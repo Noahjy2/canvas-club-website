@@ -1,13 +1,3 @@
-/* =========================================================
-   CANVAS ANIMATION & MULTIMEDIA CLUB
-   GALLERY PAGE
-   ========================================================= */
-
-
-/* =========================================================
-   ROOT
-   ========================================================= */
-
 :root {
     --bg-main: #08080d;
     --bg-card: rgba(12, 12, 20, 0.92);
@@ -362,16 +352,6 @@ body.gallery-page {
     display: none !important;
 }
 
-
-/* =========================================================
-   GALLERY MEDIA CARD
-
-   IMPORTANT:
-   We use CONTAIN instead of COVER.
-
-   This keeps the complete artwork/video visible.
-   ========================================================= */
-
 .gallery-card {
     position: relative;
 
@@ -646,13 +626,6 @@ body.gallery-page {
 }
 
 
-/* =========================================================
-   MODAL MEDIA
-
-   Full image/video shown.
-   No cropping.
-   ========================================================= */
-
 #galleryModal .modal-img,
 #galleryModalImg,
 #galleryModalVideo {
@@ -850,12 +823,6 @@ footer p {
     }
 
 }
-
-/* =========================================================
-   GALLERY BACKGROUND BOARD
-   Uses /images/galleryBackground.png without changing
-   the existing gallery layout or component styling.
-   ========================================================= */
 
 body.gallery-page {
     position: relative;

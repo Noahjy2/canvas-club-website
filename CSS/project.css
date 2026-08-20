@@ -1,13 +1,3 @@
-/* =========================================================
-   CANVAS ANIMATION & MULTIMEDIA CLUB
-   PROJECT PAGE
-   ========================================================= */
-
-
-/* =========================================================
-   ROOT
-   ========================================================= */
-
 :root {
     --bg-main: #08080d;
     --bg-card: rgba(12, 12, 20, 0.94);
@@ -325,13 +315,6 @@ body.project-page {
 }
 
 
-/* =========================================================
-   PROJECT THUMBNAIL
-
-   IMPORTANT:
-   Use contain so the complete artwork is visible.
-   ========================================================= */
-
 .project-thumb {
     position: relative;
 
@@ -597,13 +580,6 @@ body.project-page {
     color: #91919f !important;
 }
 
-
-/* =========================================================
-   PROJECT MODAL MEDIA
-
-   Complete image/video display.
-   No cropping.
-   ========================================================= */
 
 #projectModal .modal-img,
 #modalImg,
