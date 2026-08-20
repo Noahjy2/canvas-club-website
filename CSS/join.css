@@ -13,10 +13,7 @@ html {
 body {
     min-height: 100vh;
 
-    /*
-     * Full-page background image.
-     * The dark overlay keeps the white CANVAS typography readable.
-     */
+    
     background:
         linear-gradient(
             rgba(8, 8, 13, 0.70),
