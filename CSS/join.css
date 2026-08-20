@@ -18,7 +18,7 @@ body {
             rgba(8, 8, 13, 0.70),
             rgba(8, 8, 13, 0.84)
         ),
-        url("/images/canvas-studio-background.png");
+        url("../images/canvas-studio-background.png");
 
     background-size: cover;
     background-position: center;

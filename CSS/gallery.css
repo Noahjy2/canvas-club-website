@@ -842,7 +842,7 @@ body.gallery-page::before {
             rgba(8, 8, 13, 0.58),
             rgba(8, 8, 13, 0.72)
         ),
-        url("/images/galleryBackground.png") center center / cover no-repeat;
+        url("../images/galleryBackground.png") center center / cover no-repeat;
 
     opacity: 1;
 }
