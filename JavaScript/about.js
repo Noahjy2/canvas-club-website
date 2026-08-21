@@ -1,9 +1,6 @@
 /* ============================================================
    about.js — About page behaviour for the Animation & Multimedia
    Club site.
-
-   Edit TEAM_MEMBERS below with your group's real names, roles,
-   contributions and skills.
    ============================================================ */
 
 $(function () {
@@ -28,56 +25,6 @@ $(function () {
         }
     });
 
-    /* =========================================================
-       FOUR ASSIGNMENT TEAM MEMBERS
-       ---------------------------------------------------------
-       Replace the placeholder names/details below with the real
-       information for your four group members.
-       The avatar URLs use DiceBear-generated user icons.
-       ========================================================= */
-
-    const TEAM_MEMBERS = [
-        {
-            id: 'member1',
-            name: 'YOUR NAME',
-            role: 'Project Lead / Web Developer',
-            course: 'Computer Science',
-            avatar: 'https://api.dicebear.com/9.x/avataaars/svg?seed=CanvasMemberOne&backgroundColor=1b1b25',
-            bio: 'Responsible for coordinating the project, planning the website structure and helping ensure that the CANVAS pages work together consistently.',
-            contribution: 'Project Planning, Home Page & About Page',
-            skills: ['HTML', 'CSS', 'JavaScript']
-        },
-        {
-            id: 'member2',
-            name: 'MEMBER 2 NAME',
-            role: 'UI / UX Designer',
-            course: 'Computer Science',
-            avatar: 'https://api.dicebear.com/9.x/avataaars/svg?seed=CanvasMemberTwo&backgroundColor=1b1b25',
-            bio: 'Focused on the visual design of the website, including page layout, typography, styling and maintaining a consistent user experience.',
-            contribution: 'Gallery Page & Visual Design',
-            skills: ['UI Design', 'CSS', 'Responsive Design']
-        },
-        {
-            id: 'member3',
-            name: 'MEMBER 3 NAME',
-            role: 'Front-End Developer',
-            course: 'Computer Science',
-            avatar: 'https://api.dicebear.com/9.x/avataaars/svg?seed=CanvasMemberThree&backgroundColor=1b1b25',
-            bio: 'Developed interactive website components and helped connect HTML, CSS and JavaScript features across the project.',
-            contribution: 'Events Page & Workshops Page',
-            skills: ['JavaScript', 'Bootstrap', 'HTML']
-        },
-        {
-            id: 'member4',
-            name: 'MEMBER 4 NAME',
-            role: 'Content & Web Developer',
-            course: 'Computer Science',
-            avatar: 'https://api.dicebear.com/9.x/avataaars/svg?seed=CanvasMemberFour&backgroundColor=1b1b25',
-            bio: 'Worked on website content, page organisation and supporting features while helping test and improve the overall CANVAS website.',
-            contribution: 'Projects, Join & Contact Pages',
-            skills: ['Content', 'Web Design', 'Testing']
-        }
-    ];
 
     let activeMember = 0;
 
@@ -146,58 +93,6 @@ $(function () {
             </article>
         `);
     }
-
-    /* ---------- render the four small profile selectors ---------- */
-    function renderMemberSelector() {
-        const $selector = $('#memberSelector').empty();
-
-        TEAM_MEMBERS.forEach((member, index) => {
-            const isActive = index === activeMember;
-
-            $selector.append(`
-                <button
-                    type="button"
-                    class="member-selector-card ${isActive ? 'active' : ''}"
-                    data-index="${index}"
-                    aria-pressed="${isActive}"
-                    aria-label="Show profile for ${escapeHtml(member.name)}"
-                >
-                    <div class="selector-photo-wrap">
-                        <img src="${member.avatar}" alt="" class="selector-photo">
-                        <span class="selector-number">${String(index + 1).padStart(2, '0')}</span>
-                    </div>
-
-                    <div class="selector-content">
-                        <strong>${escapeHtml(member.name)}</strong>
-                        <span>${escapeHtml(member.role)}</span>
-                    </div>
-
-                    <span class="selector-arrow" aria-hidden="true">→</span>
-                </button>
-            `);
-        });
-    }
-
-    $('#memberSelector').on('click', '.member-selector-card', function () {
-        activeMember = Number($(this).data('index'));
-        showMember(activeMember);
-        renderMemberSelector();
-    });
-
-    /* Keyboard support for the four selectors. */
-    $('#memberSelector').on('keydown', '.member-selector-card', function (event) {
-        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
-
-        event.preventDefault();
-        const change = (event.key === 'ArrowRight' || event.key === 'ArrowDown') ? 1 : -1;
-        activeMember = (activeMember + change + TEAM_MEMBERS.length) % TEAM_MEMBERS.length;
-        showMember(activeMember);
-        renderMemberSelector();
-        $('#memberSelector .member-selector-card').eq(activeMember).trigger('focus');
-    });
-
-    showMember(activeMember);
-    renderMemberSelector();
 
     /* ---------- optional reveal animation for growth cards ---------- */
     const growthCards = document.querySelectorAll('.growth-card');
