@@ -23,7 +23,7 @@
  
     <!-- ===================== HEADER / NAV ===================== -->
     <nav class="navigation" aria-label="Main navigation">
-        <a href="../index.html" class="logo">CANVAS</a>
+        <a href="index.html" class="logo">CANVAS</a>
 
         <button class="menu-toggle" id="navToggle" type="button"
             aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false">
@@ -31,7 +31,7 @@
         </button>
 
         <div class="nav-links" id="navLinks">
-            <a href="../index.html" class="active" aria-current="page">Home</a>
+            <a href="index.html" class="active" aria-current="page">Home</a>
             <a href="HTML/about.html">About</a>
             <a href="HTML/events.html">Events</a>
             <a href="HTML/workshops.html">Workshops</a>
@@ -230,11 +230,16 @@
         </div>
     </footer>
 
-    <!-- Cookie consent banner -->
-    <div id="cookieBanner" class="banner-strip">
-        <span>We use a small cookie to remember your theme choice and site preferences. No tracking, no third
-            parties.</span>
-        <button class="btn btn-solid" id="cookieAccept" style="padding:6px 16px;">Got it</button>
+    <!-- Cookie preference banner -->
+    <div id="cookieBanner" class="banner-strip" role="dialog" aria-live="polite" aria-label="Cookie preference">
+        <span>
+            This website uses a cookie to remember whether you accept or reject the cookie notice.
+            No tracking or third-party advertising cookies are used.
+        </span>
+        <div class="cookie-actions">
+            <button class="btn btn-solid" id="cookieAccept" type="button">Accept</button>
+            <button class="btn cookie-reject" id="cookieReject" type="button">Reject</button>
+        </div>
     </div>
 
     <!-- Toast notification -->

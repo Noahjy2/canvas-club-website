@@ -462,85 +462,6 @@ const PROJECTS = [
 
 
 // =========================================================
-// PROJECT PORTFOLIO LABELS
-// These labels make Projects read as complete portfolio work
-// instead of a second artwork gallery.
-// =========================================================
-
-const PROJECT_TYPE_BY_ID = {
-    p1: "Character Illustration Project",
-    p2: "Character Concept Project",
-    p3: "Fantasy Character Design Project",
-    p4: "Cyber Character Design Project",
-    p5: "Character Illustration Project",
-    p6: "Environment Concept Art Project",
-    p7: "Narrative Illustration Project",
-    p8: "Digital Art Study",
-    p9: "Urban Visual Design Project",
-
-    p10: "Hard-Surface 3D Rendering Project",
-    p11: "3D Environment Study",
-    p13: "Experimental 3D Composition",
-    p14: "Geometric 3D Design Project",
-    p15: "Abstract 3D Art Project",
-    p16: "Architectural 3D Rendering Project",
-    p17: "3D Depth Study",
-    p18: "Reflective 3D Art Project",
-    p19: "Sculptural 3D Art Project",
-
-    p20: "Ambient Motion Graphics Project",
-    p21: "Environmental Motion Loop",
-    p22: "Particle Motion Graphics Project",
-    p23: "Animated Tunnel Project",
-    p24: "Abstract Motion Graphics Project",
-    p25: "Fluid Motion Graphics Project",
-    p26: "Neon Motion Graphics Project",
-    p27: "3D Motion Design Project",
-    p28: "Cinematic Video Editing Project"
-};
-
-
-function getProjectType(project) {
-
-    return (
-        PROJECT_TYPE_BY_ID[project.id] ||
-        `${project.categoryLabel} Project`
-    );
-
-}
-
-
-function getProjectOutcome(project) {
-
-    if (project.category === "motion") {
-
-        return (
-            "A completed motion-based portfolio piece that demonstrates " +
-            "timing, movement, visual rhythm and final video presentation."
-        );
-
-    }
-
-
-    if (project.category === "3d") {
-
-        return (
-            "A completed 3D portfolio outcome demonstrating form, material, " +
-            "lighting, composition and final rendered presentation."
-        );
-
-    }
-
-
-    return (
-        "A completed 2D portfolio outcome demonstrating concept development, " +
-        "digital illustration, composition and final visual presentation."
-    );
-
-}
-
-
-// =========================================================
 // CURATED SHOWCASE ORDER
 // =========================================================
 
@@ -885,14 +806,12 @@ function createProjectCard(project) {
                     ${project.title}
                 </div>
 
-                <div class="project-type">
-                    ${getProjectType(project)}
-                </div>
-
                 <div class="project-meta">
+
                     ${project.author}
                     &middot;
-                    ${project.year}
+                    ${project.categoryLabel}
+
                 </div>
 
             </div>
@@ -1194,10 +1113,6 @@ function openProjectModal(project) {
         project.title;
 
 
-    const projectType =
-        getProjectType(project);
-
-
     document.getElementById(
         "modalMeta"
     ).textContent =
@@ -1211,33 +1126,9 @@ function openProjectModal(project) {
 
 
     document.getElementById(
-        "modalTools"
+        "modalTech"
     ).textContent =
-        project.software;
-
-
-    document.getElementById(
-        "modalYear"
-    ).textContent =
-        project.year;
-
-
-    document.getElementById(
-        "modalType"
-    ).textContent =
-        projectType;
-
-
-    document.getElementById(
-        "modalTeam"
-    ).textContent =
-        project.team;
-
-
-    document.getElementById(
-        "modalOutcome"
-    ).textContent =
-        getProjectOutcome(project);
+        `Software: ${project.software} · Year: ${project.year} · ${project.team}`;
 
 
     // =====================================================

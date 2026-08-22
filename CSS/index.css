@@ -671,6 +671,28 @@ section { position: relative; }
     opacity: 1;
 }
 
+.cookie-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.cookie-actions .btn {
+    min-width: 92px;
+    padding: 8px 16px;
+}
+
+.cookie-reject {
+    border-color: rgba(255,255,255,.28);
+    background: transparent;
+}
+
+.cookie-reject:hover {
+    border-color: #ffffff;
+    background: rgba(255,255,255,.08);
+}
+
 @keyframes homeReveal {
     from {
         opacity: 0;
@@ -756,6 +778,14 @@ section { position: relative; }
     .banner-strip {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .cookie-actions {
+        width: 100%;
+    }
+
+    .cookie-actions .btn {
+        flex: 1;
     }
 
     .newsletter-form input {

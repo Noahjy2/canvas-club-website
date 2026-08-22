@@ -3,8 +3,8 @@
    Club site.
 
    Storage technologies used on this page:
-   - Cookie          : remembers that the visitor accepted the
-                        cookie notice, for 180 days.
+   - Cookie          : remembers whether the visitor accepted or
+                        rejected the cookie notice, for 180 days.
    - localStorage    : keeps a running visit counter and the
                         newsletter subscriber's email, both of
                         which should persist forever on this
@@ -39,13 +39,24 @@ $(function () {
         $('#navToggle').attr('aria-expanded', 'false');
     });
 
-    /* ---------- COOKIE: consent banner ---------- */
-    if (!getCookie('amc_cookie_consent')) {
+    /* ---------- COOKIE: accept / reject preference ---------- */
+    const cookieConsent = getCookie('amc_cookie_consent');
+
+    // Show the banner only when the visitor has not made a choice yet.
+    if (cookieConsent !== 'accepted' && cookieConsent !== 'rejected') {
         $('#cookieBanner').addClass('show');
     }
+
     $('#cookieAccept').on('click', function () {
         setCookie('amc_cookie_consent', 'accepted', 180);
         $('#cookieBanner').removeClass('show');
+        showToast('Cookie preference saved: Accepted.');
+    });
+
+    $('#cookieReject').on('click', function () {
+        setCookie('amc_cookie_consent', 'rejected', 180);
+        $('#cookieBanner').removeClass('show');
+        showToast('Cookie preference saved: Rejected.');
     });
 
     /* ---------- localStorage: persistent visit counter ---------- */
